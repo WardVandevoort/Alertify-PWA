@@ -1,0 +1,42 @@
+.container{
+     background-color: $darkRed;
+     height: 100vh;
+     display: grid;
+     grid-template-columns: 1fr;
+     grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+     .item-1{
+          color: $white;
+          font-size: 12vw;
+          text-align: center;
+          font-weight: 100;
+          grid-column: 1;
+          grid-row: 1;
+          margin-bottom: 0;
+     }
+     .item-2{
+          height: 60vw;
+          width: 60vw; 
+          grid-column: 1;
+          grid-row: 3;
+          margin: auto;
+          img{
+               width: 60vw; 
+          }
+     }
+     .item-3{
+          color: $white;
+          font-size: 6vw;
+          text-align: center;
+          font-weight: 100;
+          grid-column: 1;
+          grid-row: 4;
+          padding-left: 20%;
+          padding-right: 20%;
+     }
+     .item-4{
+          grid-column: 1;
+          grid-row: 5;
+          align-self: end;
+     }
+}
+

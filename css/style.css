@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 .container {
+  z-index: 0;
   background-color: #4E0808;
   height: 100vh;
   display: grid;
@@ -35,6 +36,46 @@
     grid-row: 5;
     align-self: end; }
 
+.confirmation {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); }
+  .confirmation .pop-up {
+    height: 85vw;
+    width: 60vw;
+    margin: auto;
+    margin-top: 25%;
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 20px;
+    background-color: #FFFFFF; }
+    .confirmation .pop-up .message, .confirmation .pop-up span {
+      font-size: 6vw;
+      font-weight: 100; }
+    .confirmation .pop-up .message {
+      margin: 0;
+      margin-bottom: 15%; }
+    .confirmation .pop-up .no {
+      background-color: #910B0B;
+      padding-left: 14%;
+      padding-right: 14%;
+      margin-right: 8%; }
+    .confirmation .pop-up .yes {
+      background-color: #329862;
+      padding-left: 13%;
+      padding-right: 13%;
+      margin-left: 8%; }
+    .confirmation .pop-up span {
+      color: #FFFFFF;
+      padding-top: 2%;
+      padding-bottom: 2%;
+      border-radius: 10px; }
+
 nav {
   background-color: #FFFFFF;
   height: 18vw;
@@ -65,5 +106,8 @@ nav {
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }
+
+.hidden {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

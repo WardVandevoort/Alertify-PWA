@@ -60,21 +60,53 @@
     .confirmation .pop-up .message {
       margin: 0;
       margin-bottom: 15%; }
+    .confirmation .pop-up div {
+      display: flex;
+      justify-content: space-between; }
     .confirmation .pop-up .no {
       background-color: #910B0B;
       padding-left: 14%;
-      padding-right: 14%;
-      margin-right: 8%; }
+      padding-right: 14%; }
     .confirmation .pop-up .yes {
       background-color: #329862;
       padding-left: 13%;
-      padding-right: 13%;
-      margin-left: 8%; }
+      padding-right: 13%; }
     .confirmation .pop-up span {
       color: #FFFFFF;
       padding-top: 2%;
       padding-bottom: 2%;
       border-radius: 10px; }
+  .confirmation .choice {
+    height: 30vw;
+    width: 80vw;
+    margin: auto;
+    margin-top: 73%;
+    border-radius: 20px;
+    background-color: #910B0B; }
+    .confirmation .choice div {
+      display: flex;
+      justify-content: space-between; }
+    .confirmation .choice .chat, .confirmation .choice .call {
+      display: inline-block;
+      background-color: #FFFFFF; }
+    .confirmation .choice .chat {
+      padding-left: 16%;
+      padding-right: 16%;
+      padding-top: 6%;
+      padding-bottom: 2.5%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px; }
+      .confirmation .choice .chat img {
+        width: 15vw; }
+    .confirmation .choice .call {
+      padding-left: 16%;
+      padding-right: 16%;
+      padding-top: 6%;
+      padding-bottom: 2.5%;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px; }
+      .confirmation .choice .call img {
+        width: 12.5vw; }
 
 nav {
   background-color: #FFFFFF;

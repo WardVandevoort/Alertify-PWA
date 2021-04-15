@@ -32,7 +32,16 @@ yes.addEventListener("click", function() {
 });
 
 call.addEventListener("click", function() {
-     window.location.href = "112/call.html"
+     /*var today = new Date();
+     var dateSegment = today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+     
+     var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
+
+     var slug = dateSegment + '.' + codeSegment;
+
+     window.location.href = "112/call.html?" + slug;*/
+
+     window.location.href = "views/index.ejs";
 });
 
 chat.addEventListener("click", function() {

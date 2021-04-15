@@ -1,0 +1,82 @@
+#profile-view{
+    background-color: $backgroundGrey;
+
+    .profile-container{
+        padding-top: 10vw;
+
+        .title-button{
+            display: grid;
+            grid-template-columns: 1fr 0.5fr;
+            grid-template-rows: 1fr;
+            gap: 0px 0px;
+            grid-template-areas:
+              "h1 btn";
+            margin-left: 4vw;
+            #p-info{
+                grid-area: h1;
+                
+            }
+            #p-info-edit{
+                grid-area: btn;
+                margin-top: 5vw;
+            }
+        }
+        p {
+           line-height: 0.6; 
+        }
+        .gen-info{
+            margin-left: 8vw;
+            padding-top: 2vw;
+            padding-bottom: 3vw;
+        }
+        .contact-info{
+            margin-left: 8vw;
+            padding-bottom: 3vw;
+        }
+        .location-info{
+            margin-left: 8vw;
+            padding-bottom: 3vw;
+        }
+
+    }
+    .med-info{
+        margin-left: 8vw;
+        .medical{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 0px;
+            grid-template-areas:
+              "a img";
+            
+        }
+        .medical a {
+            color: $darkRed;
+            grid-area: a;
+            
+            
+        }
+        .medical img {
+            grid-area: img;
+            margin-left: -3vw;
+        }
+        .ice{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 0px;
+            grid-template-areas:
+              "a img";
+            padding-top: 2vw;
+        }
+        .ice a {
+            color: $darkRed;
+            grid-area: a;
+        }
+        .ice img{
+            grid-area: img;
+            margin-left: -3vw;
+        }
+    }
+    
+}

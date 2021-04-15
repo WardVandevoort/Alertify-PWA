@@ -108,6 +108,12 @@
       .confirmation .choice .call img {
         width: 12.5vw; }
 
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 18vw; }
+
 nav {
   background-color: #FFFFFF;
   height: 18vw;
@@ -134,6 +140,87 @@ nav {
 
 .active-link {
   border-top: 5px solid #910B0B; }
+
+.topnav-info {
+  background-color: #E20B17; }
+
+.backarrow {
+  margin-top: 5vw;
+  margin-left: 4vw; }
+
+.textbox-info {
+  color: #FFFFFF;
+  margin-left: 25vw;
+  margin-top: 5vw; }
+
+.textbox-info h2 {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  background-color: #E20B17; }
+
+.logo-favicon-topnav {
+  text-align: right;
+  margin-left: 20vw;
+  margin-top: 8vw; }
+
+#profile-view {
+  background-color: #ECECEC; }
+  #profile-view .profile-container {
+    padding-top: 10vw; }
+    #profile-view .profile-container .title-button {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr;
+      grid-template-rows: 1fr;
+      gap: 0px 0px;
+      grid-template-areas: "h1 btn";
+      margin-left: 4vw; }
+      #profile-view .profile-container .title-button #p-info {
+        grid-area: h1; }
+      #profile-view .profile-container .title-button #p-info-edit {
+        grid-area: btn;
+        margin-top: 5vw; }
+    #profile-view .profile-container p {
+      line-height: 0.6; }
+    #profile-view .profile-container .gen-info {
+      margin-left: 8vw;
+      padding-top: 2vw;
+      padding-bottom: 3vw; }
+    #profile-view .profile-container .contact-info {
+      margin-left: 8vw;
+      padding-bottom: 3vw; }
+    #profile-view .profile-container .location-info {
+      margin-left: 8vw;
+      padding-bottom: 3vw; }
+  #profile-view .med-info {
+    margin-left: 8vw; }
+    #profile-view .med-info .medical {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 0px 0px;
+      grid-template-areas: "a img"; }
+    #profile-view .med-info .medical a {
+      color: #4E0808;
+      grid-area: a; }
+    #profile-view .med-info .medical img {
+      grid-area: img;
+      margin-left: -3vw; }
+    #profile-view .med-info .ice {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 0px 0px;
+      grid-template-areas: "a img";
+      padding-top: 2vw; }
+    #profile-view .med-info .ice a {
+      color: #4E0808;
+      grid-area: a; }
+    #profile-view .med-info .ice img {
+      grid-area: img;
+      margin-left: -3vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

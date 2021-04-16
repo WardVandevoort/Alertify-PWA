@@ -202,12 +202,12 @@ nav {
       grid-template-rows: 1fr;
       gap: 0px 0px;
       grid-template-areas: "a img"; }
-    #profile-view .med-info .medical a {
+    #profile-view .med-info #med-text {
       color: #4E0808;
       grid-area: a; }
-    #profile-view .med-info .medical img {
+    #profile-view .med-info #med-button {
       grid-area: img;
-      margin-left: -3vw; }
+      margin-left: -4vw; }
     #profile-view .med-info .ice {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -215,12 +215,35 @@ nav {
       gap: 0px 0px;
       grid-template-areas: "a img";
       padding-top: 2vw; }
-    #profile-view .med-info .ice a {
+    #profile-view .med-info #ice-text {
       color: #4E0808;
       grid-area: a; }
-    #profile-view .med-info .ice img {
+    #profile-view .med-info #ice-button {
       grid-area: img;
-      margin-left: -3vw; }
+      margin-left: -4vw; }
+
+#medical-info-body {
+  background-color: #ECECEC; }
+
+.title-button {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "h1 btn";
+  margin-left: 4vw; }
+  .title-button #medical-info {
+    grid-area: h1;
+    text-align: center;
+    margin-left: 25vw;
+    padding-top: 6vw; }
+  .title-button #med-info-edit {
+    grid-area: btn;
+    margin-top: 19vw;
+    padding-left: 2vw; }
+
+.med-info-list {
+  padding-left: 8vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

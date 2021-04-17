@@ -41,9 +41,9 @@ call.addEventListener("click", function() {
 
      window.location.href = "112/call.html?" + slug;*/
 
-     window.location.href = "views/index.ejs";
+     window.location.href = "/call";
 });
 
-chat.addEventListener("click", function() {
+/*chat.addEventListener("click", function() {
      window.location.href = "112/chat.html"
-});
+});*/

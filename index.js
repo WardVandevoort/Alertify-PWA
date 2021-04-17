@@ -12,10 +12,13 @@ var socketIO = require('socket.io');
 //Define the folder which contains the CSS and JS for the fontend
 app.use(express.static('public'))
 
-//Define a route 
+//Define routes 
+app.get("/call", function(req, res){
+	res.render("call.ejs");
+});
+
 app.get("/", function(req, res){
-     //Render a view (located in the directory views/) on this route
-	res.render("index.ejs");
+	res.render("index.html");
 });
 
 //Initialize http server and associate it with express

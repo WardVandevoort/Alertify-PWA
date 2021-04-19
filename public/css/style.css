@@ -222,6 +222,36 @@ nav {
       grid-area: img;
       margin-left: -3vw; }
 
+.video-container {
+  height: 100vh;
+  width: 100vw; }
+  .video-container .user-video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+  .video-container .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 18vw;
+    background-color: #FFFFFF;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .video-container .footer .end-call, .video-container .footer .switch-camera {
+      width: 15vw;
+      height: 15vw;
+      margin-top: 2vw; }
+      .video-container .footer .end-call img, .video-container .footer .switch-camera img {
+        width: 100%;
+        height: 100%; }
+    .video-container .footer .end-call {
+      margin-left: 8vw; }
+    .video-container .footer .switch-camera {
+      margin-right: 8vw; }
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }

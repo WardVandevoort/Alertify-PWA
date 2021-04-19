@@ -30,6 +30,31 @@ server.listen(process.env.PORT || 8000);
 //Initialize socket.io
 var io = socketIO(server);
 
+var mysql = require('mysql');
+
+
+var connection = mysql.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "architecture"
+});
+	
+connection.connect(function(err) {
+	if (err) throw err;
+	console.log("Connected!");
+});
+	
+var query = "SELECT * FROM `bouquets` WHERE `name` = 'Orchids'";
+	
+connection.query(query, function(error, results, fields) {
+	if (error) {
+		throw error;
+	}
+	console.log(results);
+});
+
+
 //Implementing Socket.io
 //connection is a synonym of reserved event connect
 //connection event is fired as soon as a client connects to this socket.

@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/WardVandevoort/Alertify-PWA#readme",
   "dependencies": {
+    "ejs": "*",
     "express": "^4.17.1",
-    "socket.io": "^1.2.0",
-    "ejs": "*"
+    "mysql": "^2.18.1",
+    "socket.io": "^1.2.0"
   }
 }

@@ -118,6 +118,7 @@ io.sockets.on('connection', function(socket) {
 
 // Database calls
 var mysql = require('mysql');
+const bcrypt = require('bcrypt');
 
 // Database login
 var connection = mysql.createConnection({
@@ -132,8 +133,13 @@ app.post("/register", function(req, res){
 	connection.connect(function(err) {
 		if (err) throw err;
 	});
-		
-	var query = req.body.query;
+
+	var hashedPassword = bcrypt.hash(String(req.body.password), 12);
+
+	
+	console.log(hashedPassword);
+
+	//var query = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `password`) VALUES (" + req.body.first_name + ", " + req.body.last_name + ", " + req.body.email + ", " +  + ")";
 		
 	connection.query(query, function(error, results, fields) {
 		if (error) {

@@ -252,6 +252,9 @@ nav {
     .video-container .footer .switch-camera {
       margin-right: 8vw; }
 
+.error {
+  border: solid 3px #910B0B; }
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }

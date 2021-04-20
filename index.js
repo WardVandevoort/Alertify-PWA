@@ -12,6 +12,9 @@ var socketIO = require('socket.io');
 //Define the folder which contains the CSS and JS for the fontend
 app.use(express.static('public'))
 
+//Allow express to use json
+app.use(express.json());
+
 //Define routes 
 app.get("/call", function(req, res){
 	res.render("call.ejs");
@@ -126,13 +129,11 @@ var connection = mysql.createConnection({
 
 // Calls
 app.post("/register", function(req, res){
-	console.log();	
 	connection.connect(function(err) {
 		if (err) throw err;
-		console.log("Connected!");
 	});
 		
-	var query = "SELECT * FROM `users` WHERE `first_name` = 'John'";
+	var query = req.body.query;
 		
 	connection.query(query, function(error, results, fields) {
 		if (error) {
@@ -141,5 +142,8 @@ app.post("/register", function(req, res){
 		//console.log(results);
 	});
 	
-	connection.end()
+	res.json({
+		status: "Success",
+		message: "User was successfully created."
+	});
 });

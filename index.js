@@ -128,28 +128,47 @@ var connection = mysql.createConnection({
 	database: "Alertify"
 });
 
+// Database connection
+connection.connect(function(err) {
+	if (err) throw err;
+});
+
 // Calls
-app.post("/register", function(req, res){
-	connection.connect(function(err) {
-		if (err) throw err;
-	});
+app.post("/register", async function(req, res){
 
-	var hashedPassword = bcrypt.hash(String(req.body.password), 12);
+	var salt = await bcrypt.genSalt(12);
+	var hashedPassword = await bcrypt.hash(req.body.password, salt);
+	hashedPassword = String(hashedPassword);
 
-	
-	console.log(hashedPassword);
-
-	//var query = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `password`) VALUES (" + req.body.first_name + ", " + req.body.last_name + ", " + req.body.email + ", " +  + ")";
+	var query = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `password`) VALUES ('" + req.body.first_name + "', '" + req.body.last_name + "', '" + req.body.email + "', '" + hashedPassword + "')";
 		
 	connection.query(query, function(error, results, fields) {
 		if (error) {
 			throw error;
 		}
-		//console.log(results);
 	});
 	
 	res.json({
 		status: "Success",
 		message: "User was successfully created."
 	});
+
+	
 });
+
+app.post("/email_check", function(req, res){
+	var query = "SELECT id FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
+		
+	connection.query(query, function(error, results, fields) {
+		if (error) {
+			throw error;
+		}
+		res.json({
+			message: results,
+		});
+	});
+});
+
+// End database connection
+
+

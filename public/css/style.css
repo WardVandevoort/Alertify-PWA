@@ -255,6 +255,9 @@ nav {
 .error {
   border: solid 3px #910B0B; }
 
+.error-message {
+  color: #910B0B; }
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }

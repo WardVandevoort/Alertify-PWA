@@ -156,6 +156,34 @@ app.post("/register", async function(req, res){
 	
 });
 
+app.post("/login", async function(req, res){
+	var query = "SELECT password FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
+		
+	connection.query(query, async function(error, results, fields) {
+		if (error) {
+			throw error;
+		}
+		
+		var hashedPassword = JSON.stringify(results[0].password);
+		var firstQuote = hashedPassword.indexOf('"');
+		var secondQuote = hashedPassword.lastIndexOf('"');
+		var baseHashedPassword = hashedPassword.substring(firstQuote + 1, secondQuote);
+		
+		var ValidPassword = await bcrypt.compare(req.body.password, baseHashedPassword);
+	
+		if(ValidPassword == true){
+			res.json({
+				message: "Success",
+			});
+		}
+		else{
+			res.json({
+				message: "",
+			});
+		}
+	});
+});
+
 app.post("/email_check", function(req, res){
 	var query = "SELECT id FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
 		

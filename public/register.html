@@ -9,32 +9,40 @@
 </head>
 <body>
      <section class="register-form">
+          <h2>Register</h2>
+
           <div class="first-name">
                <label for="first_name">First name</label>
                <input type="text" name="first_name" id="first_name">
+               <span class="error-message" id="first_name_error"></span>
           </div>
 
           <div class="last-name">
                <label for="last_name">Last name</label>
                <input type="text" name="last_name" id="last_name">
+               <span class="error-message" id="last_name_error"></span>
           </div>
 
           <div class="email">
                <label for="email">Email address</label>
                <input type="text" name="email" id="email">
+               <span class="error-message" id="email_error"></span>
           </div>
 
           <div class="password">
                <label for="password">Password</label>
                <input type="password" name="password" id="password">
+               <span class="error-message" id="password_error"></span>
           </div>
 
           <div class="confirm-password">
                <label for="confirm_password">Confirm password</label>
                <input type="password" name="confirm_password" id="confirm_password">
+               <span class="error-message" id="confirm_password_error"></span>
           </div>    
 
-          <a class="submit" href="#">Create account</a>
+          <a id="submit" href="#">Create account</a>
+          <a href="login.html">Already have an account?</a>
      </section>    
 
      <script src="js/register.js"></script>

@@ -1,0 +1,79 @@
+var submit = document.querySelector("#submit");
+var email = document.querySelector("#email");
+var password = document.querySelector("#password");
+
+var emailError = document.querySelector("#email_error");
+var passwordError = document.querySelector("#password_error");
+
+var e_value = false;
+var p_value = false;
+
+submit.addEventListener("click", function(){
+
+     // Start validation chain
+     Email();
+
+     // Email validation
+     function Email(){
+          if(email.value.indexOf("@") != -1 && email.value.indexOf(".") != -1){
+               e_value = email.value;
+               email.classList.remove("error");
+               emailError.innerHTML = ""; 
+               Password();
+          }
+          else{
+               email.classList.add("error");
+               emailError.innerHTML = "Email address must be filled in and must be valid";
+          }
+     }
+
+     // Password validation
+     function Password(){
+          if(password.value != '' && password.value != ' ') {
+               p_value = password.value;
+               password.classList.remove("error");
+               passwordError.innerHTML = "";
+          }
+          else{
+               password.classList.add("error");
+               passwordError.innerHTML = "Password must be filled in";
+          }
+
+          FinalValidation();
+     }
+
+     // Final validation
+     function FinalValidation(){
+          if(e_value != false && p_value != false){
+               var data = {
+                    email: e_value,
+                    password: p_value 
+               };
+          
+               fetch("http://localhost:8000/login", {
+                    method: "POST", 
+                    headers: {
+                         'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+               })
+               .then(res => res.json())
+               .then(data => {  
+                    ValidLogin(data);
+               }); 
+          }
+     }
+
+     // Check if login is valid (end of validation chain)
+     function ValidLogin(data){
+          if(JSON.stringify(data.message) == '"Success"'){
+               password.classList.remove("error");
+               passwordError.innerHTML = "";
+               window.location.href = "/";
+          }
+          else{
+               password.classList.add("error");
+               passwordError.innerHTML = "Email or password are invalid";
+          }
+     }
+});

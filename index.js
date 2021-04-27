@@ -20,6 +20,10 @@ app.get("/call", function(req, res){
 	res.render("call.ejs");
 });
 
+app.get("/login.html", function(req, res){
+	res.render("login.html");
+});
+
 app.get("/", function(req, res){
 	res.render("index.html");
 });
@@ -157,7 +161,7 @@ app.post("/register", async function(req, res){
 });
 
 app.post("/login", async function(req, res){
-	var query = "SELECT password FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
+	var query = "SELECT * FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
 		
 	connection.query(query, async function(error, results, fields) {
 		if (error) {
@@ -173,12 +177,12 @@ app.post("/login", async function(req, res){
 	
 		if(ValidPassword == true){
 			res.json({
-				message: "Success",
+				message: results,
 			});
 		}
 		else{
 			res.json({
-				message: "",
+				message: [],
 			});
 		}
 	});

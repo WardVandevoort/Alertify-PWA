@@ -66,9 +66,15 @@ submit.addEventListener("click", function(){
 
      // Check if login is valid (end of validation chain)
      function ValidLogin(data){
-          if(JSON.stringify(data.message) == '"Success"'){
+          if(data.message.length != 0){
                password.classList.remove("error");
                passwordError.innerHTML = "";
+               var unpackedData = data.message[0];
+
+               // Insert current user's id into session storage
+               sessionStorage.setItem("id", unpackedData.id);
+
+               // Redirect user to homepage
                window.location.href = "/";
           }
           else{

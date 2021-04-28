@@ -318,6 +318,9 @@ nav {
     #ice-contacts-body .addbutton #add-image {
       width: 20px; }
 
+#personal-info-change {
+  background-color: #ECECEC; }
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }

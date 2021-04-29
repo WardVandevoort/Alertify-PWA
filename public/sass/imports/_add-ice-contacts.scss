@@ -1,0 +1,25 @@
+#add-ice-contact-body{
+    background-color: $backgroundGrey;
+    .title-button{
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+          "h1 btn";
+        margin-left: 4vw;
+        #ice-info{
+            grid-area: h1;
+            padding-top: 15vw;
+            padding-left: 8vw;       
+        }
+        #ice-info-save{
+            grid-area: btn;
+            padding-top: 23vw;
+        }
+    }
+    .ice-contact{
+        padding-left: 12vw;
+        
+    }
+}

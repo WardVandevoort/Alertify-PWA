@@ -384,9 +384,20 @@ nav {
     #ice-contacts-change-body .title-button #ice-info-save {
       grid-area: btn;
       padding-top: 23vw; }
+  #ice-contacts-change-body .ice-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "icedummy deletebtn"; }
   #ice-contacts-change-body .ice-dummy {
     padding-left: 12vw;
-    line-height: 0.6; }
+    line-height: 0.6;
+    grid-area: icedummy; }
+  #ice-contacts-change-body .delete-btn {
+    grid-area: deletebtn;
+    text-align: center;
+    padding-top: 20vw; }
   #ice-contacts-change-body .bottom-line {
     width: 80%;
     height: 3px;
@@ -410,6 +421,25 @@ nav {
       font-size: 20px; }
     #ice-contacts-change-body .addbutton #add-image {
       width: 20px; }
+
+#add-ice-contact-body {
+  background-color: #ECECEC; }
+  #add-ice-contact-body .title-button {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "h1 btn";
+    margin-left: 4vw; }
+    #add-ice-contact-body .title-button #ice-info {
+      grid-area: h1;
+      padding-top: 15vw;
+      padding-left: 8vw; }
+    #add-ice-contact-body .title-button #ice-info-save {
+      grid-area: btn;
+      padding-top: 23vw; }
+  #add-ice-contact-body .ice-contact {
+    padding-left: 12vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

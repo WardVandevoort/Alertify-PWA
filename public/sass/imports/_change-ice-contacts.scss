@@ -18,9 +18,23 @@
             padding-top: 23vw;
         }
     }
+    .ice-contact{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+          "icedummy deletebtn";
+    }
     .ice-dummy{
         padding-left: 12vw;
         line-height: 0.6;
+        grid-area: icedummy;
+    }
+    .delete-btn{
+        grid-area: deletebtn;
+        text-align: center;
+        padding-top: 20vw;
     }
     .bottom-line{
         width: 80%;

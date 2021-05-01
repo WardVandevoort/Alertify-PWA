@@ -24,8 +24,16 @@ app.get("/login.html", function(req, res){
 	res.render("login.html");
 });
 
+app.get("/dispatcher/login.html", function(req, res){
+	res.render("/dispatcher/login.html");
+});
+
 app.get("/", function(req, res){
 	res.render("index.html");
+});
+
+app.get("/dispatcher/index.html", function(req, res){
+	res.render("/dispatcher/index.html");
 });
 
 //Initialize http server and associate it with express
@@ -156,12 +164,38 @@ app.post("/register", async function(req, res){
 		status: "Success",
 		message: "User was successfully created."
 	});
-
-	
 });
 
 app.post("/login", async function(req, res){
 	var query = "SELECT * FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
+		
+	connection.query(query, async function(error, results, fields) {
+		if (error) {
+			throw error;
+		}
+		
+		var hashedPassword = JSON.stringify(results[0].password);
+		var firstQuote = hashedPassword.indexOf('"');
+		var secondQuote = hashedPassword.lastIndexOf('"');
+		var baseHashedPassword = hashedPassword.substring(firstQuote + 1, secondQuote);
+		
+		var ValidPassword = await bcrypt.compare(req.body.password, baseHashedPassword);
+	
+		if(ValidPassword == true){
+			res.json({
+				message: results,
+			});
+		}
+		else{
+			res.json({
+				message: [],
+			});
+		}
+	});
+});
+
+app.post("/dispatcher-login", async function(req, res){
+	var query = "SELECT * FROM `dispatchers` WHERE `email` LIKE '" + req.body.email + "'";
 		
 	connection.query(query, async function(error, results, fields) {
 		if (error) {
@@ -198,6 +232,27 @@ app.post("/email_check", function(req, res){
 		res.json({
 			message: results,
 		});
+	});
+});
+
+app.post("/create_call", async function(req, res){
+	var user_id = null;
+	var dispatcher_id = null;
+
+	if(req.body.user_id){
+		user_id = req.body.user_id;
+	}
+
+	if(req.body.dispatcher_id){
+		dispatcher_id = req.body.dispatcher_id;
+	}
+
+	var query = "INSERT INTO `calls`(`user_id`, `dispatcher_id`, `room`) VALUES ('" + user_id + "', '" + dispatcher_id + "', '" + req.body.room + "')";
+		
+	connection.query(query, function(error, results, fields) {
+		if (error) {
+			throw error;
+		}
 	});
 });
 

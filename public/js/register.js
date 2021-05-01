@@ -143,7 +143,7 @@ submit.addEventListener("click", function(){
                     console.log(data); 
                }); 
 
-               window.location.href = "/";
+               window.location.href = "/login.html";
           }
      }
 });

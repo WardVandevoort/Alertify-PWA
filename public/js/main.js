@@ -19,9 +19,34 @@ var localStreamConstraints = {
     video: true
 };
 
+var room;
 
-// Prompting for room name:
-var room = prompt('Enter room name:');
+// Saving call in db
+var dispatcher = sessionStorage.getItem("dispatcher");
+
+if(dispatcher == 0){
+     var user = sessionStorage.getItem("id");
+
+     var today = new Date();
+     var dateSegment = today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+     
+     var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
+
+     room = dateSegment + '.' + codeSegment;
+
+     var data = {
+          user_id: user,
+          room: room,
+     };
+
+     fetch("http://localhost:8000/create_call", {
+          method: "POST", 
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+     })
+}
 
 //Initializing socket.io
 var socket = io.connect();

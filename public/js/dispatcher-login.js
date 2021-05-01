@@ -50,7 +50,7 @@ submit.addEventListener("click", function(){
                     password: p_value 
                };
           
-               fetch("http://localhost:8000/login", {
+               fetch("http://localhost:8000/dispatcher-login", {
                     method: "POST", 
                     headers: {
                          'Content-Type': 'application/json'
@@ -73,10 +73,10 @@ submit.addEventListener("click", function(){
 
                // Insert current user's id into session storage
                sessionStorage.setItem("id", unpackedData.id);
-               sessionStorage.setItem("dispatcher", 0);
+               sessionStorage.setItem("dispatcher", 1);
 
                // Redirect user to homepage
-               window.location.href = "/";
+               window.location.href = "/dispatcher/index.html";
           }
           else{
                password.classList.add("error");

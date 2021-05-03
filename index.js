@@ -235,7 +235,7 @@ app.post("/email_check", function(req, res){
 	});
 });
 
-app.post("/create_call", async function(req, res){
+app.post("/create_call", function(req, res){
 	var user_id = null;
 	var dispatcher_id = null;
 
@@ -253,6 +253,20 @@ app.post("/create_call", async function(req, res){
 		if (error) {
 			throw error;
 		}
+	});
+});
+
+app.get("/show_active_calls", function(req, res){
+	var query = "SELECT * FROM `calls` WHERE `active` LIKE '1' AND `dispatcher_id` LIKE '0'";
+		
+	connection.query(query, function(error, results, fields) {
+		if (error) {
+			throw error;
+		}
+	
+		res.json({
+			message: results,
+		});
 	});
 });
 

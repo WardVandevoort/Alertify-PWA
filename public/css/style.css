@@ -153,6 +153,19 @@ nav {
   margin-left: 25vw;
   margin-top: 5vw; }
 
+.textbox-info-settings {
+  color: #FFFFFF;
+  margin-left: 20vw;
+  margin-top: 5vw; }
+
+.textbox-info-settings h2 {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  background-color: #E20B17; }
+
 .textbox-info h2 {
   padding-left: 30px;
   padding-right: 30px;
@@ -164,6 +177,11 @@ nav {
 .logo-favicon-topnav {
   text-align: right;
   margin-left: 20vw;
+  margin-top: 8vw; }
+
+.logo-favicon-topnav-settings {
+  text-align: right;
+  margin-left: 15vw;
   margin-top: 8vw; }
 
 #profile-view {
@@ -440,6 +458,252 @@ nav {
       padding-top: 23vw; }
   #add-ice-contact-body .ice-contact {
     padding-left: 12vw; }
+
+#settings-home {
+  background-color: #ECECEC;
+  /* Rounded sliders */ }
+  #settings-home .setting-nav a {
+    text-decoration: none;
+    color: white; }
+  #settings-home .setting-nav {
+    background-color: #4E0808;
+    width: 80%;
+    margin: auto;
+    margin-top: 5vw;
+    color: white;
+    border-radius: 16px;
+    padding-top: 1vw;
+    padding-bottom: 1vw; }
+  #settings-home #settings-nav-container {
+    text-align: center;
+    margin-top: 10vw; }
+  #settings-home .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    grid-area: locbtn;
+    margin-left: 20vw; }
+  #settings-home .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0; }
+  #settings-home .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #settings-home .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #settings-home input:checked + .slider {
+    background-color: #4E0808; }
+  #settings-home input:focus + .slider {
+    box-shadow: 0 0 2px #4E0808; }
+  #settings-home input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px); }
+  #settings-home .slider.round {
+    border-radius: 34px; }
+  #settings-home .slider.round:before {
+    border-radius: 50%; }
+  #settings-home .loc-lang {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
+    gap: 0px 0px;
+    grid-template-areas: "loc locbtn" "lang langbtn";
+    margin-top: 10vw;
+    text-align: center; }
+    #settings-home .loc-lang #loc {
+      grid-area: loc;
+      margin-top: 0.5vw; }
+    #settings-home .loc-lang #lang {
+      grid-area: lang;
+      margin-top: 5vw; }
+    #settings-home .loc-lang #language-btn {
+      grid-area: langbtn;
+      margin-left: 22vw;
+      margin-top: 3vw; }
+  #settings-home #version {
+    margin-left: 10vw;
+    margin-top: 30vw; }
+
+#acces-body {
+  background-color: #ECECEC;
+  /* Rounded sliders */ }
+  #acces-body .select-colorblind {
+    grid-area: cbfilterchoice; }
+  #acces-body .acces-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    padding-top: 10vw;
+    grid-template-areas: "cbfilter cbfilterchoice" "txtsize txtsizeslider" "highcont highcontslider" "imphear imphearslider" "impheartext impheartext"; }
+  #acces-body .colorblind-txt {
+    grid-area: cbfilter;
+    padding-left: 5vw; }
+  #acces-body .size-txt {
+    grid-area: txtsize;
+    padding-left: 5vw; }
+  #acces-body .txt-size-slider {
+    grid-area: txtsizeslider;
+    padding-top: 3vw;
+    padding-left: 10vw; }
+  #acces-body .contrast-txt {
+    grid-area: highcont;
+    padding-left: 5vw; }
+  #acces-body .slider-cont {
+    grid-area: highcontslider; }
+  #acces-body .imp-txt {
+    grid-area: imphear;
+    padding-left: 5vw; }
+  #acces-body .slider-hear {
+    grid-area: imphearslider; }
+  #acces-body #imp-undertxt {
+    grid-area: impheartext; }
+  #acces-body .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    grid-area: locbtn;
+    margin-left: 10vw; }
+  #acces-body .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0; }
+  #acces-body .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #acces-body .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #acces-body input:checked + .slider {
+    background-color: #4E0808; }
+  #acces-body input:focus + .slider {
+    box-shadow: 0 0 2px #4E0808; }
+  #acces-body input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px); }
+  #acces-body .slider.round {
+    border-radius: 34px; }
+  #acces-body .slider.round:before {
+    border-radius: 50%; }
+  #acces-body .slider-cont {
+    padding-top: 5vw; }
+  #acces-body .slider-hear {
+    padding-top: 5vw; }
+  #acces-body .select-colorblind {
+    padding-top: 5vw;
+    padding-left: 10vw; }
+  #acces-body #imp-undertxt {
+    margin-top: -4vw;
+    padding-left: 5vw; }
+
+#settings-camera {
+  background-color: #ECECEC; }
+  #settings-camera .camera-txt {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 10vw;
+    line-height: 27px;
+    font-size: 20px; }
+  #settings-camera .camera-admit {
+    text-align: center;
+    margin-left: 10vw;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr;
+    gap: 0px 0px;
+    grid-template-areas: "no btn yes"; }
+    #settings-camera .camera-admit #no {
+      font-size: 20px;
+      grid-area: no;
+      margin-right: -10vw;
+      margin-top: 6vw; }
+    #settings-camera .camera-admit .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      grid-area: btn;
+      margin-top: 20px;
+      /* Rounded sliders */ }
+      #settings-camera .camera-admit .switch .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0; }
+      #settings-camera .camera-admit .switch .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s; }
+      #settings-camera .camera-admit .switch .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s; }
+      #settings-camera .camera-admit .switch input:checked + .slider {
+        background-color: #4E0808; }
+      #settings-camera .camera-admit .switch input:focus + .slider {
+        box-shadow: 0 0 2px #4E0808; }
+      #settings-camera .camera-admit .switch input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px); }
+      #settings-camera .camera-admit .switch .slider.round {
+        border-radius: 34px; }
+      #settings-camera .camera-admit .switch .slider.round:before {
+        border-radius: 50%; }
+    #settings-camera .camera-admit #yes {
+      font-size: 20px;
+      grid-area: yes;
+      text-align: left;
+      margin-left: -10vw;
+      padding-top: 1vw; }
+  #settings-camera #allow {
+    text-align: center;
+    margin-top: 20vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

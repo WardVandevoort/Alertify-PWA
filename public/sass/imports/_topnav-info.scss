@@ -12,6 +12,20 @@
     margin-top: 5vw;
 
 }
+.textbox-info-settings{
+    color: $white;
+    margin-left: 20vw;
+    margin-top: 5vw;
+
+}
+.textbox-info-settings h2{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 10px;
+    background-color: $topnavRed;
+}
 .textbox-info h2{
     padding-left: 30px;
     padding-right: 30px;
@@ -23,5 +37,10 @@
 .logo-favicon-topnav{
     text-align: right;
     margin-left: 20vw;
+    margin-top: 8vw;
+}
+.logo-favicon-topnav-settings{
+    text-align: right;
+    margin-left: 15vw;
     margin-top: 8vw;
 }

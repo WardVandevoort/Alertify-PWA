@@ -39,6 +39,8 @@ app.get("/dispatcher/index.html", function(req, res){
 //Initialize http server and associate it with express
 var server = http.createServer(app);
 
+const primus = require("../Alertify-PWA/primus/primus").go(server);
+
 //Ports on which server should listen - 8000 or the one provided by the environment
 server.listen(process.env.PORT || 8000);
 

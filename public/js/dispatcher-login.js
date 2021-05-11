@@ -69,10 +69,10 @@ submit.addEventListener("click", function(){
           if(data.message.length != 0){
                password.classList.remove("error");
                passwordError.innerHTML = "";
-               var unpackedData = data.message[0];
+               var unpackedData = data.message;
 
                // Insert current user's id into session storage
-               sessionStorage.setItem("id", unpackedData.id);
+               sessionStorage.setItem("id", unpackedData._id);
                sessionStorage.setItem("dispatcher", 1);
 
                // Redirect user to homepage

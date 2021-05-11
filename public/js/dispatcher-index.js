@@ -1,6 +1,6 @@
 var container = document.querySelector("#calls-container");
 
-LiveUpdate();
+//LiveUpdate();
 
 function LiveUpdate() {
      setInterval(async function(){

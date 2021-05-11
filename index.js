@@ -15,6 +15,13 @@ app.use(express.static('public'))
 //Allow express to use json
 app.use(express.json());
 
+// Connect to db
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://Ward:Alertify123@cluster0.dw0st.mongodb.net/alertify?authSource=admin&replicaSet=atlas-ok0045-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', {
+	useNewUrlParser: true, 
+	useUnifiedTopology: true
+});
+
 //Define routes 
 app.get("/call", function(req, res){
 	res.render("call.ejs");
@@ -130,148 +137,17 @@ io.sockets.on('connection', function(socket) {
 
 
 
+const controller = require("../Alertify-PWA/controllers/controller");
+
 // Database calls
-var mysql = require('mysql');
-const bcrypt = require('bcrypt');
+app.post("/register", controller.register);
 
-// Database login
-var connection = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "",
-	database: "Alertify"
-});
+app.post("/login", controller.login);
 
-// Database connection
-connection.connect(function(err) {
-	if (err) throw err;
-});
+app.post("/dispatcher-login", controller.dispatcherLogin);
 
-// Calls
-app.post("/register", async function(req, res){
+app.post("/email_check", controller.emailCheck);
 
-	var salt = await bcrypt.genSalt(12);
-	var hashedPassword = await bcrypt.hash(req.body.password, salt);
-	hashedPassword = String(hashedPassword);
+app.post("/create_call", controller.createCall);
 
-	var query = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `password`) VALUES ('" + req.body.first_name + "', '" + req.body.last_name + "', '" + req.body.email + "', '" + hashedPassword + "')";
-		
-	connection.query(query, function(error, results, fields) {
-		if (error) {
-			throw error;
-		}
-	});
-	
-	res.json({
-		status: "Success",
-		message: "User was successfully created."
-	});
-});
-
-app.post("/login", async function(req, res){
-	var query = "SELECT * FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
-		
-	connection.query(query, async function(error, results, fields) {
-		if (error) {
-			throw error;
-		}
-		
-		var hashedPassword = JSON.stringify(results[0].password);
-		var firstQuote = hashedPassword.indexOf('"');
-		var secondQuote = hashedPassword.lastIndexOf('"');
-		var baseHashedPassword = hashedPassword.substring(firstQuote + 1, secondQuote);
-		
-		var ValidPassword = await bcrypt.compare(req.body.password, baseHashedPassword);
-	
-		if(ValidPassword == true){
-			res.json({
-				message: results,
-			});
-		}
-		else{
-			res.json({
-				message: [],
-			});
-		}
-	});
-});
-
-app.post("/dispatcher-login", async function(req, res){
-	var query = "SELECT * FROM `dispatchers` WHERE `email` LIKE '" + req.body.email + "'";
-		
-	connection.query(query, async function(error, results, fields) {
-		if (error) {
-			throw error;
-		}
-		
-		var hashedPassword = JSON.stringify(results[0].password);
-		var firstQuote = hashedPassword.indexOf('"');
-		var secondQuote = hashedPassword.lastIndexOf('"');
-		var baseHashedPassword = hashedPassword.substring(firstQuote + 1, secondQuote);
-		
-		var ValidPassword = await bcrypt.compare(req.body.password, baseHashedPassword);
-	
-		if(ValidPassword == true){
-			res.json({
-				message: results,
-			});
-		}
-		else{
-			res.json({
-				message: [],
-			});
-		}
-	});
-});
-
-app.post("/email_check", function(req, res){
-	var query = "SELECT id FROM `users` WHERE `email` LIKE '" + req.body.email + "'";
-		
-	connection.query(query, function(error, results, fields) {
-		if (error) {
-			throw error;
-		}
-		res.json({
-			message: results,
-		});
-	});
-});
-
-app.post("/create_call", function(req, res){
-	var user_id = null;
-	var dispatcher_id = null;
-
-	if(req.body.user_id){
-		user_id = req.body.user_id;
-	}
-
-	if(req.body.dispatcher_id){
-		dispatcher_id = req.body.dispatcher_id;
-	}
-
-	var query = "INSERT INTO `calls`(`user_id`, `dispatcher_id`, `room`) VALUES ('" + user_id + "', '" + dispatcher_id + "', '" + req.body.room + "')";
-		
-	connection.query(query, function(error, results, fields) {
-		if (error) {
-			throw error;
-		}
-	});
-});
-
-app.get("/show_active_calls", function(req, res){
-	var query = "SELECT * FROM `calls` WHERE `active` LIKE '1' AND `dispatcher_id` LIKE '0'";
-		
-	connection.query(query, function(error, results, fields) {
-		if (error) {
-			throw error;
-		}
-	
-		res.json({
-			message: results,
-		});
-	});
-});
-
-// End database connection
-
-
+app.get("/show_active_calls", controller.showActiveCalls);

@@ -21,7 +21,7 @@ var localStreamConstraints = {
 
 var room;
 
-primus = Primus.connect("http://localhost:8000", {
+var primus = Primus.connect("http://localhost:8000", { // of  "/"
      reconnect: {
          max: Infinity // Number: The max delay before we try to reconnect.
        , min: 500 // Number: The minimum delay before we try reconnect.

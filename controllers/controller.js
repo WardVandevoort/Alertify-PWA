@@ -137,7 +137,7 @@ const createCall = function(req, res){
 
 const showActiveCalls = function(req, res){
 
-	Call.find({"active": 1, "dispatcher_id": 0}, (err, docs) => {
+	Call.find({"active": 1, "dispatcher_id": null}, (err, docs) => {
 		if(err){
 			res.json({
 				status: "Error",

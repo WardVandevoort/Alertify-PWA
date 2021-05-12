@@ -1,30 +1,141 @@
 var container = document.querySelector("#calls-container");
 
-//LiveUpdate();
+var primus = Primus.connect("/", { 
+     reconnect: {
+         max: Infinity // Number: The max delay before we try to reconnect.
+       , min: 500 // Number: The minimum delay before we try reconnect.
+       , retries: 10 // Number: How many times we should try to reconnect.
+     }
+});
 
-function LiveUpdate() {
-     setInterval(async function(){
-          var response = await (await fetch("http://localhost:8000/show_active_calls")).json();
-          var calls = response.message;
-          
-          calls.forEach(call => {
-               var callTimestamp = call['created_at'];
-               var callTime = new Date(callTimestamp).toTimeString();
+window.addEventListener("load", function() {
+     LiveUpdate();
+});
 
-               var today = new Date();
-               var currentTime = new Date(today).toTimeString();
+primus.on("data", (json) => {
+     if(json.action === "Update calls"){
+          LiveUpdate();
+     }
+});
 
-               var som = currentTime - callTime;
+setInterval(function(){
+     LiveUpdate();
+}, 30000);
 
-               //today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+async function LiveUpdate() {
+     var response = await (await fetch("http://localhost:8000/show_active_calls")).json();
+     var calls = response.message;
+
+     // Empty calls container before filling it
+     container.innerHTML = "";
      
-               console.log(som);
+     calls.forEach(call => {
+          var callTimestamp = call['created_at'];
+          var callDate = new Date(callTimestamp);
+          var callTime = callDate.getTime() / 1000;
 
-               /*var listItem = document.createElement("LI");                 
-               //var time = document.createTextNode("Water"); 
-               var content = document.createTextNode()
-               node.appendChild(textnode);                              
-               container.appendChild(node); */
-          });
-     }, 2000)
+          var today = new Date();
+          var currentTime = today.getTime() / 1000;
+
+          var sum = currentTime - callTime;
+          var timeSince = Math.round(sum);
+          var time;
+
+          switch (true) {
+               case (timeSince < 30):
+                    time = "Call started just now";
+                    break;
+
+               case (timeSince >= 30 && timeSince < 60):
+                    time = "Call started 30 seconds ago";
+                    break;
+          
+               case (timeSince >= 60 && timeSince < 90):
+                    time = "Call started 1 minute ago";
+                    break;
+
+               case (timeSince >= 90 && timeSince < 120):
+                    time = "Call started 1.5 minute ago";
+                    break;
+
+               case (timeSince >= 120 && timeSince < 150):
+                    time = "Call started 2 minutes ago";
+                    break;
+
+               case (timeSince >= 150 && timeSince < 180):
+                    time = "Call started 2.5 minutes ago";
+                    break;
+
+               case (timeSince >= 180 && timeSince < 210):
+                    time = "Call started 3 minutes ago";
+                    break;
+
+               case (timeSince >= 210 && timeSince < 240):
+                    time = "Call started 3.5 minutes ago";
+                    break;
+
+               case (timeSince >= 240 && timeSince < 270):
+                    time = "Call started 4 minutes ago";
+                    break;
+
+               case (timeSince >= 270 && timeSince < 300):
+                    time = "Call started 4.5 minutes ago";
+                    break;
+
+               case (timeSince >= 300 && timeSince < 330):
+                    time = "Call started 5 minutes ago";
+                    break;
+
+               case (timeSince >= 330 && timeSince < 360):
+                    time = "Call started 5.5 minutes ago";
+                    break;
+
+               case (timeSince >= 360 && timeSince < 390):
+                    time = "Call started 6 minutes ago";
+                    break;
+
+               case (timeSince >= 390 && timeSince < 420):
+                    time = "Call started 6.5 minutes ago";
+                    break;
+
+               case (timeSince >= 420 && timeSince < 450):
+                    time = "Call started 7 minutes ago";
+                    break;
+
+               case (timeSince >= 450 && timeSince < 480):
+                    time = "Call started 7.5 minutes ago";
+                    break;
+
+               case (timeSince >= 480 && timeSince < 510):
+                    time = "Call started 8 minutes ago";
+                    break;
+
+               case (timeSince >= 510 && timeSince < 540):
+                    time = "Call started 8.5 minutes ago";
+                    break;
+
+               case (timeSince >= 540 && timeSince < 570):
+                    time = "Call started 9 minutes ago";
+                    break;
+
+               case (timeSince >= 570 && timeSince < 600):
+                    time = "Call started 9.5 minutes ago";
+                    break;
+
+               case (timeSince >= 600 && timeSince < 630):
+                    time = "Call started 10 minutes ago";
+                    break;
+
+               case (timeSince >= 630):
+                    time = "Call started 10+ minutes ago";
+                    break;
+          }
+          console.log(time);
+
+          var listItem = document.createElement("LI");                 
+          var message = document.createTextNode(time); 
+          listItem.appendChild(message);                              
+          container.appendChild(listItem); 
+     });
 }
+

@@ -21,7 +21,7 @@ var localStreamConstraints = {
 
 var room;
 
-var primus = Primus.connect("http://localhost:8000", { // of  "/"
+var primus = Primus.connect("/", {
      reconnect: {
          max: Infinity // Number: The max delay before we try to reconnect.
        , min: 500 // Number: The minimum delay before we try reconnect.
@@ -54,6 +54,10 @@ if(dispatcher == 0){
           },
           body: JSON.stringify(data)
      })
+
+     primus.write({
+          "action": "Update calls",
+     });
 }
 
 //Initializing socket.io

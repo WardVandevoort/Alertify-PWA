@@ -59,6 +59,32 @@ if(dispatcher == 0){
           "action": "Update calls",
      });
 }
+else if(dispatcher == 1){
+     var dispatcher = sessionStorage.getItem("id");
+
+     var url_string = window.location.href;
+     var url = new URL(url_string);
+     var id = url.searchParams.get("id");
+     room = url.searchParams.get("room");
+
+     var data = {
+          call_id: id,
+          dispatcher_id: dispatcher,
+          active: 0,
+     };
+
+     fetch("http://localhost:8000/update_call", {
+          method: "PUT", 
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+     })
+
+     primus.write({
+          "action": "Update calls",
+     });
+}
 
 //Initializing socket.io
 var socket = io.connect();

@@ -5,6 +5,7 @@ var os = require('os');  //for operating system-related utility methods and prop
 var express = require('express'); 
 var app = express();
 var http = require('http');   //for creating http server
+var url = require('url');
 
 //For signalling in WebRTC
 var socketIO = require('socket.io');
@@ -41,6 +42,10 @@ app.get("/", function(req, res){
 
 app.get("/dispatcher/index.html", function(req, res){
 	res.render("/dispatcher/index.html");
+});
+
+app.get("/dispatcher/dashboard", function(req, res){
+	res.render("dashboard.ejs");
 });
 
 //Initialize http server and associate it with express
@@ -149,5 +154,7 @@ app.post("/dispatcher-login", controller.dispatcherLogin);
 app.post("/email_check", controller.emailCheck);
 
 app.post("/create_call", controller.createCall);
+
+app.put("/update_call", controller.updateCall);
 
 app.get("/show_active_calls", controller.showActiveCalls);

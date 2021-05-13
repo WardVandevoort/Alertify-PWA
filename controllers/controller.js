@@ -135,6 +135,29 @@ const createCall = function(req, res){
 	});
 }
 
+const updateCall = function(req, res){
+
+	dispatcher_id = req.body.dispatcher_id;
+	active = req.body.active;
+	call_id = req.body.call_id;
+
+	Call.findByIdAndUpdate(call_id, { dispatcher_id: dispatcher_id, active: active }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Call to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+	
+}
+
 const showActiveCalls = function(req, res){
 
 	Call.find({"active": 1, "dispatcher_id": null}, (err, docs) => {
@@ -158,4 +181,5 @@ module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
 module.exports.emailCheck = emailCheck;
 module.exports.createCall = createCall;
+module.exports.updateCall = updateCall;
 module.exports.showActiveCalls = showActiveCalls;

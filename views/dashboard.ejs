@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Alertify | Dashboard</title>
+     <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+     <div class="video-container">
+          <!-- For playing local video -->
+          <video id="localVideo" class="hidden" autoplay playsinline></video>
+
+          <video id="remoteVideo" class="" autoplay playsinline></video>
+
+          <div class="footer">
+               <div class="end-call">
+                    <img src="../media/img/end_call_icon.svg" alt="end call icon">
+               </div>
+          </div>
+     </div>
+
+     <!-- Import SocketIO for signalling -->
+     <script src="../socket.io/socket.io.js"></script>
+     <!-- Import WebRTC adapter for compatibility with all the browsers  -->
+     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+     <!-- Import TURN config -->
+     <script src="../js\config.js"></script>
+     <!-- Import script containing WebRTC related functions -->
+     <script src="http://localhost:8000/primus/primus.js"></script>
+     <script src="../js\main.js"></script>
+</body>
+</html>

@@ -10,16 +10,19 @@ var primus = Primus.connect("/", {
 
 window.addEventListener("load", function() {
      LiveUpdate();
+     ClickCall();
 });
 
 primus.on("data", (json) => {
      if(json.action === "Update calls"){
           LiveUpdate();
+          ClickCall();
      }
 });
 
 setInterval(function(){
      LiveUpdate();
+     ClickCall();
 }, 30000);
 
 async function LiveUpdate() {
@@ -29,7 +32,7 @@ async function LiveUpdate() {
      // Empty calls container before filling it
      container.innerHTML = "";
      
-     calls.forEach(call => {
+     calls.slice().reverse().forEach(call => {
           var callTimestamp = call['created_at'];
           var callDate = new Date(callTimestamp);
           var callTime = callDate.getTime() / 1000;
@@ -130,12 +133,18 @@ async function LiveUpdate() {
                     time = "Call started 10+ minutes ago";
                     break;
           }
-          console.log(time);
 
-          var listItem = document.createElement("LI");                 
-          var message = document.createTextNode(time); 
-          listItem.appendChild(message);                              
-          container.appendChild(listItem); 
+          var listItem = `<li class="call">
+                              <a href="/dispatcher/dashboard?id=${call['_id']}&room=${call['room']}">
+                                   <img src="../media/img/call_btn.svg" alt="phone icon">
+                                   <p>${time}</p>
+                              </a>
+                         </li>`;
+          
+          container.insertAdjacentHTML("afterbegin", listItem);
      });
 }
+
+
+
 

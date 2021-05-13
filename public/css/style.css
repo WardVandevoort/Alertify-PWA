@@ -258,6 +258,39 @@ nav {
 .error-message {
   color: #910B0B; }
 
+.calls-container {
+  padding-left: 0;
+  padding-right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(autofill, 1fr); }
+  .calls-container .call {
+    background-color: #4E0808;
+    list-style: none;
+    border-radius: 15px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 2vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: 2vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 2vw;
+    width: 14vw;
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center; }
+    .calls-container .call a {
+      text-decoration: none; }
+      .calls-container .call a img {
+        width: 13vw;
+        margin-bottom: 1vw; }
+      .calls-container .call a p {
+        width: 14vw;
+        color: #FFFFFF;
+        margin: auto; }
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }

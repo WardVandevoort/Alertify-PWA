@@ -1,0 +1,39 @@
+.calls-container{
+     padding-left: 0;
+     padding-right: 0;
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+     grid-template-rows: repeat(autofill, 1fr);
+     
+     .call{
+          background-color: $darkRed;
+          list-style: none;
+          border-radius: 15px;
+          display: inline-block;
+          text-align: center;
+          padding-top: 2vw;
+          padding-left: 1vw;
+          padding-right: 1vw;
+          padding-bottom: 2vw;
+          margin-left: 2vw;
+          margin-right: 2vw;
+          margin-bottom: 2vw;
+          width: 14vw;
+          grid-column: auto;
+          grid-row: auto;
+          
+          justify-self: center;
+          a{
+               text-decoration: none;
+               img{
+                    width: 13vw;
+                    margin-bottom: 1vw;
+               }
+               p{
+                    width: 14vw;
+                    color: $white;
+                    margin: auto;
+               }
+          }
+     }
+}

@@ -47,7 +47,7 @@ if(dispatcher == 0){
           room: room,
      };
 
-     fetch("http://localhost:8000/create_call", {
+     fetch("/create_call", {
           method: "POST", 
           headers: {
                'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ else if(dispatcher == 1){
           active: 0,
      };
 
-     fetch("http://localhost:8000/update_call", {
+     fetch("/update_call", {
           method: "PUT", 
           headers: {
                'Content-Type': 'application/json'

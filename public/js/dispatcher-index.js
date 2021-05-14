@@ -26,7 +26,7 @@ setInterval(function(){
 }, 30000);
 
 async function LiveUpdate() {
-     var response = await (await fetch("http://localhost:8000/show_active_calls")).json();
+     var response = await (await fetch("/show_active_calls")).json();
      var calls = response.message;
 
      // Empty calls container before filling it

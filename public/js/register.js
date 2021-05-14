@@ -60,7 +60,7 @@ submit.addEventListener("click", function(){
                     email: email.value, 
                };
           
-               fetch("http://localhost:8000/email_check", {
+               fetch("/email_check", {
                     method: "POST", 
                     headers: {
                          'Content-Type': 'application/json'
@@ -131,7 +131,7 @@ submit.addEventListener("click", function(){
                     password: p_value 
                };
           
-               fetch("http://localhost:8000/register", {
+               fetch("/register", {
                     method: "POST", 
                     headers: {
                          'Content-Type': 'application/json'

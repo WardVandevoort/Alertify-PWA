@@ -50,7 +50,7 @@ submit.addEventListener("click", function(){
                     password: p_value 
                };
           
-               fetch("http://localhost:8000/dispatcher-login", {
+               fetch("/dispatcher-login", {
                     method: "POST", 
                     headers: {
                          'Content-Type': 'application/json'

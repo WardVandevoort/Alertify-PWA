@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var http = require('http');   //for creating http server
 var url = require('url');
+const config = require('config');
 
 //For signalling in WebRTC
 var socketIO = require('socket.io');
@@ -18,10 +19,11 @@ app.use(express.json());
 
 // Connect to db
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://Ward:Alertify123@cluster0.dw0st.mongodb.net/alertify?authSource=admin&replicaSet=atlas-ok0045-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', {
+mongoose.connect(config.get("Database.connection"), {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });
+mongoose.set('useFindAndModify', false);
 
 //Define routes 
 app.get("/call", function(req, res){
@@ -51,7 +53,7 @@ app.get("/dispatcher/dashboard", function(req, res){
 //Initialize http server and associate it with express
 var server = http.createServer(app);
 
-const primus = require("../Alertify-PWA/primus/primus").go(server);
+const primus = require("./primus/primus").go(server);
 
 //Ports on which server should listen - 8000 or the one provided by the environment
 server.listen(process.env.PORT || 8000);
@@ -142,7 +144,7 @@ io.sockets.on('connection', function(socket) {
 
 
 
-const controller = require("../Alertify-PWA/controllers/controller");
+const controller = require("./controllers/controller");
 
 // Database calls
 app.post("/register", controller.register);

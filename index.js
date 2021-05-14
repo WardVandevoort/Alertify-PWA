@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Connect to db
 const mongoose = require('mongoose');
-mongoose.connect(config.get("Database.connection"), {
+mongoose.connect(process.env.dbconnection || config.get("Database.connection"), {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });

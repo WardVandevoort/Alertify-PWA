@@ -132,6 +132,7 @@ socket.on('log', function(array) {
 socket.on('message', function(message, room) {
      console.log('Client received message:', message,  room);
      if (message === 'got user media') {
+          console.log("ik geraak in de if");
           maybeStart();
      } 
      else if (message.type === 'offer') {
@@ -192,6 +193,7 @@ console.log('Getting user media with constraints', localStreamConstraints);
 
 //If initiator, create the peer connection
 function maybeStart() {
+     console.log("ik geraak in de maybeStart functie");
      console.log('>>>>>>> maybeStart() ', isStarted, localStream, isChannelReady);
      if (!isStarted && typeof localStream !== 'undefined' && isChannelReady) {
           console.log('>>>>>> creating peer connection');

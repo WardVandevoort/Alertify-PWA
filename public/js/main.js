@@ -33,6 +33,7 @@ var primus = Primus.connect("/", {
 
 primus.on("data", (json) => {
      if(json.action === "Switch camera"){
+          console.log("outside " + localStreamConstraints.video.facingMode);
           if(localStreamConstraints.video.facingMode == "environment"){
                localStreamConstraints = {
                     audio: true,
@@ -40,6 +41,7 @@ primus.on("data", (json) => {
                          facingMode: "user"
                     }
                };
+               console.log("if " + localStreamConstraints.video.facingMode);
           }
           else if(localStreamConstraints.video.facingMode == "user"){
                localStreamConstraints = {
@@ -48,6 +50,7 @@ primus.on("data", (json) => {
                          facingMode: "environment"
                     }
                };
+               console.log("else if " + localStreamConstraints.video.facingMode);
           }
      }
 });

@@ -42,6 +42,9 @@ primus.on("data", (json) => {
                     }
                };
 
+               stop();
+               removeStream();
+
                navigator.mediaDevices.getUserMedia(localStreamConstraints)
                .then(gotStream)
                .catch(function(e) {
@@ -57,6 +60,9 @@ primus.on("data", (json) => {
                          facingMode: "environment"
                     }
                };
+
+               stop();
+               removeStream();
 
                navigator.mediaDevices.getUserMedia(localStreamConstraints)
                .then(gotStream)

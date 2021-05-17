@@ -309,47 +309,37 @@ primus.on("data", (json) => {
           console.log("outside " + localStreamConstraints.video.facingMode);
           if(localStreamConstraints.video.facingMode == "environment"){
 
-               var options = {
+               var localStreamConstraints = {
                     audio: true,
                     video: {
                         facingMode: 'user', // Or 'environment'
                     },
                };
-                
-               var stream = navigator.mediaDevices.getUserMedia(options);
 
-               // Stop the tracks
-               var tracks = stream.getTracks();
-               tracks.forEach(track => track.stop());
+               stop();
 
-               // Provide new options
-               stream = navigator.mediaDevices.getUserMedia(options);
-
-               // Add this stream to the video object
-               localStream = stream;
-               localVideo.srcObject = stream;
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
           }
           else if(localStreamConstraints.video.facingMode == "user"){
 
-               var options = {
+               var localStreamConstraints = {
                     audio: true,
                     video: {
                         facingMode: 'environment', // Or 'environment'
                     },
                };
-                
-               var stream = navigator.mediaDevices.getUserMedia(options);
 
-               // Stop the tracks
-               var tracks = stream.getTracks();
-               tracks.forEach(track => track.stop());
+               stop();
 
-               // Provide new options
-               stream = navigator.mediaDevices.getUserMedia(options);
-
-               // Add this stream to the video object
-               localStream = stream;
-               localVideo.srcObject = stream;
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
           }
      }
 });

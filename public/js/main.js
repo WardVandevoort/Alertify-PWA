@@ -41,6 +41,13 @@ primus.on("data", (json) => {
                          facingMode: "user"
                     }
                };
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+
                console.log("if " + localStreamConstraints.video.facingMode);
           }
           else if(localStreamConstraints.video.facingMode == "user"){
@@ -50,6 +57,13 @@ primus.on("data", (json) => {
                          facingMode: "environment"
                     }
                };
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+               
                console.log("else if " + localStreamConstraints.video.facingMode);
           }
      }

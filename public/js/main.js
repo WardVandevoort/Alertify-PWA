@@ -88,46 +88,6 @@ else if(dispatcher == 1){
      });
 }
 
-primus.on("data", (json) => {
-     if(json.action === "Switch camera"){
-          console.log("outside " + localStreamConstraints.video.facingMode);
-          if(localStreamConstraints.video.facingMode == "environment"){
-
-               var localStreamConstraints = {
-                    audio: true,
-                    video: {
-                        facingMode: 'user', // Or 'environment'
-                    },
-               };
-
-               stop();
-
-               navigator.mediaDevices.getUserMedia(localStreamConstraints)
-               .then(gotStream)
-               .catch(function(e) {
-                    alert('getUserMedia() error: ' + e.name);
-               });
-          }
-          else if(localStreamConstraints.video.facingMode == "user"){
-
-               var localStreamConstraints = {
-                    audio: true,
-                    video: {
-                        facingMode: 'environment', // Or 'environment'
-                    },
-               };
-
-               stop();
-
-               navigator.mediaDevices.getUserMedia(localStreamConstraints)
-               .then(gotStream)
-               .catch(function(e) {
-                    alert('getUserMedia() error: ' + e.name);
-               });
-          }
-     }
-});
-
 //Initializing socket.io
 var socket = io.connect();
 
@@ -168,6 +128,45 @@ socket.on('log', function(array) {
      console.log.apply(console, array);
 });
 
+primus.on("data", (json) => {
+     if(json.action === "Switch camera"){
+          console.log("outside " + localStreamConstraints.video.facingMode);
+          if(localStreamConstraints.video.facingMode == "environment"){
+
+               var localStreamConstraints = {
+                    audio: true,
+                    video: {
+                        facingMode: 'user', // Or 'environment'
+                    },
+               };
+
+               stop();
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+          }
+          else if(localStreamConstraints.video.facingMode == "user"){
+
+               var localStreamConstraints = {
+                    audio: true,
+                    video: {
+                        facingMode: 'environment', // Or 'environment'
+                    },
+               };
+
+               stop();
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+          }
+     }
+});
 
 //Event - for sending meta for establishing a direct connection using WebRTC
 //The Driver code

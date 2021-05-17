@@ -318,7 +318,7 @@ primus.on("data", (json) => {
                })
                .then(function(stream) {
                     let videoTrack = stream.getVideoTracks()[0];
-                    PCs.forEach(function(pc) {
+                    forEach(function(pc) {
                          var sender = pc.getSenders().find(function(s) {
                               return s.track.kind == videoTrack.kind;
                          });
@@ -341,7 +341,7 @@ primus.on("data", (json) => {
                })
                .then(function(stream) {
                     let videoTrack = stream.getVideoTracks()[0];
-                    PCs.forEach(function(pc) {
+                    forEach(function(pc) {
                          var sender = pc.getSenders().find(function(s) {
                               return s.track.kind == videoTrack.kind;
                          });

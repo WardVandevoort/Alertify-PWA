@@ -88,6 +88,46 @@ else if(dispatcher == 1){
      });
 }
 
+primus.on("data", (json) => {
+     if(json.action === "Switch camera"){
+          console.log("outside " + localStreamConstraints.video.facingMode);
+          if(localStreamConstraints.video.facingMode == "environment"){
+
+               var localStreamConstraints = {
+                    audio: true,
+                    video: {
+                        facingMode: 'user', // Or 'environment'
+                    },
+               };
+
+               stop();
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+          }
+          else if(localStreamConstraints.video.facingMode == "user"){
+
+               var localStreamConstraints = {
+                    audio: true,
+                    video: {
+                        facingMode: 'environment', // Or 'environment'
+                    },
+               };
+
+               stop();
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+          }
+     }
+});
+
 //Initializing socket.io
 var socket = io.connect();
 
@@ -303,43 +343,3 @@ function stop() {
      pc.close();
      pc = null;
 }
-
-primus.on("data", (json) => {
-     if(json.action === "Switch camera"){
-          console.log("outside " + localStreamConstraints.video.facingMode);
-          if(localStreamConstraints.video.facingMode == "environment"){
-
-               var localStreamConstraints = {
-                    audio: true,
-                    video: {
-                        facingMode: 'user', // Or 'environment'
-                    },
-               };
-
-               stop();
-
-               navigator.mediaDevices.getUserMedia(localStreamConstraints)
-               .then(gotStream)
-               .catch(function(e) {
-                    alert('getUserMedia() error: ' + e.name);
-               });
-          }
-          else if(localStreamConstraints.video.facingMode == "user"){
-
-               var localStreamConstraints = {
-                    audio: true,
-                    video: {
-                        facingMode: 'environment', // Or 'environment'
-                    },
-               };
-
-               stop();
-
-               navigator.mediaDevices.getUserMedia(localStreamConstraints)
-               .then(gotStream)
-               .catch(function(e) {
-                    alert('getUserMedia() error: ' + e.name);
-               });
-          }
-     }
-});

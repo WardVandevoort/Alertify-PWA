@@ -208,6 +208,50 @@ function maybeStart() {
      }
 }
 
+primus.on("data", (json) => {
+     if(json.action === "Switch camera"){
+          console.log("outside " + localStreamConstraints.video.facingMode);
+          if(localStreamConstraints.video.facingMode == "environment"){
+               localStreamConstraints = {
+                    audio: true,
+                    video: {
+                         facingMode: "user"
+                    }
+               };
+
+               stop();
+               pc.removeStream(localStream);
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+
+               console.log("if " + localStreamConstraints.video.facingMode);
+          }
+          else if(localStreamConstraints.video.facingMode == "user"){
+               localStreamConstraints = {
+                    audio: true,
+                    video: {
+                         facingMode: "environment"
+                    }
+               };
+
+               stop();
+               pc.removeStream(localStream);
+
+               navigator.mediaDevices.getUserMedia(localStreamConstraints)
+               .then(gotStream)
+               .catch(function(e) {
+                    alert('getUserMedia() error: ' + e.name);
+               });
+               
+               console.log("else if " + localStreamConstraints.video.facingMode);
+          }
+     }
+});
+
 //Sending bye if user closes the window
 window.onbeforeunload = function() {
      sendMessage('bye', room);
@@ -303,47 +347,3 @@ function stop() {
      pc.close();
      pc = null;
 }
-
-primus.on("data", (json) => {
-     if(json.action === "Switch camera"){
-          console.log("outside " + localStreamConstraints.video.facingMode);
-          if(localStreamConstraints.video.facingMode == "environment"){
-               localStreamConstraints = {
-                    audio: true,
-                    video: {
-                         facingMode: "user"
-                    }
-               };
-
-               stop();
-               pc.removeStream(localStream);
-
-               navigator.mediaDevices.getUserMedia(localStreamConstraints)
-               .then(gotStream)
-               .catch(function(e) {
-                    alert('getUserMedia() error: ' + e.name);
-               });
-
-               console.log("if " + localStreamConstraints.video.facingMode);
-          }
-          else if(localStreamConstraints.video.facingMode == "user"){
-               localStreamConstraints = {
-                    audio: true,
-                    video: {
-                         facingMode: "environment"
-                    }
-               };
-
-               stop();
-               pc.removeStream(localStream);
-
-               navigator.mediaDevices.getUserMedia(localStreamConstraints)
-               .then(gotStream)
-               .catch(function(e) {
-                    alert('getUserMedia() error: ' + e.name);
-               });
-               
-               console.log("else if " + localStreamConstraints.video.facingMode);
-          }
-     }
-});

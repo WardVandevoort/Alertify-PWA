@@ -43,7 +43,6 @@ primus.on("data", (json) => {
                };
 
                stop();
-               removeStream();
 
                navigator.mediaDevices.getUserMedia(localStreamConstraints)
                .then(gotStream)
@@ -62,7 +61,6 @@ primus.on("data", (json) => {
                };
 
                stop();
-               removeStream();
 
                navigator.mediaDevices.getUserMedia(localStreamConstraints)
                .then(gotStream)

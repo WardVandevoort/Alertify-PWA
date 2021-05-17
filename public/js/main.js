@@ -316,8 +316,8 @@ primus.on("data", (json) => {
                          facingMode: "user"
                     }
                })
-               .then(function(stream) {
-                    let videoTrack = stream.getVideoTracks()[0];
+               .then(function(localStream) {
+                    let videoTrack = localStream.getVideoTracks()[0];
                     var sender = pc.getSenders().find(function(s) {
                          return s.track.kind == videoTrack.kind;
                     });
@@ -337,8 +337,8 @@ primus.on("data", (json) => {
                          facingMode: "environment"
                     }
                })
-               .then(function(stream) {
-                    let videoTrack = stream.getVideoTracks()[0];
+               .then(function(localStream) {
+                    let videoTrack = localStream.getVideoTracks()[0];
                     var sender = pc.getSenders().find(function(s) {
                          return s.track.kind == videoTrack.kind;
                     });

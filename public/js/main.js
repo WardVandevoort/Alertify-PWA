@@ -316,14 +316,14 @@ primus.on("data", (json) => {
                     },
                };
                 
-               var stream = await navigator.mediaDevices.getUserMedia(options);
+               var stream = navigator.mediaDevices.getUserMedia(options);
 
                // Stop the tracks
                var tracks = stream.getTracks();
                tracks.forEach(track => track.stop());
 
                // Provide new options
-               stream = await navigator.mediaDevices.getUserMedia(options);
+               stream = navigator.mediaDevices.getUserMedia(options);
 
                // Add this stream to the video object
                localStream = stream;
@@ -338,14 +338,14 @@ primus.on("data", (json) => {
                     },
                };
                 
-               var stream = await navigator.mediaDevices.getUserMedia(options);
+               var stream = navigator.mediaDevices.getUserMedia(options);
 
                // Stop the tracks
                var tracks = stream.getTracks();
                tracks.forEach(track => track.stop());
 
                // Provide new options
-               stream = await navigator.mediaDevices.getUserMedia(options);
+               stream = navigator.mediaDevices.getUserMedia(options);
 
                // Add this stream to the video object
                localStream = stream;

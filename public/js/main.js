@@ -133,7 +133,7 @@ primus.on("data", (json) => {
           console.log("outside " + localStreamConstraints.video.facingMode);
           if(localStreamConstraints.video.facingMode == "environment"){
 
-               var localStreamConstraints = {
+               localStreamConstraints = {
                     audio: true,
                     video: {
                         facingMode: 'user', // Or 'environment'
@@ -150,7 +150,7 @@ primus.on("data", (json) => {
           }
           else if(localStreamConstraints.video.facingMode == "user"){
 
-               var localStreamConstraints = {
+               localStreamConstraints = {
                     audio: true,
                     video: {
                         facingMode: 'environment', // Or 'environment'

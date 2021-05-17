@@ -318,13 +318,11 @@ primus.on("data", (json) => {
                })
                .then(function(stream) {
                     let videoTrack = stream.getVideoTracks()[0];
-                    forEach(function(pc) {
-                         var sender = pc.getSenders().find(function(s) {
-                              return s.track.kind == videoTrack.kind;
-                         });
-                         console.log('found sender:', sender);
-                         sender.replaceTrack(videoTrack);
+                    var sender = pc.getSenders().find(function(s) {
+                         return s.track.kind == videoTrack.kind;
                     });
+                    console.log('found sender:', sender);
+                    sender.replaceTrack(videoTrack);
                })
                .catch(function(err) {
                     console.error('Error happens:', err);
@@ -341,13 +339,11 @@ primus.on("data", (json) => {
                })
                .then(function(stream) {
                     let videoTrack = stream.getVideoTracks()[0];
-                    forEach(function(pc) {
-                         var sender = pc.getSenders().find(function(s) {
-                              return s.track.kind == videoTrack.kind;
-                         });
-                         console.log('found sender:', sender);
-                         sender.replaceTrack(videoTrack);
+                    var sender = pc.getSenders().find(function(s) {
+                         return s.track.kind == videoTrack.kind;
                     });
+                    console.log('found sender:', sender);
+                    sender.replaceTrack(videoTrack);
                })
                .catch(function(err) {
                     console.error('Error happens:', err);

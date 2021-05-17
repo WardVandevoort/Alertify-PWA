@@ -17,7 +17,7 @@ var pcConfig = turnConfig;
 var localStreamConstraints = {
     audio: true,
     video: {
-         facingMode: "environment"
+     facingMode: "environment"
     }
 };
 
@@ -28,6 +28,20 @@ var primus = Primus.connect("/", {
          max: Infinity // Number: The max delay before we try to reconnect.
        , min: 500 // Number: The minimum delay before we try reconnect.
        , retries: 10 // Number: How many times we should try to reconnect.
+     }
+});
+
+primus.on("data", (json) => {
+     if(json.action === "Switch camera"){
+          console.log(localStreamConstraints);
+          console.log(localStreamConstraints.video);
+          console.log(localStreamConstraints.video.facingMode);
+          /*localStreamConstraints = {
+               audio: true,
+               video: {
+                    facingMode: "user"
+               }
+          };*/
      }
 });
 

@@ -308,46 +308,48 @@ primus.on("data", (json) => {
      if(json.action === "Switch camera"){
           console.log("outside " + localStreamConstraints.video.facingMode);
           if(localStreamConstraints.video.facingMode == "environment"){
-               
-               navigator.mediaDevices
-               .getUserMedia({
+
+               var options = {
                     audio: true,
                     video: {
-                         facingMode: "user"
-                    }
-               })
-               .then(function(localStream) {
-                    let videoTrack = localStream.getVideoTracks()[0];
-                    var sender = pc.getSenders().find(function(s) {
-                         return s.track.kind == videoTrack.kind;
-                    });
-                    console.log('found sender:', sender);
-                    sender.replaceTrack(videoTrack);
-               })
-               .catch(function(err) {
-                    console.error('Error happens:', err);
-               });
+                        facingMode: 'user', // Or 'environment'
+                    },
+               };
+                
+               var stream = await navigator.mediaDevices.getUserMedia(options);
+
+               // Stop the tracks
+               var tracks = stream.getTracks();
+               tracks.forEach(track => track.stop());
+
+               // Provide new options
+               stream = await navigator.mediaDevices.getUserMedia(options);
+
+               // Add this stream to the video object
+               localStream = stream;
+               localVideo.srcObject = stream;
           }
           else if(localStreamConstraints.video.facingMode == "user"){
 
-               navigator.mediaDevices
-               .getUserMedia({
+               var options = {
                     audio: true,
                     video: {
-                         facingMode: "environment"
-                    }
-               })
-               .then(function(localStream) {
-                    let videoTrack = localStream.getVideoTracks()[0];
-                    var sender = pc.getSenders().find(function(s) {
-                         return s.track.kind == videoTrack.kind;
-                    });
-                    console.log('found sender:', sender);
-                    sender.replaceTrack(videoTrack);
-               })
-               .catch(function(err) {
-                    console.error('Error happens:', err);
-               });
+                        facingMode: 'environment', // Or 'environment'
+                    },
+               };
+                
+               var stream = await navigator.mediaDevices.getUserMedia(options);
+
+               // Stop the tracks
+               var tracks = stream.getTracks();
+               tracks.forEach(track => track.stop());
+
+               // Provide new options
+               stream = await navigator.mediaDevices.getUserMedia(options);
+
+               // Add this stream to the video object
+               localStream = stream;
+               localVideo.srcObject = stream;
           }
      }
 });

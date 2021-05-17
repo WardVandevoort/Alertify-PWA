@@ -16,7 +16,9 @@ var pcConfig = turnConfig;
 //Set local stream constraints
 var localStreamConstraints = {
     audio: true,
-    video: true
+    video: {
+         facingMode: "environment"
+    }
 };
 
 var room;

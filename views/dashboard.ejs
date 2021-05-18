@@ -8,20 +8,43 @@
      <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+     <div class="map" id="map"></div>
+
+     <div class="user-info">
+          <p><span class="name"></span> <span class="gender-icon"></span></p>
+          <p><span class="birth-date"></span></p>
+
+          <a href="#" class="btn medical-btn">Medical information</a>
+          <div class="medical-information">
+               <p>Blood type: <span class="blood-type"></span></p>
+               <p>Allergies: <span class="allergies"></span></p>
+               <p>Medical conditions: <span class="medical-conditions"></span></p>
+               <p>Medication: <span class="medication"></span></p>
+          </div>
+
+          <a href="#" class="btn ice-btn">ICE contacts</a>
+          <div class="ice-contacts">
+
+          </div>
+
+          <a href="#" class="btn contact-btn">Contact information</a>
+          <div class="contact-information">
+               <p>Residence: <span class="residence"></span></p>
+          </div>
+     </div>
+
      <div class="video-container">
           <!-- For playing local video -->
           <video id="localVideo" class="hidden" autoplay muted playsinline></video>
 
           <video id="remoteVideo" class="" autoplay playsinline></video>
-
-          <div class="footer">
-               <a class="end-call" href="/dispatcher/index.html">
-                    <img src="../media/img/end_call_icon.svg" alt="end call icon">
-               </a>
-          </div>
      </div>
 
-     <div class="map" id="map"></div>
+     <div class="footer">
+          <a class="end-call" href="/dispatcher/index.html">
+               <img src="../media/img/end_call_icon.svg" alt="end call icon">
+          </a>
+     </div>
 
      <!-- Import SocketIO for signalling -->
      <script src="../socket.io/socket.io.js"></script>

@@ -37,6 +37,21 @@ var dispatcher = sessionStorage.getItem("dispatcher");
 if(dispatcher == 0){
      var user = sessionStorage.getItem("id");
 
+     var options = {
+          enableHighAccuracy: true,
+     };
+
+     navigator.geolocation.getCurrentPosition(showPosition, error, options);
+
+     function error(err) {
+          console.log("Location could not be found");
+     }
+
+     function showPosition(position) {
+          sessionStorage.setItem("lat", position.coords.latitude);
+          sessionStorage.setItem("long", position.coords.longitude);
+     }
+
      var today = new Date();
      var dateSegment = today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
      
@@ -44,9 +59,14 @@ if(dispatcher == 0){
 
      room = dateSegment + '.' + codeSegment;
 
+     var lat = String(sessionStorage.getItem("lat"));
+     var long = String(sessionStorage.getItem("long"));
+     
      var data = {
           user_id: user,
           room: room,
+          lat: lat,
+          long: long,
      };
 
      fetch("/create_call", {
@@ -62,6 +82,10 @@ if(dispatcher == 0){
      });
 }
 else if(dispatcher == 1){
+     primus.write({
+          "action": "Update notification",
+     });
+
      var dispatcher = sessionStorage.getItem("id");
 
      var url_string = window.location.href;
@@ -87,6 +111,26 @@ else if(dispatcher == 1){
           "action": "Update calls",
      });
 }
+
+primus.on("data", (json) => {
+     if(json.action === "User ended call"){
+          var user = sessionStorage.getItem("id");
+          console.log(user);
+
+          var data = {
+               user_id: user,
+               active: 1
+          };
+
+          fetch("/user_ended_call", {
+               method: "PUT", 
+               headers: {
+                    'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+          })
+     }
+});
 
 //Initializing socket.io
 var socket = io.connect();
@@ -128,7 +172,7 @@ socket.on('log', function(array) {
      console.log.apply(console, array);
 });
 
-primus.on("data", (json) => {
+/*primus.on("data", (json) => {
      if(json.action === "Switch camera"){
           console.log("outside " + localStreamConstraints.video.facingMode);
           if(localStreamConstraints.video.facingMode == "environment"){
@@ -166,7 +210,7 @@ primus.on("data", (json) => {
                });
           }
      }
-});
+});*/
 
 //Event - for sending meta for establishing a direct connection using WebRTC
 //The Driver code

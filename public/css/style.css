@@ -225,6 +225,25 @@ nav {
 .video-container {
   height: 100vh;
   width: 100vw; }
+  .video-container .notification {
+    position: absolute;
+    top: 0;
+    background-color: #FFFFFF;
+    width: 84vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin-left: 6vw;
+    margin-right: 6vw;
+    margin-top: 3vh;
+    border-radius: 20px;
+    text-align: center; }
+    .video-container .notification p {
+      font-size: 5vw;
+      color: #FFFFFF; }
+  .video-container .first-notification {
+    background-color: #910B0B; }
+  .video-container .second-notification {
+    background-color: #329862; }
   .video-container .user-video {
     height: 100%;
     width: 100%;
@@ -290,6 +309,10 @@ nav {
         width: 14vw;
         color: #FFFFFF;
         margin: auto; }
+
+.map {
+  width: 100vw;
+  height: 100vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

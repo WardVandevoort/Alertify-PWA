@@ -6,6 +6,8 @@ const callSchema = new Schema({
 	dispatcher_id: { type: String, default: null },
 	room: String,
 	active: { type: Boolean, default: 1 },
+	lat: String,
+	long: String,
 	created_at: { type: Date, default: Date.now },
 });
 

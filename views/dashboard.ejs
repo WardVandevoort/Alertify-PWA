@@ -15,11 +15,13 @@
           <video id="remoteVideo" class="" autoplay playsinline></video>
 
           <div class="footer">
-               <div class="end-call">
+               <a class="end-call" href="/dispatcher/index.html">
                     <img src="../media/img/end_call_icon.svg" alt="end call icon">
-               </div>
+               </a>
           </div>
      </div>
+
+     <div class="map" id="map"></div>
 
      <!-- Import SocketIO for signalling -->
      <script src="../socket.io/socket.io.js"></script>
@@ -28,7 +30,10 @@
      <!-- Import TURN config -->
      <script src="../js\config.js"></script>
      <!-- Import script containing WebRTC related functions -->
+     <script src="../js/ol.js"></script>
      <script src="/primus/primus.js"></script>
      <script src="../js\main.js"></script>
+     <script src="../js/dashboard.js"></script>
+     
 </body>
 </html>

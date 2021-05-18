@@ -117,6 +117,8 @@ const createCall = function(req, res){
 	call.user_id = user_id;
 	call.dispatcher_id = dispatcher_id;
 	call.room = req.body.room;
+	call.lat = req.body.lat;
+	call.long = req.body.long;
 
 	call.save((err, doc) => {
 		if(err){
@@ -137,9 +139,9 @@ const createCall = function(req, res){
 
 const updateCall = function(req, res){
 
-	dispatcher_id = req.body.dispatcher_id;
-	active = req.body.active;
-	call_id = req.body.call_id;
+	var dispatcher_id = req.body.dispatcher_id;
+	var active = req.body.active;
+	var call_id = req.body.call_id;
 
 	Call.findByIdAndUpdate(call_id, { dispatcher_id: dispatcher_id, active: active }, (err, doc) => {
 		if(err){
@@ -176,6 +178,27 @@ const showActiveCalls = function(req, res){
 	});
 }
 
+const userEndedCall = function(req, res){
+
+	var active = req.body.active;
+	var user_id = req.body.user_id;
+
+	Call.findOneAndUpdate({ user_id: user_id, active: active }, { active: 0 }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Call could not be updated."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
 module.exports.register = register;
 module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
@@ -183,3 +206,4 @@ module.exports.emailCheck = emailCheck;
 module.exports.createCall = createCall;
 module.exports.updateCall = updateCall;
 module.exports.showActiveCalls = showActiveCalls;
+module.exports.userEndedCall = userEndedCall;

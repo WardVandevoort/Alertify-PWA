@@ -199,6 +199,18 @@ const userEndedCall = function(req, res){
 	});
 }
 
+const getCurrentCall = function(req, res){
+	var room = req.body.room;
+	var dispatcher_id = req.body.dispatcher_id;
+	Call.find({"room": room, "dispatcher_id": dispatcher_id}, (err, doc) => {
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
 module.exports.register = register;
 module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
@@ -207,3 +219,4 @@ module.exports.createCall = createCall;
 module.exports.updateCall = updateCall;
 module.exports.showActiveCalls = showActiveCalls;
 module.exports.userEndedCall = userEndedCall;
+module.exports.getCurrentCall = getCurrentCall;

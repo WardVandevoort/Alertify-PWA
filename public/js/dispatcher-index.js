@@ -10,19 +10,16 @@ var primus = Primus.connect("/", {
 
 window.addEventListener("load", function() {
      LiveUpdate();
-     ClickCall();
 });
 
 primus.on("data", (json) => {
      if(json.action === "Update calls"){
           LiveUpdate();
-          ClickCall();
      }
 });
 
 setInterval(function(){
      LiveUpdate();
-     ClickCall();
 }, 30000);
 
 async function LiveUpdate() {

@@ -162,3 +162,5 @@ app.put("/update_call", controller.updateCall);
 app.get("/show_active_calls", controller.showActiveCalls);
 
 app.put("/user_ended_call", controller.userEndedCall);
+
+app.post("/get_current_call", controller.getCurrentCall);

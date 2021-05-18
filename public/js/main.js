@@ -92,6 +92,7 @@ else if(dispatcher == 1){
      var url = new URL(url_string);
      var id = url.searchParams.get("id");
      room = url.searchParams.get("room");
+     sessionStorage.setItem("room", room);
 
      var data = {
           call_id: id,

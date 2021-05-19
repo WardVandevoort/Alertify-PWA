@@ -14,6 +14,9 @@ var contactBtn = document.querySelector(".contact-btn");
 var contactInfo = document.querySelector(".contact-information");
 var residence = document.querySelector(".residence");
 var animationsContainer = document.querySelector(".animations");
+var toggleVideo = document.querySelector(".toggle-video");
+var eyeIcon = document.querySelector(".eye-icon");
+var videoContainer = document.querySelector(".video-container");
 
 window.addEventListener("load", function() {
      var room = sessionStorage.getItem("room");
@@ -64,6 +67,20 @@ window.addEventListener("load", function() {
                  zoom: 17
                })
           });
+
+          map.getControls().forEach(function(control) {
+               if(control instanceof ol.control.Zoom) {
+                    map.removeControl(control);
+               }
+
+               if(control instanceof ol.control.Rotate) {
+                    map.removeControl(control);
+               }
+
+               if(control instanceof ol.control.Attribution) {
+                    map.removeControl(control);
+               }
+          }, this);
      
           var marker = new ol.Feature({
                geometry: new ol.geom.Point(
@@ -112,10 +129,10 @@ window.addEventListener("load", function() {
 
      function ExtractUserData(data){
           if(data.message[0].sex == "Male"){
-               genderIcon.style.backgroundImage = "url(../media/img/male_icon.svg)"
+               genderIcon.src = "../media/img/male_icon.svg"
           }
           else if(data.message[0].sex == "Female"){
-               genderIcon.style.backgroundImage = "url(../media/img/female_icon.svg)"
+               genderIcon.src = "../media/img/female_icon.svg"
           }
           userName.innerHTML = data.message[0].first_name + " " + data.message[0].last_name; 
           birthDate.innerHTML = data.message[0].date_of_birth;
@@ -123,7 +140,7 @@ window.addEventListener("load", function() {
           allergies.innerHTML = data.message[0].medical_info.allergies;
           medicalConditions.innerHTML = data.message[0].medical_info.medical_conditions;
           medication.innerHTML = data.message[0].medical_info.medication;
-          residence.innerHTML = data.message[0].street + " " + data.message[0].street_number + ", " + data.message[0].city + " (" + data.message[0].postal_code + "), " + data.message[0].province;
+          residence.innerHTML = data.message[0].street + " " + data.message[0].street_number + ", " + data.message[0].city + "</br> (" + data.message[0].postal_code + "), " + data.message[0].province;
           
           data.message[0].ice_contacts.forEach(ice_contact => {
 
@@ -156,26 +173,43 @@ window.addEventListener("load", function() {
 medicalBtn.addEventListener("click", function(){
      if(medicalInfo.classList.contains("hidden")){
           medicalInfo.classList.remove("hidden");
+          medicalBtn.style.backgroundImage = "url(../../media/img/arrow-up-icon.svg)";
      }
      else{
           medicalInfo.classList.add("hidden");
+          medicalBtn.style.backgroundImage = "url(../../media/img/arrow-down-icon.svg)";
      }
 });
 
 iceBtn.addEventListener("click", function(){
      if(iceContacts.classList.contains("hidden")){
           iceContacts.classList.remove("hidden");
+          iceBtn.style.backgroundImage = "url(../../media/img/arrow-up-icon.svg)";
      }
      else{
           iceContacts.classList.add("hidden");
+          iceBtn.style.backgroundImage = "url(../../media/img/arrow-down-icon.svg)";
      }
 });
 
 contactBtn.addEventListener("click", function(){
      if(contactInfo.classList.contains("hidden")){
           contactInfo.classList.remove("hidden");
+          contactBtn.style.backgroundImage = "url(../../media/img/arrow-up-icon.svg)";
      }
      else{
           contactInfo.classList.add("hidden");
+          contactBtn.style.backgroundImage = "url(../../media/img/arrow-down-icon.svg)";
+     }
+});
+
+toggleVideo.addEventListener("click", function(){
+     if(videoContainer.classList.contains("hidden")){
+          videoContainer.classList.remove("hidden");
+          eyeIcon.src = "../media/img/eye-open-icon.svg";
+     }
+     else{
+          videoContainer.classList.add("hidden");
+          eyeIcon.src = "../media/img/eye-closed-icon.svg";
      }
 });

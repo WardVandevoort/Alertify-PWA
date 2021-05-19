@@ -7,12 +7,14 @@
      <title>Alertify | Dashboard</title>
      <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="dashboard-body">
      <div class="map" id="map"></div>
 
      <div class="user-info">
-          <p><span class="name"></span> <span class="gender-icon"></span></p>
-          <p><span class="birth-date"></span></p>
+          <div class="user-header">
+               <p><span class="name"></span> <img src="" class="gender-icon" alt="gender icon"></p>
+               <p><span class="birth-date"></span></p>
+          </div>
 
           <a href="#" class="btn medical-btn">Medical information</a>
           <div class="medical-information hidden">
@@ -29,24 +31,32 @@
 
           <a href="#" class="btn contact-btn">Contact information</a>
           <div class="contact-information hidden">
-               <p>Residence: <span class="residence"></span></p>
+               <p>Residence: </br><span class="residence"></span></p>
           </div>
      </div>
 
-     <div class="animations">
+     <div class="animation-container">
+          <input type="text" class="animation-search" placeholder="Search animation">
 
-     </div>
+          <div class="animations">
 
-     <div class="hidden">
-          <div class="video-container">
-               <!-- For playing local video -->
-               <video id="localVideo" class="hidden" autoplay muted playsinline></video>
-
-               <video id="remoteVideo" class="" autoplay playsinline></video>
           </div>
      </div>
 
-     <div class="footer">
+     <div class="toggle-video"><img src="../media/img/eye-closed-icon.svg" class="eye-icon" alt="eye icon"></div>
+
+     <div class="video-container hidden">
+          <!-- For playing local video -->
+          <video id="localVideo" class="hidden" autoplay muted playsinline></video>
+
+          <video id="remoteVideo" class="" autoplay playsinline></video>
+     </div>
+     
+     <div class="version">
+          <p>Alertify v0.1</p>
+     </div>
+
+     <div class="dashboard-footer">
           <a class="end-call" href="/dispatcher/index.html">
                <img src="../media/img/end_call_icon.svg" alt="end call icon">
           </a>

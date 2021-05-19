@@ -310,8 +310,143 @@ nav {
         color: #FFFFFF;
         margin: auto; }
 
-.map {
-  width: 100vw; }
+.dashboard-body {
+  overflow: hidden; }
+  .dashboard-body p {
+    font-size: 1.2vw; }
+  .dashboard-body a {
+    font-size: 1.2vw;
+    text-decoration: none;
+    display: block; }
+  .dashboard-body .map {
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; }
+  .dashboard-body .user-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: #FFFFFF;
+    border-bottom-right-radius: 20px;
+    padding-right: 1vw;
+    padding-bottom: 0.6vw; }
+    .dashboard-body .user-info .user-header {
+      padding-right: 5vw; }
+      .dashboard-body .user-info .user-header .gender-icon {
+        width: 1.2vw;
+        padding-left: 0.5vw; }
+    .dashboard-body .user-info a {
+      color: #FFFFFF;
+      background-color: #910B0B;
+      padding-left: 1vw;
+      padding-top: 0.2vw;
+      padding-bottom: 0.2vw;
+      margin-bottom: 0.5vw;
+      background-image: url("../../media/img/arrow-down-icon.svg");
+      background-repeat: no-repeat;
+      background-size: 6%;
+      background-position: 90% 55%;
+      border-bottom-right-radius: 7px;
+      border-top-right-radius: 7px; }
+    .dashboard-body .user-info p {
+      padding-left: 1vw; }
+    .dashboard-body .user-info .ice-contact {
+      border-bottom: 4px solid #707070; }
+    .dashboard-body .user-info .ice-contact:last-child {
+      border-bottom: none; }
+  .dashboard-body .animation-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    background-color: #FFFFFF;
+    padding-left: 1vw;
+    padding-top: 1vw;
+    padding-right: 1vw;
+    padding-bottom: 1vw;
+    border-bottom-left-radius: 20px; }
+    .dashboard-body .animation-container .animation-search {
+      font-size: 1.2vw;
+      padding-left: 0.5vw;
+      padding-top: 0.5vw;
+      padding-bottom: 0.5vw;
+      border: 2px solid #707070;
+      border-radius: 18px;
+      background-image: url("../../media/img/search-icon.svg");
+      background-repeat: no-repeat;
+      background-size: 10%;
+      background-position: 95% 50%; }
+    .dashboard-body .animation-container .animations {
+      padding-left: 3vw; }
+    .dashboard-body .animation-container .animation {
+      color: #000000;
+      border: 2px solid #707070;
+      border-radius: 7px;
+      margin-top: 0.5vw;
+      background-image: url("../../media/img/play-icon.svg");
+      background-repeat: no-repeat;
+      background-size: 10%;
+      background-position: 95% 50%;
+      padding-left: 0.5vw; }
+  .dashboard-body .dashboard-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 4vw;
+    padding-top: 1.5vw;
+    padding-bottom: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    z-index: 5;
+    background-color: #FFFFFF;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px; }
+    .dashboard-body .dashboard-footer img {
+      width: 4vw; }
+  .dashboard-body .version {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 6;
+    background-color: #FFFFFF;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-top-left-radius: 15px; }
+    .dashboard-body .version p {
+      font-size: 0.8vw;
+      color: #910B0B; }
+  .dashboard-body .toggle-video {
+    position: absolute;
+    top: 0;
+    right: 20%;
+    z-index: 7;
+    background-color: #FFFFFF;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px; }
+  .dashboard-body .toggle-video:hover {
+    cursor: pointer; }
+  .dashboard-body .video-container {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7); }
+    .dashboard-body .video-container #remoteVideo {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: 45vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

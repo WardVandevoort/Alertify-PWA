@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const User = require("../models/User")
 const Dispatcher = require("../models/Dispatcher");
 const Call = require("../models/Call");
+const Animation = require("../models/Animation");
 
 // Functions
 const register = async function(req, res){
@@ -93,6 +94,13 @@ const dispatcherLogin = async function(req, res){
 
 const emailCheck = function(req, res){
 	User.find({"email": req.body.email}, (err, docs) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Email could not be checked."
+			});
+		}
+
 		if(!err){
 			res.json({
 				message: docs,
@@ -203,9 +211,52 @@ const getCurrentCall = function(req, res){
 	var room = req.body.room;
 	var dispatcher_id = req.body.dispatcher_id;
 	Call.find({"room": room, "dispatcher_id": dispatcher_id}, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Current call could not be found."
+			});
+		}
+
 		if(!err){
 			res.json({
 				message: doc,
+			});
+		}
+	});
+}
+
+const getUserData = function(req, res){
+	var user_id = req.body.user_id;
+	User.find({"_id": user_id}, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "User data could not be found."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
+const getAnimations = function(req, res){
+
+	Animation.find({}, (err, docs) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Animations could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: docs,
 			});
 		}
 	});
@@ -220,3 +271,5 @@ module.exports.updateCall = updateCall;
 module.exports.showActiveCalls = showActiveCalls;
 module.exports.userEndedCall = userEndedCall;
 module.exports.getCurrentCall = getCurrentCall;
+module.exports.getUserData = getUserData;
+module.exports.getAnimations = getAnimations;

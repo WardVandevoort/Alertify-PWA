@@ -164,3 +164,7 @@ app.get("/show_active_calls", controller.showActiveCalls);
 app.put("/user_ended_call", controller.userEndedCall);
 
 app.post("/get_current_call", controller.getCurrentCall);
+
+app.post("/get_user_data", controller.getUserData);
+
+app.get("/get_animations", controller.getAnimations);

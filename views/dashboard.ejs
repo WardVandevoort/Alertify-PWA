@@ -15,7 +15,7 @@
           <p><span class="birth-date"></span></p>
 
           <a href="#" class="btn medical-btn">Medical information</a>
-          <div class="medical-information">
+          <div class="medical-information hidden">
                <p>Blood type: <span class="blood-type"></span></p>
                <p>Allergies: <span class="allergies"></span></p>
                <p>Medical conditions: <span class="medical-conditions"></span></p>
@@ -23,21 +23,27 @@
           </div>
 
           <a href="#" class="btn ice-btn">ICE contacts</a>
-          <div class="ice-contacts">
+          <div class="ice-contacts hidden">
 
           </div>
 
           <a href="#" class="btn contact-btn">Contact information</a>
-          <div class="contact-information">
+          <div class="contact-information hidden">
                <p>Residence: <span class="residence"></span></p>
           </div>
      </div>
 
-     <div class="video-container">
-          <!-- For playing local video -->
-          <video id="localVideo" class="hidden" autoplay muted playsinline></video>
+     <div class="animations">
 
-          <video id="remoteVideo" class="" autoplay playsinline></video>
+     </div>
+
+     <div class="hidden">
+          <div class="video-container">
+               <!-- For playing local video -->
+               <video id="localVideo" class="hidden" autoplay muted playsinline></video>
+
+               <video id="remoteVideo" class="" autoplay playsinline></video>
+          </div>
      </div>
 
      <div class="footer">

@@ -22,6 +22,8 @@
           border-bottom-right-radius: 20px;
           padding-right: 1vw;
           padding-bottom: 0.6vw;
+          border-right: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-bottom: 4px solid rgba($color: #000000, $alpha: 0.2);
           .user-header{
                padding-right: 5vw;
                .gender-icon{
@@ -64,6 +66,8 @@
           padding-right: 1vw;
           padding-bottom: 1vw;
           border-bottom-left-radius: 20px;
+          border-left: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-bottom: 4px solid rgba($color: #000000, $alpha: 0.2);
           .animation-search{
                font-size: 1.2vw;
                padding-left: 0.5vw;
@@ -107,6 +111,9 @@
           background-color: $white;
           border-top-left-radius: 50px;
           border-top-right-radius: 50px;
+          border-right: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-left: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-top: 4px solid rgba($color: #000000, $alpha: 0.2);
           img{
                width: 4vw;
           }
@@ -120,6 +127,8 @@
           padding-left: 1vw;
           padding-right: 1vw;
           border-top-left-radius: 15px;
+          border-left: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-top: 4px solid rgba($color: #000000, $alpha: 0.2);
           p{
                font-size: 0.8vw;
                color: $red;
@@ -137,6 +146,9 @@
           padding-right: 1vw;
           border-bottom-left-radius: 50px;
           border-bottom-right-radius: 50px;
+          border-right: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-left: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-bottom: 4px solid rgba($color: #000000, $alpha: 0.2);
      }
      .toggle-video:hover{
           cursor: pointer;

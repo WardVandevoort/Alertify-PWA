@@ -2,6 +2,8 @@ var endCall = document.querySelector(".end-call");
 var switchCamera = document.querySelector(".switch-camera");
 var firstNotification = document.querySelector(".first-notification");
 var secondNotification = document.querySelector(".second-notification");
+var animation = document.querySelector("#animation");
+
 var primus = Primus.connect("/", {
      reconnect: {
          max: Infinity // Number: The max delay before we try to reconnect.
@@ -35,5 +37,31 @@ primus.on("data", (json) => {
           setTimeout(function(){
                secondNotification.classList.add("hidden");
           }, 5000)
+     }
+});
+
+primus.on("data", (json) => {
+     if(json.action === "Play animation"){
+          var path = json.path;
+          animation.classList.remove("hidden");
+          animation.src = path;
+
+          animation.addEventListener('ended', function(){
+               animation.classList.add("hidden");
+               animation.src = "";
+
+               primus.write({
+                    "action": "Animation ended",
+               });
+          });
+               
+     }
+});
+
+primus.on("data", (json) => {
+     if(json.action === "Stop animation"){
+          var path = json.path;
+          animation.classList.add("hidden");
+          animation.src = "";      
      }
 });

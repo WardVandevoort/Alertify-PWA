@@ -17,6 +17,19 @@ var animationsContainer = document.querySelector(".animations");
 var toggleVideo = document.querySelector(".toggle-video");
 var eyeIcon = document.querySelector(".eye-icon");
 var videoContainer = document.querySelector(".video-container");
+var stopBtn = document.querySelector(".stop-btn");
+var animationNotification = document.querySelector(".animation-notification");
+var animationName = document.querySelector(".animation-name");
+var animationStopped = document.querySelector(".animation-stopped");
+var animationEnded = document.querySelector(".animation-ended");
+
+var primus = Primus.connect("/", {
+     reconnect: {
+         max: Infinity // Number: The max delay before we try to reconnect.
+       , min: 500 // Number: The minimum delay before we try reconnect.
+       , retries: 10 // Number: How many times we should try to reconnect.
+     }
+});
 
 window.addEventListener("load", function() {
      var room = sessionStorage.getItem("room");
@@ -162,10 +175,27 @@ window.addEventListener("load", function() {
           var animations = response.message;
      
           animations.forEach( animation => {
-               var item = `<a class="animation" href="#">${animation["title"]}</a>`;
+               var item = `<a class="animation" path="${animation["path"]}" name="${animation["title"]}" href="#">${animation["title"]}</a>`;
           
                animationsContainer.insertAdjacentHTML("afterbegin", item);
           });
+
+          PlayAnimation();
+     }
+
+     function PlayAnimation(){
+          var animations = document.querySelectorAll(".animation");
+          animations.forEach(
+               animation => animation.addEventListener("click", function(){
+                    animationNotification.classList.remove("hidden");
+                    animationName.innerHTML = '"' + animation.getAttribute("name") + '"';
+
+                    primus.write({
+                         "action": "Play animation",
+                         "path": animation.getAttribute("path"),
+                    });
+               })
+          )
      }
 
 });
@@ -211,5 +241,27 @@ toggleVideo.addEventListener("click", function(){
      else{
           videoContainer.classList.add("hidden");
           eyeIcon.src = "../media/img/eye-closed-icon.svg";
+     }
+});
+
+stopBtn.addEventListener("click", function(){
+     animationNotification.classList.add("hidden");
+     animationStopped.classList.remove("hidden");
+          setTimeout(function(){
+               animationStopped.classList.add("hidden");
+          }, 3000) 
+
+     primus.write({
+          "action": "Stop animation",
+     });
+})
+
+primus.on("data", (json) => {
+     if(json.action === "Animation ended"){
+          animationNotification.classList.add("hidden"); 
+          animationEnded.classList.remove("hidden");
+          setTimeout(function(){
+               animationEnded.classList.add("hidden");
+          }, 3000)    
      }
 });

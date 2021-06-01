@@ -109,7 +109,8 @@
         width: 12.5vw; }
 
 .bottom-nav {
-  position: absolute;
+  overflow: hidden;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 18vw; }
@@ -704,6 +705,44 @@ nav {
   #settings-camera #allow {
     text-align: center;
     margin-top: 20vw; }
+
+#contact-us-body {
+  background-color: #ECECEC;
+  font-size: 20px; }
+  #contact-us-body .contact {
+    padding-top: 10vw;
+    padding-left: 5vw;
+    padding-right: 5vw; }
+    #contact-us-body .contact .email a {
+      color: #4E0808; }
+    #contact-us-body .contact .social {
+      padding-top: 20vw; }
+    #contact-us-body .contact .social a {
+      color: #4E0808; }
+
+#settings-help {
+  background-color: #ECECEC;
+  line-height: 26px; }
+  #settings-help a {
+    color: #4E0808; }
+  #settings-help .help-container {
+    padding-top: 10vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-size: 20px; }
+    #settings-help .help-container #faq-p2 {
+      padding-top: 3vw; }
+    #settings-help .help-container .feedback {
+      padding-top: 10vw; }
+
+#privacy-policy-body {
+  background-color: #ECECEC; }
+  #privacy-policy-body p {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-size: 20px; }
+  #privacy-policy-body #part-1 {
+    padding-top: 10vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

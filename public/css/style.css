@@ -744,6 +744,24 @@ nav {
   #privacy-policy-body #part-1 {
     padding-top: 10vw; }
 
+#courses-body {
+  background-color: #ECECEC;
+  text-align: center; }
+  #courses-body #how-btn {
+    margin-top: 15vw; }
+    #courses-body #how-btn .how-to-general {
+      width: 80%;
+      display: inline-block;
+      background-color: #4E0808;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 15px;
+      text-decoration: none;
+      color: white;
+      margin-bottom: 5vw; }
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }

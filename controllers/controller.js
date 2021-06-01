@@ -113,15 +113,19 @@ const createCall = function(req, res){
 	var user_id = null;
 	var dispatcher_id = null;
 
+	var call = new Call();
+
 	if(req.body.user_id){
 		user_id = req.body.user_id;
+	}
+	else{
+		call.active = false;
 	}
 
 	if(req.body.dispatcher_id){
 		dispatcher_id = req.body.dispatcher_id;
 	}
 
-	var call = new Call();
 	call.user_id = user_id;
 	call.dispatcher_id = dispatcher_id;
 	call.room = req.body.room;

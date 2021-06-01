@@ -32,6 +32,51 @@ var primus = Primus.connect("/", {
 });
 
 // Saving call in db
+var id = sessionStorage.getItem("id");
+
+if(id == null || id == "" || id == "undefined"){
+     var url_string = window.location.href;
+     var url = new URL(url_string);
+     room = url.searchParams.get("room");
+
+     var options = {
+          enableHighAccuracy: true,
+     };
+
+     navigator.geolocation.getCurrentPosition(showPosition, error, options);
+
+     function error(err) {
+          console.log("Location could not be found");
+     }
+
+     function showPosition(position) {
+          sessionStorage.setItem("lat", position.coords.latitude);
+          sessionStorage.setItem("long", position.coords.longitude);
+     }
+
+     var lat = String(sessionStorage.getItem("lat"));
+     var long = String(sessionStorage.getItem("long"));
+     
+     var data = {
+          user_id: user,
+          room: room,
+          lat: lat,
+          long: long,
+     };
+
+     fetch("/create_call", {
+          method: "POST", 
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+     })
+
+     /*primus.write({
+          "action": "Update calls",
+     });*/
+}
+
 var dispatcher = sessionStorage.getItem("dispatcher");
 
 if(dispatcher == 0){

@@ -1,4 +1,8 @@
 var container = document.querySelector("#calls-container");
+var callBtn = document.querySelector(".create-call-btn");
+var popup = document.querySelector(".overlay");
+var copyBtn = document.querySelector(".copy-link");
+var link = document.querySelector(".call-link");
 
 var primus = Primus.connect("/", { 
      reconnect: {
@@ -21,6 +25,32 @@ primus.on("data", (json) => {
 setInterval(function(){
      LiveUpdate();
 }, 30000);
+
+window.onclick = function(event) {
+     if (event.target == popup) {
+          popup.classList.add("hidden");
+     }
+};
+
+callBtn.addEventListener("click", function(){
+     popup.classList.remove("hidden");
+
+     var today = new Date();
+     var dateSegment = today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+     
+     var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
+
+     var room = dateSegment + '.' + codeSegment;
+
+     var url = "https://alertify-pwa.herokuapp.com/call?room=" + room;
+
+     link.innerHTML = url;
+});
+
+copyBtn.addEventListener("click", function(){
+     var copyValue = link.innerHTML;
+     navigator.clipboard.writeText(copyValue);
+});
 
 async function LiveUpdate() {
      var response = await (await fetch("/show_active_calls")).json();

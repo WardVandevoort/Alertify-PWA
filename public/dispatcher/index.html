@@ -10,9 +10,21 @@
 <body>
      <h1>Dispatcher dashboard</h1>
 
+     <a class="create-call-btn" href="#">Create call</a>
+
      <ul id="calls-container" class="calls-container">
 
      </ul>
+
+     <div class="overlay hidden">
+          <div class="generate-link-popup">
+               <p class="popup-title">Call created</p>
+               <p class="link">Link: <span class="call-link">https://alertify-pwa.herokuapp.com/call?room=12354264.13345635</span></p>
+               <a class="copy-link" href="#">copy link</a>
+               <p class="waiting-message">Waiting for user to enter call</p>
+               <a class="join-call-btn" href="#">Join call</a>
+          </div>
+     </div>
      
      <script src="/primus/primus.js"></script>
      <script src="../js/dispatcher-logged-in-check.js"></script>

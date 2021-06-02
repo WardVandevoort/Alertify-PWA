@@ -172,6 +172,28 @@ const updateCall = function(req, res){
 	
 }
 
+const updateCallTelFlow = function(req, res){
+
+	var dispatcher_id = req.body.dispatcher_id;
+	var room = req.body.room;
+
+	Call.findOneAndUpdate({ room: room }, { dispatcher_id: dispatcher_id }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Call to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+	
+}
+
 const showActiveCalls = function(req, res){
 
 	Call.find({"active": 1, "dispatcher_id": null}, (err, docs) => {
@@ -277,3 +299,4 @@ module.exports.userEndedCall = userEndedCall;
 module.exports.getCurrentCall = getCurrentCall;
 module.exports.getUserData = getUserData;
 module.exports.getAnimations = getAnimations;
+module.exports.updateCallTelFlow = updateCallTelFlow;

@@ -32,130 +32,152 @@ var primus = Primus.connect("/", {
 });
 
 // Saving call in db
-var id = sessionStorage.getItem("id");
+var userId = sessionStorage.getItem("id");
 
-if(id == null || id == "" || id == "undefined"){
+if(userId == null || userId == "" || userId == "undefined"){
+
+     navigator.geolocation.getCurrentPosition(showPosition, error, options);
+
+     var options = {
+          enableHighAccuracy: true,
+     };
+
+     function error(err) {
+          console.log("Location could not be found");
+     }
+
+     function showPosition(position) {
+          var url_string = window.location.href;
+          var url = new URL(url_string);
+          var roomName = url.searchParams.get("room");
+         
+          var lat = position.coords.latitude;
+          var long =  position.coords.longitude;
+          
+          var data = {
+               room: roomName,
+               lat: lat,
+               long: long,
+          };
+
+          fetch("/create_call", {
+               method: "POST", 
+               headers: {
+                    'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+          })
+
+          primus.write({
+               "action": "User joined",
+          });
+     }
+
      var url_string = window.location.href;
      var url = new URL(url_string);
      room = url.searchParams.get("room");
-
-     var options = {
-          enableHighAccuracy: true,
-     };
-
-     navigator.geolocation.getCurrentPosition(showPosition, error, options);
-
-     function error(err) {
-          console.log("Location could not be found");
-     }
-
-     function showPosition(position) {
-          sessionStorage.setItem("lat", position.coords.latitude);
-          sessionStorage.setItem("long", position.coords.longitude);
-     }
-
-     var lat = String(sessionStorage.getItem("lat"));
-     var long = String(sessionStorage.getItem("long"));
-     
-     var data = {
-          user_id: user,
-          room: room,
-          lat: lat,
-          long: long,
-     };
-
-     fetch("/create_call", {
-          method: "POST", 
-          headers: {
-               'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-     })
-
-     /*primus.write({
-          "action": "Update calls",
-     });*/
 }
-
+console.log(room + "😋");
 var dispatcher = sessionStorage.getItem("dispatcher");
 
 if(dispatcher == 0){
-     var user = sessionStorage.getItem("id");
-
-     var options = {
-          enableHighAccuracy: true,
-     };
-
-     navigator.geolocation.getCurrentPosition(showPosition, error, options);
-
-     function error(err) {
-          console.log("Location could not be found");
-     }
-
-     function showPosition(position) {
-          sessionStorage.setItem("lat", position.coords.latitude);
-          sessionStorage.setItem("long", position.coords.longitude);
-     }
-
      var today = new Date();
      var dateSegment = today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
      
      var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
 
-     room = dateSegment + '.' + codeSegment;
+     var room = dateSegment + '.' + codeSegment;
 
-     var lat = String(sessionStorage.getItem("lat"));
-     var long = String(sessionStorage.getItem("long"));
-     
-     var data = {
-          user_id: user,
-          room: room,
-          lat: lat,
-          long: long,
+     navigator.geolocation.getCurrentPosition(showPosition, error, options);
+
+     var options = {
+          enableHighAccuracy: true,
      };
 
-     fetch("/create_call", {
-          method: "POST", 
-          headers: {
-               'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-     })
+     function error(err) {
+          console.log("Location could not be found");
+     }
 
-     primus.write({
-          "action": "Update calls",
-     });
+     function showPosition(position) {
+          var user = sessionStorage.getItem("id");
+
+          var lat = position.coords.latitude;
+          var long =  position.coords.longitude;
+          
+          var data = {
+               user_id: user,
+               room: room,
+               lat: lat,
+               long: long,
+          };
+
+          fetch("/create_call", {
+               method: "POST", 
+               headers: {
+                    'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+          })
+
+          primus.write({
+               "action": "Update calls",
+          });
+     }
 }
 else if(dispatcher == 1){
-     primus.write({
-          "action": "Update notification",
-     });
-
      var dispatcher = sessionStorage.getItem("id");
-
+     
      var url_string = window.location.href;
      var url = new URL(url_string);
      var id = url.searchParams.get("id");
      room = url.searchParams.get("room");
      sessionStorage.setItem("room", room);
 
-     var data = {
-          call_id: id,
-          dispatcher_id: dispatcher,
-          active: 0,
-     };
-
-     fetch("/update_call", {
-          method: "PUT", 
-          headers: {
-               'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-     })
-
-     primus.write({
-          "action": "Update calls",
-     });
+     if(id == null || id == "" || id == "undefined"){
+          primus.write({
+               "action": "Update notification",
+          });
+     
+          var data = {
+               dispatcher_id: dispatcher,
+               room: room,
+          };
+     
+          fetch("/update_call_tel_flow", {
+               method: "PUT", 
+               headers: {
+                    'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+          })
+     
+          primus.write({
+               "action": "Update calls",
+          });
+     }
+     else{
+          primus.write({
+               "action": "Update notification",
+          });
+     
+          var data = {
+               call_id: id,
+               dispatcher_id: dispatcher,
+               active: 0,
+          };
+     
+          fetch("/update_call", {
+               method: "PUT", 
+               headers: {
+                    'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+          })
+     
+          primus.write({
+               "action": "Update calls",
+          });
+     }
 }
 
 primus.on("data", (json) => {
@@ -263,7 +285,6 @@ socket.on('log', function(array) {
 socket.on('message', function(message, room) {
      console.log('Client received message:', message,  room);
      if (message === 'got user media') {
-          console.log("ik geraak in de if");
           maybeStart();
      } 
      else if (message.type === 'offer') {
@@ -323,7 +344,6 @@ console.log('Getting user media with constraints', localStreamConstraints);
 
 //If initiator, create the peer connection
 function maybeStart() {
-     console.log("ik geraak in de maybeStart functie");
      console.log('>>>>>>> maybeStart() ', isStarted, localStream, isChannelReady);
      if (!isStarted && typeof localStream !== 'undefined' && isChannelReady) {
           console.log('>>>>>> creating peer connection');

@@ -381,8 +381,7 @@ nav {
       padding-top: 0.5vw;
       padding-bottom: 0.5vw;
       color: #FFFFFF;
-      margin-left: 1vw;
-      pointer-events: none; }
+      margin-left: 1vw; }
 
 .dashboard-body {
   overflow: hidden; }

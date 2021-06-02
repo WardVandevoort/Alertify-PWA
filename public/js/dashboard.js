@@ -22,6 +22,7 @@ var animationNotification = document.querySelector(".animation-notification");
 var animationName = document.querySelector(".animation-name");
 var animationStopped = document.querySelector(".animation-stopped");
 var animationEnded = document.querySelector(".animation-ended");
+var userInfo = document.querySelector(".user-info");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -123,21 +124,26 @@ window.addEventListener("load", function() {
      }
 
      function GetUserData(){
-          var data = {
-               user_id: user_id,
-          };
-     
-          fetch("/get_user_data", {
-               method: "POST", 
-               headers: {
-                    'Content-Type': 'application/json'
-               },
-               body: JSON.stringify(data)
-          })
-          .then(res => res.json())
-          .then(data => {  
-               ExtractUserData(data);
-          }); 
+          if(user_id == null || user_id == "" || user_id == "undefined"){
+               NoUserData();
+          }
+          else{
+               var data = {
+                    user_id: user_id,
+               };
+          
+               fetch("/get_user_data", {
+                    method: "POST", 
+                    headers: {
+                         'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+               })
+               .then(res => res.json())
+               .then(data => {  
+                    ExtractUserData(data);
+               });
+          } 
      }
 
      function ExtractUserData(data){
@@ -167,6 +173,13 @@ window.addEventListener("load", function() {
                iceContacts.insertAdjacentHTML("afterbegin", item);
           });
 
+          GetAnimations();
+     }
+
+     function NoUserData(){
+          
+          userInfo.classList.add("hidden");
+          
           GetAnimations();
      }
 

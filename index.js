@@ -159,6 +159,8 @@ app.post("/create_call", controller.createCall);
 
 app.put("/update_call", controller.updateCall);
 
+app.put("/update_call_tel_flow", controller.updateCallTelFlow);
+
 app.get("/show_active_calls", controller.showActiveCalls);
 
 app.put("/user_ended_call", controller.userEndedCall);

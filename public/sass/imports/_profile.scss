@@ -50,15 +50,15 @@
               "a img";
             
         }
-        .medical a {
+        #med-text {
             color: $darkRed;
             grid-area: a;
             
             
         }
-        .medical img {
+        #med-button {
             grid-area: img;
-            margin-left: -3vw;
+            margin-left: -4vw;
         }
         .ice{
             display: grid;
@@ -69,13 +69,13 @@
               "a img";
             padding-top: 2vw;
         }
-        .ice a {
+        #ice-text {
             color: $darkRed;
             grid-area: a;
         }
-        .ice img{
+        #ice-button{
             grid-area: img;
-            margin-left: -3vw;
+            margin-left: -4vw;
         }
     }
     

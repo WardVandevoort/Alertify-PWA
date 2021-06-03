@@ -1,0 +1,21 @@
+#contact-us-body{
+    background-color: $backgroundGrey;
+    font-size: 20px;
+
+    .contact{
+        padding-top: 10vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+
+        .email a{
+            color: $darkRed;
+        }
+        .social{
+            padding-top: 20vw;
+        }
+        .social a{
+            color: $darkRed;
+        }
+        
+    }
+}

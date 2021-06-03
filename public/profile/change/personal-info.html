@@ -4,9 +4,45 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="./../../css/style.css">
      <title>Alertify | Change personal info</title>
 </head>
-<body>
-     
+<body id="personal-info-change">
+     <div>
+          <script src="./../../js/topnav-info.js"></script>
+     </div>
+     <section class="profile-container">
+          <div class="title-button">
+               <h1 id="p-info">
+                    Personal information
+               </h1>
+               <a href="./../../profile.html"><img src="./../../media/img/save-btn.svg" alt="save button" id="p-info-save">
+               </a>
+              
+          </div>
+          <div class="gen-info">
+               <p>First name: <input type="text" id="fname" name="fname" value="John"></p>
+               <p>last name: <input type="text" id="lname" name="lname" value="Doe"></p>
+               <p>Date of birth: <input type="date" id="bdate" name="bdate" value="01/01/2000"></p>
+               <p>Sex: <span>Male</span></p>
+          </div>
+
+          <div class="contact-info">
+               <p>Tel: <input type="tel" id="phone" name="phone" value="0470112233"></p>
+               <p>Email: <input type="email" id="email" name="email" value="john.doe@gmail.com"></p>
+          </div>
+          <div class="location-info">
+               <p>Adress: <input type="text" id="lane" name="lane" value="Stationstraat 1"></p>
+               <p>City: <input type="text" id="city" name="city" value="Mechelen"></p>
+               <p>Postalcode: <input type="text" id="postal" name="postal" value="2800"></p>
+               <p>Province/State: <input type="text" id="state" name="state" value="Vlaams-Brabant"></p>
+          </div>
+     </section>
+
+     <div>
+          <script src="./../../js/nav.js"></script>
+     </div>
+
+     <script src="./../../js/active-link.js"></script>
 </body>
 </html>

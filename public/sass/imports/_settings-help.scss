@@ -1,0 +1,23 @@
+#settings-help{
+    background-color: $backgroundGrey;
+    line-height: 26px;
+    
+    a{
+        color: $darkRed;
+        
+    }
+
+    .help-container{
+        padding-top: 10vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        font-size: 20px;
+
+        #faq-p2{
+            padding-top: 3vw;
+        }
+        .feedback{
+            padding-top: 10vw;
+        }
+    }
+}

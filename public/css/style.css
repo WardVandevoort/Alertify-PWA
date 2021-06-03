@@ -109,7 +109,8 @@
         width: 12.5vw; }
 
 .bottom-nav {
-  position: absolute;
+  overflow: hidden;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 18vw; }
@@ -153,6 +154,19 @@ nav {
   margin-left: 25vw;
   margin-top: 5vw; }
 
+.textbox-info-settings {
+  color: #FFFFFF;
+  margin-left: 20vw;
+  margin-top: 5vw; }
+
+.textbox-info-settings h2 {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  background-color: #E20B17; }
+
 .textbox-info h2 {
   padding-left: 30px;
   padding-right: 30px;
@@ -164,6 +178,11 @@ nav {
 .logo-favicon-topnav {
   text-align: right;
   margin-left: 20vw;
+  margin-top: 8vw; }
+
+.logo-favicon-topnav-settings {
+  text-align: right;
+  margin-left: 15vw;
   margin-top: 8vw; }
 
 #profile-view {
@@ -202,12 +221,12 @@ nav {
       grid-template-rows: 1fr;
       gap: 0px 0px;
       grid-template-areas: "a img"; }
-    #profile-view .med-info .medical a {
+    #profile-view .med-info #med-text {
       color: #4E0808;
       grid-area: a; }
-    #profile-view .med-info .medical img {
+    #profile-view .med-info #med-button {
       grid-area: img;
-      margin-left: -3vw; }
+      margin-left: -4vw; }
     #profile-view .med-info .ice {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -215,12 +234,12 @@ nav {
       gap: 0px 0px;
       grid-template-areas: "a img";
       padding-top: 2vw; }
-    #profile-view .med-info .ice a {
+    #profile-view .med-info #ice-text {
       color: #4E0808;
       grid-area: a; }
-    #profile-view .med-info .ice img {
+    #profile-view .med-info #ice-button {
       grid-area: img;
-      margin-left: -3vw; }
+      margin-left: -4vw; }
 
 .video-container {
   height: 100vh;
@@ -590,6 +609,496 @@ nav {
       margin-left: auto;
       margin-right: auto;
       width: 38vw; }
+#medical-info-body {
+  background-color: #ECECEC; }
+
+.title-button {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "h1 btn";
+  margin-left: 4vw; }
+  .title-button #medical-info {
+    grid-area: h1;
+    text-align: center;
+    margin-left: 25vw;
+    padding-top: 6vw; }
+  .title-button #med-info-edit {
+    grid-area: btn;
+    margin-top: 19vw;
+    padding-left: 2vw; }
+
+.med-info-list {
+  padding-left: 8vw; }
+
+#ice-contacts-body {
+  background-color: #ECECEC; }
+  #ice-contacts-body .title-button {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "h1 btn";
+    margin-left: 4vw; }
+    #ice-contacts-body .title-button #ice-info {
+      grid-area: h1;
+      padding-top: 15vw;
+      padding-left: 8vw; }
+    #ice-contacts-body .title-button #ice-info-edit {
+      grid-area: btn;
+      padding-top: 23vw; }
+  #ice-contacts-body .ice-dummy {
+    padding-left: 12vw;
+    line-height: 0.6; }
+  #ice-contacts-body .bottom-line {
+    width: 80%;
+    height: 3px;
+    background-color: #4E0808;
+    margin-left: auto;
+    margin-right: auto; }
+  #ice-contacts-body .addbutton {
+    text-align: center;
+    background-color: #4E0808;
+    width: 100px;
+    margin: auto;
+    border-radius: 18px;
+    margin-top: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px; }
+    #ice-contacts-body .addbutton #button {
+      text-decoration: none;
+      color: #FFFFFF;
+      font-size: 20px; }
+    #ice-contacts-body .addbutton #add-image {
+      width: 20px; }
+
+#personal-info-change {
+  background-color: #ECECEC; }
+  #personal-info-change .profile-container {
+    padding-top: 10vw; }
+    #personal-info-change .profile-container .title-button {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr;
+      grid-template-rows: 1fr;
+      gap: 0px 0px;
+      grid-template-areas: "h1 btn";
+      margin-left: 4vw; }
+      #personal-info-change .profile-container .title-button #p-info {
+        grid-area: h1; }
+      #personal-info-change .profile-container .title-button #p-info-save {
+        grid-area: btn;
+        margin-top: 5vw; }
+  #personal-info-change p {
+    line-height: 0.6; }
+  #personal-info-change .gen-info {
+    margin-left: 8vw;
+    padding-top: 2vw;
+    padding-bottom: 3vw; }
+  #personal-info-change .contact-info {
+    margin-left: 8vw;
+    padding-bottom: 3vw; }
+  #personal-info-change .location-info {
+    margin-left: 8vw;
+    padding-bottom: 3vw; }
+
+#change-med-body {
+  background-color: #ECECEC; }
+  #change-med-body .title-button {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "h1 btn";
+    margin-left: 4vw; }
+    #change-med-body .title-button #medical-info {
+      grid-area: h1;
+      text-align: center;
+      margin-left: 25vw;
+      padding-top: 6vw; }
+    #change-med-body .title-button #med-info-save {
+      grid-area: btn;
+      margin-top: 19vw;
+      padding-left: 2vw; }
+  #change-med-body .med-info-list {
+    padding-left: 8vw; }
+
+#ice-contacts-change-body {
+  background-color: #ECECEC; }
+  #ice-contacts-change-body .title-button {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "h1 btn";
+    margin-left: 4vw; }
+    #ice-contacts-change-body .title-button #ice-info {
+      grid-area: h1;
+      padding-top: 15vw;
+      padding-left: 8vw; }
+    #ice-contacts-change-body .title-button #ice-info-save {
+      grid-area: btn;
+      padding-top: 23vw; }
+  #ice-contacts-change-body .ice-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "icedummy deletebtn"; }
+  #ice-contacts-change-body .ice-dummy {
+    padding-left: 12vw;
+    line-height: 0.6;
+    grid-area: icedummy; }
+  #ice-contacts-change-body .delete-btn {
+    grid-area: deletebtn;
+    text-align: center;
+    padding-top: 20vw; }
+  #ice-contacts-change-body .bottom-line {
+    width: 80%;
+    height: 3px;
+    background-color: #4E0808;
+    margin-left: auto;
+    margin-right: auto; }
+  #ice-contacts-change-body .addbutton {
+    text-align: center;
+    background-color: #4E0808;
+    width: 100px;
+    margin: auto;
+    border-radius: 18px;
+    margin-top: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px; }
+    #ice-contacts-change-body .addbutton #button {
+      text-decoration: none;
+      color: #FFFFFF;
+      font-size: 20px; }
+    #ice-contacts-change-body .addbutton #add-image {
+      width: 20px; }
+
+#add-ice-contact-body {
+  background-color: #ECECEC; }
+  #add-ice-contact-body .title-button {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "h1 btn";
+    margin-left: 4vw; }
+    #add-ice-contact-body .title-button #ice-info {
+      grid-area: h1;
+      padding-top: 15vw;
+      padding-left: 8vw; }
+    #add-ice-contact-body .title-button #ice-info-save {
+      grid-area: btn;
+      padding-top: 23vw; }
+  #add-ice-contact-body .ice-contact {
+    padding-left: 12vw; }
+
+#settings-home {
+  background-color: #ECECEC;
+  /* Rounded sliders */ }
+  #settings-home .setting-nav a {
+    text-decoration: none;
+    color: white; }
+  #settings-home .setting-nav {
+    background-color: #4E0808;
+    width: 80%;
+    margin: auto;
+    margin-top: 5vw;
+    color: white;
+    border-radius: 16px;
+    padding-top: 1vw;
+    padding-bottom: 1vw; }
+  #settings-home #settings-nav-container {
+    text-align: center;
+    margin-top: 10vw; }
+  #settings-home .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    grid-area: locbtn;
+    margin-left: 20vw; }
+  #settings-home .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0; }
+  #settings-home .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #settings-home .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #settings-home input:checked + .slider {
+    background-color: #4E0808; }
+  #settings-home input:focus + .slider {
+    box-shadow: 0 0 2px #4E0808; }
+  #settings-home input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px); }
+  #settings-home .slider.round {
+    border-radius: 34px; }
+  #settings-home .slider.round:before {
+    border-radius: 50%; }
+  #settings-home .loc-lang {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
+    gap: 0px 0px;
+    grid-template-areas: "loc locbtn" "lang langbtn";
+    margin-top: 10vw;
+    text-align: center; }
+    #settings-home .loc-lang #loc {
+      grid-area: loc;
+      margin-top: 0.5vw; }
+    #settings-home .loc-lang #lang {
+      grid-area: lang;
+      margin-top: 5vw; }
+    #settings-home .loc-lang #language-btn {
+      grid-area: langbtn;
+      margin-left: 22vw;
+      margin-top: 3vw; }
+  #settings-home #version {
+    margin-left: 10vw;
+    margin-top: 30vw; }
+
+#acces-body {
+  background-color: #ECECEC;
+  /* Rounded sliders */ }
+  #acces-body .select-colorblind {
+    grid-area: cbfilterchoice; }
+  #acces-body .acces-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    padding-top: 10vw;
+    grid-template-areas: "cbfilter cbfilterchoice" "txtsize txtsizeslider" "highcont highcontslider" "imphear imphearslider" "impheartext impheartext"; }
+  #acces-body .colorblind-txt {
+    grid-area: cbfilter;
+    padding-left: 5vw; }
+  #acces-body .size-txt {
+    grid-area: txtsize;
+    padding-left: 5vw; }
+  #acces-body .txt-size-slider {
+    grid-area: txtsizeslider;
+    padding-top: 3vw;
+    padding-left: 10vw; }
+  #acces-body .contrast-txt {
+    grid-area: highcont;
+    padding-left: 5vw; }
+  #acces-body .slider-cont {
+    grid-area: highcontslider; }
+  #acces-body .imp-txt {
+    grid-area: imphear;
+    padding-left: 5vw; }
+  #acces-body .slider-hear {
+    grid-area: imphearslider; }
+  #acces-body #imp-undertxt {
+    grid-area: impheartext; }
+  #acces-body .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    grid-area: locbtn;
+    margin-left: 10vw; }
+  #acces-body .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0; }
+  #acces-body .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #acces-body .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  #acces-body input:checked + .slider {
+    background-color: #4E0808; }
+  #acces-body input:focus + .slider {
+    box-shadow: 0 0 2px #4E0808; }
+  #acces-body input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px); }
+  #acces-body .slider.round {
+    border-radius: 34px; }
+  #acces-body .slider.round:before {
+    border-radius: 50%; }
+  #acces-body .slider-cont {
+    padding-top: 5vw; }
+  #acces-body .slider-hear {
+    padding-top: 5vw; }
+  #acces-body .select-colorblind {
+    padding-top: 5vw;
+    padding-left: 10vw; }
+  #acces-body #imp-undertxt {
+    margin-top: -4vw;
+    padding-left: 5vw; }
+
+#settings-camera {
+  background-color: #ECECEC; }
+  #settings-camera .camera-txt {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 10vw;
+    line-height: 27px;
+    font-size: 20px; }
+  #settings-camera .camera-admit {
+    text-align: center;
+    margin-left: 10vw;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr;
+    gap: 0px 0px;
+    grid-template-areas: "no btn yes"; }
+    #settings-camera .camera-admit #no {
+      font-size: 20px;
+      grid-area: no;
+      margin-right: -10vw;
+      margin-top: 6vw; }
+    #settings-camera .camera-admit .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      grid-area: btn;
+      margin-top: 20px;
+      /* Rounded sliders */ }
+      #settings-camera .camera-admit .switch .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0; }
+      #settings-camera .camera-admit .switch .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s; }
+      #settings-camera .camera-admit .switch .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s; }
+      #settings-camera .camera-admit .switch input:checked + .slider {
+        background-color: #4E0808; }
+      #settings-camera .camera-admit .switch input:focus + .slider {
+        box-shadow: 0 0 2px #4E0808; }
+      #settings-camera .camera-admit .switch input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px); }
+      #settings-camera .camera-admit .switch .slider.round {
+        border-radius: 34px; }
+      #settings-camera .camera-admit .switch .slider.round:before {
+        border-radius: 50%; }
+    #settings-camera .camera-admit #yes {
+      font-size: 20px;
+      grid-area: yes;
+      text-align: left;
+      margin-left: -10vw;
+      padding-top: 1vw; }
+  #settings-camera #allow {
+    text-align: center;
+    margin-top: 20vw; }
+
+#contact-us-body {
+  background-color: #ECECEC;
+  font-size: 20px; }
+  #contact-us-body .contact {
+    padding-top: 10vw;
+    padding-left: 5vw;
+    padding-right: 5vw; }
+    #contact-us-body .contact .email a {
+      color: #4E0808; }
+    #contact-us-body .contact .social {
+      padding-top: 20vw; }
+    #contact-us-body .contact .social a {
+      color: #4E0808; }
+
+#settings-help {
+  background-color: #ECECEC;
+  line-height: 26px; }
+  #settings-help a {
+    color: #4E0808; }
+  #settings-help .help-container {
+    padding-top: 10vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-size: 20px; }
+    #settings-help .help-container #faq-p2 {
+      padding-top: 3vw; }
+    #settings-help .help-container .feedback {
+      padding-top: 10vw; }
+
+#privacy-policy-body {
+  background-color: #ECECEC; }
+  #privacy-policy-body p {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-size: 20px; }
+  #privacy-policy-body #part-1 {
+    padding-top: 10vw; }
+
+#courses-body {
+  background-color: #ECECEC;
+  text-align: center; }
+  #courses-body #how-btn {
+    margin-top: 15vw; }
+    #courses-body #how-btn .how-to-general {
+      width: 80%;
+      display: inline-block;
+      background-color: #4E0808;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 15px;
+      text-decoration: none;
+      color: white;
+      margin-bottom: 5vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

@@ -43,25 +43,35 @@ primus.on("data", (json) => {
 primus.on("data", (json) => {
      if(json.action === "Play animation"){
           var path = json.path;
-          animation.classList.remove("hidden");
-          animation.src = path;
+          var targetRoom = json.room;
+          var room = sessionStorage.getItem("room");
+          
+          if(targetRoom == room){
+               animation.classList.remove("hidden");
+               animation.src = path;
 
-          animation.addEventListener('ended', function(){
-               animation.classList.add("hidden");
-               animation.src = "";
+               animation.addEventListener('ended', function(){
+                    animation.classList.add("hidden");
+                    animation.src = "";
 
-               primus.write({
-                    "action": "Animation ended",
+                    primus.write({
+                         "action": "Animation ended",
+                         "room": room,
+                    });
                });
-          });
-               
+          }       
      }
 });
 
 primus.on("data", (json) => {
      if(json.action === "Stop animation"){
+
           var path = json.path;
-          animation.classList.add("hidden");
-          animation.src = "";      
+          var targetRoom = json.room;
+          var room = sessionStorage.getItem("room");
+          if(targetRoom == room){
+               animation.classList.add("hidden");
+               animation.src = "";  
+          }    
      }
 });

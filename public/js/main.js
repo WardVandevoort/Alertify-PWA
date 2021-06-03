@@ -76,8 +76,9 @@ if(userId == null || userId == "" || userId == "undefined"){
      var url_string = window.location.href;
      var url = new URL(url_string);
      room = url.searchParams.get("room");
+     sessionStorage.setItem("room", room);
 }
-console.log(room + "😋");
+
 var dispatcher = sessionStorage.getItem("dispatcher");
 
 if(dispatcher == 0){
@@ -87,6 +88,7 @@ if(dispatcher == 0){
      var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
 
      var room = dateSegment + '.' + codeSegment;
+     sessionStorage.setItem("room", room);
 
      navigator.geolocation.getCurrentPosition(showPosition, error, options);
 

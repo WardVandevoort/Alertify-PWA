@@ -206,6 +206,7 @@ window.addEventListener("load", function() {
                     primus.write({
                          "action": "Play animation",
                          "path": animation.getAttribute("path"),
+                         "room": room,
                     });
                })
           )
@@ -266,15 +267,18 @@ stopBtn.addEventListener("click", function(){
 
      primus.write({
           "action": "Stop animation",
+          "room": sessionStorage.getItem("room"),
      });
 })
 
 primus.on("data", (json) => {
      if(json.action === "Animation ended"){
-          animationNotification.classList.add("hidden"); 
-          animationEnded.classList.remove("hidden");
-          setTimeout(function(){
-               animationEnded.classList.add("hidden");
-          }, 3000)    
+          if(json.room == sessionStorage.getItem("room")){
+               animationNotification.classList.add("hidden"); 
+               animationEnded.classList.remove("hidden");
+               setTimeout(function(){
+                    animationEnded.classList.add("hidden");
+               }, 3000) 
+          }   
      }
 });

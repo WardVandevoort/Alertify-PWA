@@ -351,6 +351,26 @@ nav {
         color: #FFFFFF;
         margin: auto; }
 
+.user-joined-notification {
+  position: absolute;
+  top: 0.5vw;
+  left: 0;
+  right: 0;
+  width: 14vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  z-index: 5;
+  background-color: #329862;
+  border-radius: 50px; }
+  .user-joined-notification a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.2vw; }
+
 .overlay {
   z-index: 2;
   position: absolute;

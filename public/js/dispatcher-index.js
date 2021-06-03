@@ -5,6 +5,8 @@ var copyBtn = document.querySelector(".copy-link");
 var link = document.querySelector(".call-link");
 var joinBtn = document.querySelector(".join-call-btn");
 var waitingMessage = document.querySelector(".waiting-message");
+var userJoinedNotification = document.querySelector(".user-joined-notification");
+var userJoinedLink = document.querySelector(".user-joined-link");
 
 var primus = Primus.connect("/", { 
      reconnect: {
@@ -45,6 +47,7 @@ callBtn.addEventListener("click", function(){
      var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
 
      room = dateSegment + '.' + codeSegment;
+     sessionStorage.setItem("roomCreated", room);
 
      var url = "https://alertify-pwa.herokuapp.com/call?room=" + room;
 
@@ -59,9 +62,13 @@ copyBtn.addEventListener("click", function(){
 
 primus.on("data", (json) => {
      if(json.action === "User joined"){
-          joinBtn.style.backgroundColor = "#329862";
-          waitingMessage.innerHTML = "User entered call";
-          joinBtn.href = "http://localhost:8000/dispatcher/dashboard?room=" + room;
+          if(json.room == sessionStorage.getItem("roomCreated")){
+               joinBtn.style.backgroundColor = "#329862";
+               waitingMessage.innerHTML = "User entered call";
+               joinBtn.href = "https://alertify-pwa.herokuapp.com/dispatcher/dashboard?room=" + room;
+               userJoinedNotification.classList.remove("hidden");
+               userJoinedLink.href = "https://alertify-pwa.herokuapp.com/dispatcher/dashboard?room=" + room;
+          }
      }
 });
 

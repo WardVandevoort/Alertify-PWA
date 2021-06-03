@@ -70,6 +70,7 @@ if(userId == null || userId == "" || userId == "undefined"){
 
           primus.write({
                "action": "User joined",
+               "room": roomName,
           });
      }
 

@@ -1,0 +1,28 @@
+#change-med-body{
+    background-color: $backgroundGrey;
+    .title-button{
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+          "h1 btn";
+        margin-left: 4vw;
+        #medical-info{
+            grid-area: h1;
+            text-align: center;
+            margin-left: 25vw;
+            padding-top: 6vw;
+            
+        }
+        #med-info-save{
+            grid-area: btn;
+            margin-top: 19vw;
+            padding-left: 2vw;
+        }
+    
+    }
+    .med-info-list{
+        padding-left: 8vw;
+    }
+}

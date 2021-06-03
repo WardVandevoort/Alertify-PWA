@@ -1,0 +1,23 @@
+#courses-body{
+    background-color: $backgroundGrey;
+    text-align: center;
+
+    #how-btn{
+        margin-top: 15vw;
+
+        .how-to-general{
+            width: 80%;
+            display: inline-block;
+            background-color: $darkRed;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            margin-bottom: 5vw;
+        }
+    }
+
+}

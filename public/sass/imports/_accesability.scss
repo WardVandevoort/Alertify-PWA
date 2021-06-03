@@ -1,0 +1,131 @@
+#acces-body{
+    background-color: $backgroundGrey;
+
+    .select-colorblind{
+        grid-area: cbfilterchoice;
+    
+    }
+    .acces-container{
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        gap: 0px 0px;
+        padding-top: 10vw;
+        grid-template-areas:
+          "cbfilter cbfilterchoice"
+          "txtsize txtsizeslider"
+          "highcont highcontslider"
+          "imphear imphearslider"
+          "impheartext impheartext";
+    }
+    .colorblind-txt{
+        grid-area: cbfilter;
+        padding-left: 5vw;
+    }
+    .size-txt{
+        grid-area: txtsize;
+        padding-left: 5vw;
+    }
+    .txt-size-slider{
+        grid-area: txtsizeslider;
+        padding-top: 3vw;
+        padding-left: 10vw;
+    }
+    .contrast-txt{
+        grid-area: highcont;
+        padding-left: 5vw;
+    }
+    .slider-cont{
+        grid-area: highcontslider;
+    }
+    .imp-txt{
+        grid-area: imphear;
+        padding-left: 5vw;
+        
+    }
+    .slider-hear{
+        grid-area: imphearslider;
+    }
+    #imp-undertxt{
+        grid-area: impheartext;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        grid-area: locbtn;
+        margin-left: 10vw;
+      }
+      
+      .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      input:checked + .slider {
+        background-color: $darkRed;
+      }
+      
+      input:focus + .slider {
+        box-shadow: 0 0 2px $darkRed;
+      }
+      
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+      
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+      
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      .slider-cont{
+          padding-top: 5vw;
+      }
+      .slider-hear{
+          padding-top: 5vw;
+          
+      }
+      .select-colorblind{
+          padding-top: 5vw;
+          padding-left: 10vw;
+      }
+      #imp-undertxt{
+          margin-top: -4vw;
+          padding-left: 5vw;
+          
+      }
+
+
+}

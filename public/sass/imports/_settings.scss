@@ -1,0 +1,117 @@
+#settings-home{
+    background-color: $backgroundGrey;
+
+    .setting-nav a{
+        text-decoration: none;
+        color: white;
+    }
+    .setting-nav{
+        background-color: $darkRed;
+        width: 80%;
+        margin: auto;
+        margin-top: 5vw;
+        color: white;
+        border-radius: 16px;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+
+    }
+    
+    #settings-nav-container{
+        text-align: center;
+        margin-top: 10vw;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        grid-area: locbtn;
+        margin-left: 20vw;
+      }
+      
+      .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      input:checked + .slider {
+        background-color: $darkRed;
+      }
+      
+      input:focus + .slider {
+        box-shadow: 0 0 2px $darkRed;
+      }
+      
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+      
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+      
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+    .loc-lang{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr 0.5fr;
+        gap: 0px 0px;
+        grid-template-areas:
+          "loc locbtn"
+          "lang langbtn";
+        margin-top: 10vw;
+        text-align: center;
+
+        #loc{
+            grid-area: loc;
+            margin-top: 0.5vw;
+        }
+        #lang{
+            grid-area: lang;
+            margin-top: 5vw;
+        }
+        #language-btn{
+            grid-area: langbtn;
+            margin-left: 22vw;
+            margin-top: 3vw;
+            
+        }
+    
+    }
+    #version{
+        margin-left: 10vw;
+        margin-top: 30vw;
+    }
+}

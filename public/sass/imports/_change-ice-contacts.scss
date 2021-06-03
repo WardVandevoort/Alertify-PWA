@@ -1,0 +1,69 @@
+#ice-contacts-change-body{
+    background-color: $backgroundGrey;
+    .title-button{
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+          "h1 btn";
+        margin-left: 4vw;
+        #ice-info{
+            grid-area: h1;
+            padding-top: 15vw;
+            padding-left: 8vw;       
+        }
+        #ice-info-save{
+            grid-area: btn;
+            padding-top: 23vw;
+        }
+    }
+    .ice-contact{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+          "icedummy deletebtn";
+    }
+    .ice-dummy{
+        padding-left: 12vw;
+        line-height: 0.6;
+        grid-area: icedummy;
+    }
+    .delete-btn{
+        grid-area: deletebtn;
+        text-align: center;
+        padding-top: 20vw;
+    }
+    .bottom-line{
+        width: 80%;
+        height: 3px;
+        background-color: $darkRed;
+        margin-left: auto;
+        margin-right: auto;      
+    }
+    .addbutton{
+        text-align: center;
+        background-color: $darkRed;
+        width: 100px;
+        margin: auto;
+        border-radius: 18px;
+        margin-top: 50px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        #button{
+            text-decoration: none;
+            color: $white;
+            font-size: 20px;
+
+            
+        }
+        #add-image{
+            width: 20px;
+        }
+    }
+}

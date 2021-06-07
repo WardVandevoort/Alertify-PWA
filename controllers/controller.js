@@ -5,6 +5,7 @@ const User = require("../models/User")
 const Dispatcher = require("../models/Dispatcher");
 const Call = require("../models/Call");
 const Animation = require("../models/Animation");
+const Chat = require("../models/Chat");
 
 // Functions
 const register = async function(req, res){
@@ -288,6 +289,72 @@ const getAnimations = function(req, res){
 	});
 }
 
+const createChat = function(req, res){
+
+	var chat = new Chat();
+
+	chat.user_id = req.body.user_id;
+	chat.room = req.body.room;
+	chat.lat = req.body.lat;
+	chat.long = req.body.long;
+
+	chat.save((err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Chat could not be created."
+			});
+		}
+
+		if(!err){
+			res.json({
+				status: "Success",
+				message: "Chat was successfully created."
+			});
+		}
+	});
+}
+
+const updateChatMessages = function(req, res){
+
+	var id = req.body.id;
+	var message = req.body.message;
+	var room = req.body.room;
+
+	Chat.findOneAndUpdate({ room: room }, { $push: { messages: { id: id, message: message } } }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Chat to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
+const getChat = function(req, res){
+	var room = req.body.room;
+	Chat.find({"room": room}, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Chat could not be found."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
 module.exports.register = register;
 module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
@@ -300,3 +367,6 @@ module.exports.getCurrentCall = getCurrentCall;
 module.exports.getUserData = getUserData;
 module.exports.getAnimations = getAnimations;
 module.exports.updateCallTelFlow = updateCallTelFlow;
+module.exports.createChat = createChat;
+module.exports.updateChatMessages = updateChatMessages;
+module.exports.getChat = getChat;

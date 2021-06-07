@@ -35,6 +35,7 @@ call.addEventListener("click", function() {
      window.location.href = "/call";
 });
 
-/*chat.addEventListener("click", function() {
-     window.location.href = "112/chat.html"
-});*/
+chat.addEventListener("click", function() {
+     sessionStorage.setItem("chat", true);
+     window.location.href = "/chat"
+});

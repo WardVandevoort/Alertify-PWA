@@ -32,11 +32,27 @@ var primus = Primus.connect("/", {
 });
 
 // Saving call in db
-var userId = sessionStorage.getItem("id");
+var chat = sessionStorage.getItem("chat");
+var dispatcher = sessionStorage.getItem("dispatcher");
 
-if(userId == null || userId == "" || userId == "undefined"){
+if(dispatcher == 0 && chat == "true"){
+     
+     localStreamConstraints = {
+          audio: false,
+          video: {
+           facingMode: "environment"
+          }
+     };
 
-     navigator.geolocation.getCurrentPosition(showPosition, error, options);
+     var today = new Date();
+     var dateSegment = today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+     
+     var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
+
+     room = dateSegment + '.' + codeSegment;
+     sessionStorage.setItem("room", room);
+
+     navigator.geolocation.getCurrentPosition(CreateChat, error, options);
 
      var options = {
           enableHighAccuracy: true,
@@ -46,7 +62,48 @@ if(userId == null || userId == "" || userId == "undefined"){
           console.log("Location could not be found");
      }
 
-     function showPosition(position) {
+     function CreateChat(position) {
+          var user = sessionStorage.getItem("id");
+
+          var lat = position.coords.latitude;
+          var long =  position.coords.longitude;
+          
+          var data = {
+               user_id: user,
+               room: room,
+               lat: lat,
+               long: long,
+          };
+
+          fetch("/create_chat", {
+               method: "POST", 
+               headers: {
+                    'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(data)
+          })
+
+          primus.write({
+               "action": "Update chats",
+          });
+     }
+}
+
+var userId = sessionStorage.getItem("id");
+
+if(userId == null || userId == "" || userId == "undefined"){
+
+     navigator.geolocation.getCurrentPosition(CreateCall, error, options);
+
+     var options = {
+          enableHighAccuracy: true,
+     };
+
+     function error(err) {
+          console.log("Location could not be found");
+     }
+
+     function CreateCall(position) {
           var url_string = window.location.href;
           var url = new URL(url_string);
           var roomName = url.searchParams.get("room");
@@ -80,18 +137,17 @@ if(userId == null || userId == "" || userId == "undefined"){
      sessionStorage.setItem("room", room);
 }
 
-var dispatcher = sessionStorage.getItem("dispatcher");
-
-if(dispatcher == 0){
+if(dispatcher == 0 && chat != "true" ){
+     
      var today = new Date();
      var dateSegment = today.getDate() + '' + (today.getMonth()+1) + '' + today.getFullYear() + '' + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
      
      var codeSegment = Math.floor(Math.random() * 1000000000) + 100000000;
 
-     var room = dateSegment + '.' + codeSegment;
+     room = dateSegment + '.' + codeSegment;
      sessionStorage.setItem("room", room);
 
-     navigator.geolocation.getCurrentPosition(showPosition, error, options);
+     navigator.geolocation.getCurrentPosition(CreateCall, error, options);
 
      var options = {
           enableHighAccuracy: true,
@@ -101,7 +157,7 @@ if(dispatcher == 0){
           console.log("Location could not be found");
      }
 
-     function showPosition(position) {
+     function CreateCall(position) {
           var user = sessionStorage.getItem("id");
 
           var lat = position.coords.latitude;
@@ -127,7 +183,7 @@ if(dispatcher == 0){
           });
      }
 }
-else if(dispatcher == 1){
+else if(dispatcher == 1 && chat != "true" ){
      var dispatcher = sessionStorage.getItem("id");
      
      var url_string = window.location.href;
@@ -181,6 +237,10 @@ else if(dispatcher == 1){
                "action": "Update calls",
           });
      }
+}
+
+if(chat == "true"){
+     sessionStorage.setItem("chat", false);
 }
 
 primus.on("data", (json) => {

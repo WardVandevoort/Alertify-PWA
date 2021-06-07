@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Alertify | Chat</title>
+     <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+     <div class="video-container">
+          <div class="chat-notification first-chat-notification">
+               <p>A dispatcher will be with you shortly</p>
+          </div>
+
+          <div class="chat-notification second-chat-notification hidden">
+               <p>A dispatcher has joined your chat</p>
+          </div>
+
+          <!-- For playing local video -->
+          <video id="localVideo" class="user-video" autoplay muted playsinline></video>
+
+          <video id="remoteVideo" class="hidden" autoplay muted playsinline></video>
+
+          <video id="animation" class="hidden" src="" autoplay></video>
+
+          <div class="chat-container">
+               
+          </div>
+
+          <div class="chat-nav">
+               <div class="end-call">
+                    <img src="media/img/end_call_icon.svg" alt="end call icon">
+               </div>
+               <div class="switch-camera">
+                    <img src="media/img/switch_camera_icon.svg" alt="switch camera icon">
+               </div>
+          </div>
+
+          <div class="chat-footer">
+               <input class="chat-input" type="text" placeholder="Type a message">
+               <div class="send-message">
+                    <img src="media/img/send-icon.svg" alt="send message icon">
+               </div>
+          </div>
+     </div>
+
+     <!-- Import SocketIO for signalling -->
+     <script src="/socket.io/socket.io.js"></script>
+     <!-- Import WebRTC adapter for compatibility with all the browsers  -->
+     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+     <!-- Import TURN config -->
+     <script src="js\config.js"></script>
+     <!-- Import script containing WebRTC related functions -->
+     <script src="/primus/primus.js"></script>
+     <script src="js\main.js"></script>
+     <script src="js/chat.js"></script>
+
+</body>
+</html>

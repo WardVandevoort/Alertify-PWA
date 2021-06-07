@@ -30,6 +30,10 @@ app.get("/call", function(req, res){
 	res.render("call.ejs");
 });
 
+app.get("/chat", function(req, res){
+	res.render("chat.ejs");
+});
+
 app.get("/login.html", function(req, res){
 	res.render("login.html");
 });
@@ -170,3 +174,9 @@ app.post("/get_current_call", controller.getCurrentCall);
 app.post("/get_user_data", controller.getUserData);
 
 app.get("/get_animations", controller.getAnimations);
+
+app.post("/create_chat", controller.createChat);
+
+app.put("/update_chat_messages", controller.updateChatMessages);
+
+app.post("/get_chat", controller.getChat);

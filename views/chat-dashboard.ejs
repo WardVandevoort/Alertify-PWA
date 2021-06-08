@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Alertify | Dashboard</title>
+     <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-body chat-dashboard-body">
+     <div class="map" id="map"></div>
+
+     <div class="user-info">
+          <div class="user-header">
+               <p><span class="name"></span> <img src="" class="gender-icon" alt="gender icon"></p>
+               <p><span class="birth-date"></span></p>
+          </div>
+
+          <a href="#" class="btn medical-btn">Medical information</a>
+          <div class="medical-information hidden">
+               <p>Blood type: <span class="blood-type"></span></p>
+               <p>Allergies: <span class="allergies"></span></p>
+               <p>Medical conditions: <span class="medical-conditions"></span></p>
+               <p>Medication: <span class="medication"></span></p>
+          </div>
+
+          <a href="#" class="btn ice-btn">ICE contacts</a>
+          <div class="ice-contacts hidden">
+
+          </div>
+
+          <a href="#" class="btn contact-btn">Contact information</a>
+          <div class="contact-information hidden">
+               <p>Residence: </br><span class="residence"></span></p>
+          </div>
+     </div>
+
+     <div class="animation-container">
+          <input type="text" class="animation-search" placeholder="Search animation">
+
+          <div class="animations">
+
+          </div>
+     </div>
+
+     <div class="animation-notification hidden">
+          <p>Currently playing <span class="animation-name"></span> animation</p>
+          <a class="stop-btn" href="#">Stop animation</a>
+     </div>
+
+     <div class="animation-stopped hidden">
+          <p>Animation was successfully stopped</p>
+     </div>
+
+     <div class="animation-ended hidden">
+          <p>Animation has ended</p>
+     </div>
+
+     <div class="toggle-video"><img src="../media/img/chat-closed-icon.svg" class="chat-icon" alt="chat icon"></div>
+
+     <div class="video-container hidden">
+          <!-- For playing local video -->
+          <video id="localVideo" class="hidden" autoplay muted playsinline></video>
+
+          <video id="remoteVideo" class="" autoplay playsinline></video>
+
+          <div class="dashboard-chat-container">
+     
+          </div>
+     </div>
+     
+     <div class="version">
+          <p>Alertify v0.1</p>
+     </div>
+
+     <div class="dashboard-chat-footer">
+          <a class="end-call" href="/dispatcher/index.html">
+               <img src="../media/img/end_call_icon.svg" alt="end call icon">
+          </a>
+
+          <input class="dispatcher-message-input" type="text" placeholder="Type a message">
+
+          <a class="dispatcher-send-btn" href="#">
+               <img src="../media/img/send-icon.svg" alt="end call icon">
+          </a>
+     </div>
+
+     <!-- Import SocketIO for signalling -->
+     <script src="../socket.io/socket.io.js"></script>
+     <!-- Import WebRTC adapter for compatibility with all the browsers  -->
+     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+     <!-- Import TURN config -->
+     <script src="../js\config.js"></script>
+     <!-- Import script containing WebRTC related functions -->
+     <script src="../js/ol.js"></script>
+     <script src="/primus/primus.js"></script>
+     <script src="../js\main.js"></script>
+     <script src="../js/chat-dashboard.js"></script>
+     
+</body>
+</html>

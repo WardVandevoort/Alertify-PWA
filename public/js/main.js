@@ -32,8 +32,18 @@ var primus = Primus.connect("/", {
 });
 
 // Saving call in db
-var chat = sessionStorage.getItem("chat");
 var dispatcher = sessionStorage.getItem("dispatcher");
+
+if(dispatcher == 1){
+     var url_string = window.location.href;
+     var url = new URL(url_string);
+     var chat = url.searchParams.get("chat");
+     if(chat == "true"){
+          sessionStorage.setItem("chat", true);
+     }
+}
+
+var chat = sessionStorage.getItem("chat");
 
 if(dispatcher == 0 && chat == "true"){
      
@@ -87,6 +97,38 @@ if(dispatcher == 0 && chat == "true"){
                "action": "Update chats",
           });
      }
+}
+else if(dispatcher == 1 && chat == "true" ){
+     var dispatcher = sessionStorage.getItem("id");
+
+     var url_string = window.location.href;
+     var url = new URL(url_string);
+     var id = url.searchParams.get("id");
+     room = url.searchParams.get("room");
+     sessionStorage.setItem("room", room);
+
+     primus.write({
+          "action": "Update notification",
+          "room": room,
+     });
+
+     var data = {
+          chat_id: id,
+          dispatcher_id: dispatcher,
+          active: 0,
+     };
+
+     fetch("/update_chat", {
+          method: "PUT", 
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+     })
+
+     primus.write({
+          "action": "Update chats",
+     });
 }
 
 var userId = sessionStorage.getItem("id");
@@ -195,6 +237,7 @@ else if(dispatcher == 1 && chat != "true" ){
      if(id == null || id == "" || id == "undefined"){
           primus.write({
                "action": "Update notification",
+               "room": room,
           });
      
           var data = {
@@ -217,6 +260,7 @@ else if(dispatcher == 1 && chat != "true" ){
      else{
           primus.write({
                "action": "Update notification",
+               "room": room,
           });
      
           var data = {
@@ -242,26 +286,6 @@ else if(dispatcher == 1 && chat != "true" ){
 if(chat == "true"){
      sessionStorage.setItem("chat", false);
 }
-
-primus.on("data", (json) => {
-     if(json.action === "User ended call"){
-          var user = sessionStorage.getItem("id");
-          console.log(user);
-
-          var data = {
-               user_id: user,
-               active: 1
-          };
-
-          fetch("/user_ended_call", {
-               method: "PUT", 
-               headers: {
-                    'Content-Type': 'application/json'
-               },
-               body: JSON.stringify(data)
-          })
-     }
-});
 
 //Initializing socket.io
 var socket = io.connect();

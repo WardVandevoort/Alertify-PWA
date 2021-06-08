@@ -355,6 +355,87 @@ const getChat = function(req, res){
 	});
 }
 
+const userEndedChat = function(req, res){
+
+	var active = req.body.active;
+	var user_id = req.body.user_id;
+
+	Chat.findOneAndUpdate({ user_id: user_id, active: active }, { active: 0 }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Chat could not be updated."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
+const showActiveChats = function(req, res){
+
+	Chat.find({"active": 1, "dispatcher_id": null}, (err, docs) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Active chats could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: docs,
+			});
+		}
+	});
+}
+
+const updateChat = function(req, res){
+
+	var dispatcher_id = req.body.dispatcher_id;
+	var active = req.body.active;
+	var chat_id = req.body.chat_id;
+
+	Chat.findByIdAndUpdate(chat_id, { dispatcher_id: dispatcher_id, active: active }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Chat to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+	
+}
+
+const getCurrentChat = function(req, res){
+	var room = req.body.room;
+	var dispatcher_id = req.body.dispatcher_id;
+	Chat.find({"room": room, "dispatcher_id": dispatcher_id}, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Current chat could not be found."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
 module.exports.register = register;
 module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
@@ -370,3 +451,7 @@ module.exports.updateCallTelFlow = updateCallTelFlow;
 module.exports.createChat = createChat;
 module.exports.updateChatMessages = updateChatMessages;
 module.exports.getChat = getChat;
+module.exports.userEndedChat = userEndedChat;
+module.exports.showActiveChats = showActiveChats;
+module.exports.updateChat = updateChat;
+module.exports.getCurrentChat = getCurrentChat;

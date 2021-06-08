@@ -13,9 +13,20 @@ var primus = Primus.connect("/", {
 });
 
 endCall.addEventListener("click", function(){
-     primus.write({
-          "action": "User ended call",
-     });
+     var user = sessionStorage.getItem("id");
+
+     var data = {
+          user_id: user,
+          active: 1
+     };
+
+     fetch("/user_ended_call", {
+          method: "PUT", 
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+     })
 
      primus.write({
           "action": "Update calls",
@@ -32,11 +43,15 @@ switchCamera.addEventListener("click", function(){
 
 primus.on("data", (json) => {
      if(json.action === "Update notification"){
-          firstNotification.classList.add("hidden");
-          secondNotification.classList.remove("hidden");
-          setTimeout(function(){
-               secondNotification.classList.add("hidden");
-          }, 5000)
+          var targetRoom = json.room;
+          var room = sessionStorage.getItem("room");
+          if(targetRoom == room){
+               firstNotification.classList.add("hidden");
+               secondNotification.classList.remove("hidden");
+               setTimeout(function(){
+                    secondNotification.classList.add("hidden");
+               }, 5000)
+          }
      }
 });
 

@@ -54,6 +54,10 @@ app.get("/dispatcher/dashboard", function(req, res){
 	res.render("dashboard.ejs");
 });
 
+app.get("/dispatcher/chat-dashboard", function(req, res){
+	res.render("chat-dashboard.ejs");
+});
+
 //Initialize http server and associate it with express
 var server = http.createServer(app);
 
@@ -180,3 +184,11 @@ app.post("/create_chat", controller.createChat);
 app.put("/update_chat_messages", controller.updateChatMessages);
 
 app.post("/get_chat", controller.getChat);
+
+app.put("/user_ended_chat", controller.userEndedChat);
+
+app.get("/show_active_chats", controller.showActiveChats);
+
+app.put("/update_chat", controller.updateChat);
+
+app.post("/get_current_chat", controller.getCurrentChat);

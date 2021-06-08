@@ -26,6 +26,12 @@ primus.on("data", (json) => {
      }
 });
 
+primus.on("data", (json) => {
+     if(json.action === "Update chats"){
+          LiveUpdate();
+     }
+});
+
 setInterval(function(){
      LiveUpdate();
 }, 30000);
@@ -73,8 +79,11 @@ primus.on("data", (json) => {
 });
 
 async function LiveUpdate() {
-     var response = await (await fetch("/show_active_calls")).json();
-     var calls = response.message;
+     var callResponse = await (await fetch("/show_active_calls")).json();
+     var calls = callResponse.message;
+
+     var chatResponse = await (await fetch("/show_active_chats")).json();
+     var chats = chatResponse.message;
 
      // Empty calls container before filling it
      container.innerHTML = "";
@@ -190,8 +199,116 @@ async function LiveUpdate() {
           
           container.insertAdjacentHTML("afterbegin", listItem);
      });
+
+     chats.slice().reverse().forEach(chat => {
+          var chatTimestamp = chat['created_at'];
+          var chatDate = new Date(chatTimestamp);
+          var chatTime = chatDate.getTime() / 1000;
+
+          var today = new Date();
+          var currentTime = today.getTime() / 1000;
+
+          var sum = currentTime - chatTime;
+          var timeSince = Math.round(sum);
+          var time;
+
+          switch (true) {
+               case (timeSince < 30):
+                    time = "Chat started just now";
+                    break;
+
+               case (timeSince >= 30 && timeSince < 60):
+                    time = "Chat started 30 seconds ago";
+                    break;
+          
+               case (timeSince >= 60 && timeSince < 90):
+                    time = "Chat started 1 minute ago";
+                    break;
+
+               case (timeSince >= 90 && timeSince < 120):
+                    time = "Chat started 1.5 minute ago";
+                    break;
+
+               case (timeSince >= 120 && timeSince < 150):
+                    time = "Chat started 2 minutes ago";
+                    break;
+
+               case (timeSince >= 150 && timeSince < 180):
+                    time = "Chat started 2.5 minutes ago";
+                    break;
+
+               case (timeSince >= 180 && timeSince < 210):
+                    time = "Chat started 3 minutes ago";
+                    break;
+
+               case (timeSince >= 210 && timeSince < 240):
+                    time = "Chat started 3.5 minutes ago";
+                    break;
+
+               case (timeSince >= 240 && timeSince < 270):
+                    time = "Chat started 4 minutes ago";
+                    break;
+
+               case (timeSince >= 270 && timeSince < 300):
+                    time = "Chat started 4.5 minutes ago";
+                    break;
+
+               case (timeSince >= 300 && timeSince < 330):
+                    time = "Chat started 5 minutes ago";
+                    break;
+
+               case (timeSince >= 330 && timeSince < 360):
+                    time = "Chat started 5.5 minutes ago";
+                    break;
+
+               case (timeSince >= 360 && timeSince < 390):
+                    time = "Chat started 6 minutes ago";
+                    break;
+
+               case (timeSince >= 390 && timeSince < 420):
+                    time = "Chat started 6.5 minutes ago";
+                    break;
+
+               case (timeSince >= 420 && timeSince < 450):
+                    time = "Chat started 7 minutes ago";
+                    break;
+
+               case (timeSince >= 450 && timeSince < 480):
+                    time = "Chat started 7.5 minutes ago";
+                    break;
+
+               case (timeSince >= 480 && timeSince < 510):
+                    time = "Chat started 8 minutes ago";
+                    break;
+
+               case (timeSince >= 510 && timeSince < 540):
+                    time = "Chat started 8.5 minutes ago";
+                    break;
+
+               case (timeSince >= 540 && timeSince < 570):
+                    time = "Chat started 9 minutes ago";
+                    break;
+
+               case (timeSince >= 570 && timeSince < 600):
+                    time = "Chat started 9.5 minutes ago";
+                    break;
+
+               case (timeSince >= 600 && timeSince < 630):
+                    time = "Chat started 10 minutes ago";
+                    break;
+
+               case (timeSince >= 630):
+                    time = "Chat started 10+ minutes ago";
+                    break;
+          }
+
+          var listItem = `<li class="call">
+                              <a href="/dispatcher/chat-dashboard?id=${chat['_id']}&room=${chat['room']}&chat=true">
+                                   <img src="../media/img/call_btn.svg" alt="phone icon">
+                                   <p>${time}</p>
+                              </a>
+                         </li>`;
+          
+          container.insertAdjacentHTML("afterbegin", listItem);
+     });
 }
-
-
-
-

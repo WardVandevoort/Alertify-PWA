@@ -1,14 +1,29 @@
-.create-call-btn{
-     background-color: $green;
-     padding-left: 1.5vw;
-     padding-right: 1.5vw;
-     padding-top: 0.5vw;
-     padding-bottom: 0.5vw;
-     border-radius: 50px;
-     font-size: 1.2vw;
-     color: $white;
-     text-decoration: none;
-     z-index: 0;
+.index-banner{
+     display: flex;
+     justify-content: space-between;
+     //background-color: $darkRed;
+     background-color: $white;
+     border-bottom: 4px solid $red;
+     padding-left: 2vw;
+     padding-right: 2vw;
+     margin-bottom: 2vw;
+     .index-title{
+          color: $red;
+     }
+     .create-call-btn{
+          background-color: $red;
+          padding-left: 1.5vw;
+          padding-right: 1.5vw;
+          padding-top: 0.5vw;
+          padding-bottom: 0.5vw;
+          margin-top: 1.5vw;
+          margin-bottom: 1.5vw;
+          border-radius: 50px;
+          font-size: 1.2vw;
+          color: $white;
+          text-decoration: none;
+          z-index: 0;
+     }
 }
 .calls-container{
      padding-left: 0;

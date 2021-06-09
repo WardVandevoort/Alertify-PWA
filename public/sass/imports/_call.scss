@@ -30,15 +30,25 @@
           width: 100%;
           object-fit: cover;
      }
-     #animation{
+     .animation-wrapper{
           position: absolute;
-          top: 0;
+          overflow: hidden;
+          top: 10vw;
           left: 0;
           right: 0;
-          width: 80%;
-          height: 80vw;
+          width: 80vw;
+          height: 140vw;
           margin-left: auto;
           margin-right: auto;
+          #animation{
+               width: 230vw;
+               position: absolute;
+               top: -9999px;
+               bottom: -9999px;
+               left: -9999px;
+               right: -9999px;
+               margin: auto;
+          }
      }
      .footer{
           position: absolute;

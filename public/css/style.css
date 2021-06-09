@@ -268,15 +268,24 @@ nav {
     height: 100%;
     width: 100%;
     object-fit: cover; }
-  .video-container #animation {
+  .video-container .animation-wrapper {
     position: absolute;
-    top: 0;
+    overflow: hidden;
+    top: 10vw;
     left: 0;
     right: 0;
-    width: 80%;
-    height: 80vw;
+    width: 80vw;
+    height: 140vw;
     margin-left: auto;
     margin-right: auto; }
+    .video-container .animation-wrapper #animation {
+      width: 230vw;
+      position: absolute;
+      top: -9999px;
+      bottom: -9999px;
+      left: -9999px;
+      right: -9999px;
+      margin: auto; }
   .video-container .footer {
     position: absolute;
     bottom: 0;
@@ -306,17 +315,29 @@ nav {
 .error-message {
   color: #910B0B; }
 
-.create-call-btn {
-  background-color: #329862;
-  padding-left: 1.5vw;
-  padding-right: 1.5vw;
-  padding-top: 0.5vw;
-  padding-bottom: 0.5vw;
-  border-radius: 50px;
-  font-size: 1.2vw;
-  color: #FFFFFF;
-  text-decoration: none;
-  z-index: 0; }
+.index-banner {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  border-bottom: 4px solid #910B0B;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin-bottom: 2vw; }
+  .index-banner .index-title {
+    color: #910B0B; }
+  .index-banner .create-call-btn {
+    background-color: #910B0B;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+    border-radius: 50px;
+    font-size: 1.2vw;
+    color: #FFFFFF;
+    text-decoration: none;
+    z-index: 0; }
 
 .calls-container {
   padding-left: 0;
@@ -1225,6 +1246,8 @@ nav {
     font-size: 4.5vw;
     border: 1px solid #FFFFFF;
     border-radius: 50px; }
+.video-container .chat-animation {
+  top: 19vw; }
 
 .chat-dashboard-body .dashboard-chat-footer {
   position: absolute;
@@ -1289,6 +1312,21 @@ nav {
   .chat-dashboard-body .dashboard-chat-container .remote-message {
     align-self: flex-start;
     background-color: #910B0B;
+    color: #FFFFFF; }
+.chat-dashboard-body .new-message {
+  position: absolute;
+  top: 0.5vw;
+  left: 0;
+  right: 0;
+  width: 19vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.8vw;
+  padding-right: 1vw;
+  z-index: 6;
+  background-color: #910B0B;
+  border-radius: 50px; }
+  .chat-dashboard-body .new-message p {
     color: #FFFFFF; }
 
 body {

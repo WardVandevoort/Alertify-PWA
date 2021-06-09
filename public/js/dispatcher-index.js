@@ -71,9 +71,9 @@ primus.on("data", (json) => {
           if(json.room == sessionStorage.getItem("roomCreated")){
                joinBtn.style.backgroundColor = "#329862";
                waitingMessage.innerHTML = "User entered call";
-               joinBtn.href = "http://localhost:8000/dispatcher/dashboard?room=" + room;
+               joinBtn.href = "https://alertify-pwa.herokuapp.com/dispatcher/dashboard?room=" + room;
                userJoinedNotification.classList.remove("hidden");
-               userJoinedLink.href = "http://localhost:8000/dispatcher/dashboard?room=" + room;
+               userJoinedLink.href = "https://alertify-pwa.herokuapp.com/dispatcher/dashboard?room=" + room;
           }
      }
 });

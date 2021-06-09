@@ -26,6 +26,8 @@ var userInfo = document.querySelector(".user-info");
 var chatContainer = document.querySelector(".dashboard-chat-container");
 var sendBtn = document.querySelector(".dispatcher-send-btn");
 var chatInput = document.querySelector(".dispatcher-message-input");
+var endCallBtn = document.querySelector(".end-call");
+var newMessage = document.querySelector(".new-message");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -265,6 +267,7 @@ toggleVideo.addEventListener("click", function(){
      if(videoContainer.classList.contains("hidden")){
           videoContainer.classList.remove("hidden");
           chatContainer.classList.remove("hidden");
+          newMessage.classList.add("hidden");
           chatIcon.src = "../media/img/chat-icon.svg";
      }
      else{
@@ -389,6 +392,14 @@ primus.on("data", (json) => {
           var room = sessionStorage.getItem("room");
           if(targetRoom == room){
                UpdateView();
+
+               if(videoContainer.classList.contains("hidden")){
+                    newMessage.classList.remove("hidden");
+               }
           }    
      }
+});
+
+endCallBtn.addEventListener("click", function(){
+     sessionStorage.setItem("chat", false);
 });

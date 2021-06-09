@@ -283,10 +283,6 @@ else if(dispatcher == 1 && chat != "true" ){
      }
 }
 
-if(chat == "true"){
-     sessionStorage.setItem("chat", false);
-}
-
 //Initializing socket.io
 var socket = io.connect();
 

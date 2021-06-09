@@ -166,6 +166,8 @@ endChat.addEventListener("click", function(){
      primus.write({
           "action": "Update chats",
      });
+     
+     sessionStorage.setItem("chat", false);
 
      window.location.href = "/";
 });

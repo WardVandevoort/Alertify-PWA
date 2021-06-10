@@ -1,6 +1,6 @@
 const staticAlertify = "alertify-pwa"
 const assets = [
-  "public/media",
+  "/media",
 ]
 
 self.addEventListener("install", installEvent => {

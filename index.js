@@ -38,10 +38,6 @@ app.get("/login.html", function(req, res){
 	res.render("login.html");
 });
 
-app.get("/manifest.webmanifest", function(req, res){
-	res.render("manifest.webmanifest");
-});
-
 app.get("/dispatcher/login.html", function(req, res){
 	res.render("/dispatcher/login.html");
 });

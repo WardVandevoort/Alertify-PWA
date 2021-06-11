@@ -38,6 +38,14 @@ app.get("/login.html", function(req, res){
 	res.render("login.html");
 });
 
+app.get("/profile.html", function(req, res){
+	res.render("profile.html");
+});
+
+app.get("/profile/medical-info.html", function(req, res){
+	res.render("/profile/medical-info.html");
+});
+
 app.get("/dispatcher/login.html", function(req, res){
 	res.render("/dispatcher/login.html");
 });
@@ -192,3 +200,7 @@ app.get("/show_active_chats", controller.showActiveChats);
 app.put("/update_chat", controller.updateChat);
 
 app.post("/get_current_chat", controller.getCurrentChat);
+
+app.put("/update_user_data", controller.updateUserData);
+
+app.put("/update_medical_data", controller.updateMedicalData);

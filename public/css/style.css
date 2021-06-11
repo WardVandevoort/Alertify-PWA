@@ -206,13 +206,13 @@ nav {
     #profile-view .profile-container .gen-info {
       margin-left: 8vw;
       padding-top: 2vw;
-      padding-bottom: 3vw; }
+      padding-bottom: 1vw; }
     #profile-view .profile-container .contact-info {
       margin-left: 8vw;
-      padding-bottom: 3vw; }
+      padding-bottom: 1vw; }
     #profile-view .profile-container .location-info {
       margin-left: 8vw;
-      padding-bottom: 3vw; }
+      padding-bottom: 1vw; }
   #profile-view .med-info {
     margin-left: 8vw; }
     #profile-view .med-info .medical {
@@ -664,7 +664,7 @@ nav {
   .title-button #medical-info {
     grid-area: h1;
     text-align: center;
-    margin-left: 25vw;
+    margin-left: 20vw;
     padding-top: 6vw; }
   .title-button #med-info-edit {
     grid-area: btn;
@@ -718,7 +718,8 @@ nav {
       width: 20px; }
 
 #personal-info-change {
-  background-color: #ECECEC; }
+  background-color: #ECECEC;
+  padding-bottom: 20vw; }
   #personal-info-change .profile-container {
     padding-top: 10vw; }
     #personal-info-change .profile-container .title-button {
@@ -758,7 +759,7 @@ nav {
     #change-med-body .title-button #medical-info {
       grid-area: h1;
       text-align: center;
-      margin-left: 25vw;
+      margin-left: 20vw;
       padding-top: 6vw; }
     #change-med-body .title-button #med-info-save {
       grid-area: btn;
@@ -839,6 +840,9 @@ nav {
       padding-top: 23vw; }
   #add-ice-contact-body .ice-contact {
     padding-left: 12vw; }
+
+#settings-top-nav nav .logo-favicon-topnav-settings {
+  margin-left: 6vw; }
 
 #settings-home {
   background-color: #ECECEC;
@@ -921,7 +925,7 @@ nav {
       margin-top: 3vw; }
   #settings-home #version {
     margin-left: 10vw;
-    margin-top: 30vw; }
+    margin-top: 20vw; }
 
 #acces-body {
   background-color: #ECECEC;

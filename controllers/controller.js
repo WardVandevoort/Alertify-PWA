@@ -436,6 +436,180 @@ const getCurrentChat = function(req, res){
 	});
 }
 
+const updateUserData = async function(req, res){
+
+	var user_id = req.body.user_id;
+	var first_name = req.body.first_name;
+	var last_name = req.body.last_name;
+	var date_of_birth = req.body.date_of_birth;
+	var sex = req.body.sex;
+	var telephone_number = req.body.telephone_number;
+	var street = req.body.street;
+	var street_number = req.body.street_number;
+	var city = req.body.city;
+	var postal_code = req.body.postal_code;
+	var province = req.body.province;
+	var password = req.body.password;
+	var email = req.body.email;
+
+	if(password != null && email != null){
+		var salt = await bcrypt.genSalt(12);
+		var hashedPassword = await bcrypt.hash(password, salt);
+		hashedPassword = String(hashedPassword);
+
+		User.findByIdAndUpdate(user_id, { 
+			first_name: first_name, 
+			last_name: last_name,
+			date_of_birth: date_of_birth,
+			sex: sex,
+			telephone_number: telephone_number,
+			street: street,
+			street_number: street_number,
+			city: city,
+			postal_code: postal_code,
+			province: province,
+			password: hashedPassword,
+			email: email,
+			
+			}, (err, doc) => {
+
+			if(err){
+				res.json({
+					status: "Error",
+					message: "User to update could not be retrieved."
+				});
+			}
+	
+			if(!err){
+				res.json({
+					message: doc,
+				});
+			}
+		});
+	}
+	else if(password != null){
+		var salt = await bcrypt.genSalt(12);
+		var hashedPassword = await bcrypt.hash(password, salt);
+		hashedPassword = String(hashedPassword);
+
+		User.findByIdAndUpdate(user_id, { 
+			first_name: first_name, 
+			last_name: last_name,
+			date_of_birth: date_of_birth,
+			sex: sex,
+			telephone_number: telephone_number,
+			street: street,
+			street_number: street_number,
+			city: city,
+			postal_code: postal_code,
+			province: province,
+			password: hashedPassword,
+			
+			}, (err, doc) => {
+
+			if(err){
+				res.json({
+					status: "Error",
+					message: "User to update could not be retrieved."
+				});
+			}
+	
+			if(!err){
+				res.json({
+					message: doc,
+				});
+			}
+		});
+	}
+	else if(email != null){
+
+		User.findByIdAndUpdate(user_id, { 
+			first_name: first_name, 
+			last_name: last_name,
+			date_of_birth: date_of_birth,
+			sex: sex,
+			telephone_number: telephone_number,
+			street: street,
+			street_number: street_number,
+			city: city,
+			postal_code: postal_code,
+			province: province,
+			email: email,
+			
+			}, (err, doc) => {
+
+			if(err){
+				res.json({
+					status: "Error",
+					message: "User to update could not be retrieved."
+				});
+			}
+	
+			if(!err){
+				res.json({
+					message: doc,
+				});
+			}
+		});
+	}
+	else{
+
+		User.findByIdAndUpdate(user_id, { 
+			first_name: first_name, 
+			last_name: last_name,
+			date_of_birth: date_of_birth,
+			sex: sex,
+			telephone_number: telephone_number,
+			street: street,
+			street_number: street_number,
+			city: city,
+			postal_code: postal_code,
+			province: province,
+			
+			}, (err, doc) => {
+
+			if(err){
+				res.json({
+					status: "Error",
+					message: "User to update could not be retrieved."
+				});
+			}
+	
+			if(!err){
+				res.json({
+					message: doc,
+				});
+			}
+		});
+	}
+	
+}
+
+const updateMedicalData = function(req, res){
+
+	var user_id = req.body.user_id;
+	var blood_type = req.body.blood_type;
+	var allergies = req.body.allergies;
+	var medical_conditions = req.body.medical_conditions;
+	var medication = req.body.medication;
+
+	User.findByIdAndUpdate(user_id, { medical_info: { blood_type: blood_type, allergies: allergies, medical_conditions: medical_conditions, medication: medication } }, (err, doc) => {
+
+		if(err){
+			res.json({
+				status: "Error",
+				message: "User to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
 module.exports.register = register;
 module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
@@ -455,3 +629,5 @@ module.exports.userEndedChat = userEndedChat;
 module.exports.showActiveChats = showActiveChats;
 module.exports.updateChat = updateChat;
 module.exports.getCurrentChat = getCurrentChat;
+module.exports.updateUserData = updateUserData;
+module.exports.updateMedicalData = updateMedicalData;

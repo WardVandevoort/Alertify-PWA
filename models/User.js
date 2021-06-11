@@ -15,6 +15,13 @@ const userSchema = new Schema({
 	postal_code: { type: String, default: null },
 	province: { type: String, default: null },
 	profile_completed: { type: Boolean, default: 0 },
+	medical_info: {
+		blood_type: { type: String, default: null },
+		allergies: { type: String, default: null },
+		medical_conditions: { type: String, default: null },
+		medication: { type: String, default: null },
+	},
+	ice_contacts: { type: Array, default: null },
 	created_at: { type: Date, default: Date.now },
 	updated_at: { type: Date, default: Date.now },
 	deleted_at: { type: Date, default: null },

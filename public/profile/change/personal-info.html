@@ -16,26 +16,31 @@
                <h1 id="p-info">
                     Personal information
                </h1>
-               <a href="./../../profile.html"><img src="./../../media/img/save-btn.svg" alt="save button" id="p-info-save">
+               <a id="save-btn" href="#"><img src="./../../media/img/save-btn.svg" alt="save button" id="p-info-save">
                </a>
               
           </div>
           <div class="gen-info">
-               <p>First name: <input type="text" id="fname" name="fname" value="John"></p>
-               <p>last name: <input type="text" id="lname" name="lname" value="Doe"></p>
-               <p>Date of birth: <input type="date" id="bdate" name="bdate" value="01/01/2000"></p>
-               <p>Sex: <span>Male</span></p>
+               <p>First name: <input type="text" id="fname" placeholder="John"></p>
+               <p>last name: <input type="text" id="lname" name="lname" placeholder="Doe"></p>
+               <p>Date of birth: <input type="text" id="bdate" name="bdate" placeholder="dd/mm/jjjj"></p>
+               <p>Sex: <input type="text" id="sex" name="sex" placeholder="Male"></p>
           </div>
 
           <div class="contact-info">
-               <p>Tel: <input type="tel" id="phone" name="phone" value="0470112233"></p>
-               <p>Email: <input type="email" id="email" name="email" value="john.doe@gmail.com"></p>
+               <p>Tel: <input type="tel" id="phone" name="phone" placeholder="0123456789"></p>
+               <p>Email: <input type="email" id="email" name="email" placeholder="john.doe@mail.com"></p>
+               <p id="email-error" class="" style="color: red; line-height: 1.2em;"></p>
+               <p>Password: <input type="password" id="password" name="password" placeholder="******"></p>
+               <p>Confirm password: <input type="password" id="cpassword" name="cpassword" placeholder="******"></p>
+               <p id="password-error" class="" style="color: red; line-height: 1.2em;"></p>
           </div>
           <div class="location-info">
-               <p>Adress: <input type="text" id="lane" name="lane" value="Stationstraat 1"></p>
-               <p>City: <input type="text" id="city" name="city" value="Mechelen"></p>
-               <p>Postalcode: <input type="text" id="postal" name="postal" value="2800"></p>
-               <p>Province/State: <input type="text" id="state" name="state" value="Vlaams-Brabant"></p>
+               <p>Street: <input type="text" id="street" name="street" placeholder="Stationstraat"></p>
+               <p>Street number: <input type="text" id="snumber" name="snumber" placeholder="1"></p>
+               <p>City: <input type="text" id="city" name="city" placeholder="Mechelen"></p>
+               <p>Postalcode: <input type="text" id="postal" name="postal" placeholder="2800"></p>
+               <p>Province/State: <input type="text" id="state" name="state" placeholder="Antwerpen"></p>
           </div>
      </section>
 
@@ -43,6 +48,8 @@
           <script src="./../../js/nav.js"></script>
      </div>
 
+     <script src="../../js/logged-in-check.js"></script>
      <script src="./../../js/active-link.js"></script>
+     <script src="../../js/personal-info.js"></script>
 </body>
 </html>

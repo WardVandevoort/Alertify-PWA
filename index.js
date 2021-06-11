@@ -46,6 +46,10 @@ app.get("/profile/medical-info.html", function(req, res){
 	res.render("/profile/medical-info.html");
 });
 
+app.get("/profile/ice-contacts.html", function(req, res){
+	res.render("/profile/ice-contacts.html");
+});
+
 app.get("/dispatcher/login.html", function(req, res){
 	res.render("/dispatcher/login.html");
 });
@@ -204,3 +208,5 @@ app.post("/get_current_chat", controller.getCurrentChat);
 app.put("/update_user_data", controller.updateUserData);
 
 app.put("/update_medical_data", controller.updateMedicalData);
+
+app.put("/add_ice_contact", controller.addIceContact);

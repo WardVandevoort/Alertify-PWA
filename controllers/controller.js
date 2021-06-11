@@ -610,6 +610,30 @@ const updateMedicalData = function(req, res){
 	});
 }
 
+const addIceContact = function(req, res){
+
+	var user_id = req.body.user_id;
+	var first_name = req.body.first_name;
+	var last_name = req.body.last_name;
+	var relation = req.body.relation;
+	var telephone_number = req.body.telephone_number;
+
+	User.findByIdAndUpdate(user_id, { $push: { ice_contacts: { first_name: first_name, last_name: last_name, relation: relation, telephone_number: telephone_number } } }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "User to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
 module.exports.register = register;
 module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
@@ -631,3 +655,4 @@ module.exports.updateChat = updateChat;
 module.exports.getCurrentChat = getCurrentChat;
 module.exports.updateUserData = updateUserData;
 module.exports.updateMedicalData = updateMedicalData;
+module.exports.addIceContact = addIceContact;

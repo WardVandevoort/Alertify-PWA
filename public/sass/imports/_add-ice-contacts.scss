@@ -18,8 +18,12 @@
             padding-top: 23vw;
         }
     }
-    .ice-contact{
-        padding-left: 12vw;
-        
+    .ice-contacts-container{
+        margin-left: 12vw;
+        margin-right: 12vw;
+        .ice-contact{
+            line-height: 0.6;
+            border-bottom: 3px solid $darkRed;
+        }
     }
 }

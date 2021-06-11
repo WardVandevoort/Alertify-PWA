@@ -1,5 +1,6 @@
 #ice-contacts-body{
     background-color: $backgroundGrey;
+    padding-bottom: 28vw;
     .title-button{
         display: grid;
         grid-template-columns: 1fr 0.5fr;
@@ -18,16 +19,13 @@
             padding-top: 23vw;
         }
     }
-    .ice-dummy{
-        padding-left: 12vw;
-        line-height: 0.6;
-    }
-    .bottom-line{
-        width: 80%;
-        height: 3px;
-        background-color: $darkRed;
-        margin-left: auto;
-        margin-right: auto;      
+    .ice-contacts-container{
+        margin-left: 12vw;
+        margin-right: 12vw;
+        .ice-contact{
+            line-height: 0.6;
+            border-bottom: 3px solid $darkRed;
+        }
     }
     .addbutton{
         text-align: center;

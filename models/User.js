@@ -21,7 +21,14 @@ const userSchema = new Schema({
 		medical_conditions: { type: String, default: null },
 		medication: { type: String, default: null },
 	},
-	ice_contacts: { type: Array, default: null },
+	ice_contacts: [
+		{
+			first_name: { type: String, default: null },
+			last_name: { type: String, default: null },
+			relation: { type: String, default: null },
+			telephone_number: { type: String, default: null },
+		},
+	],
 	created_at: { type: Date, default: Date.now },
 	updated_at: { type: Date, default: Date.now },
 	deleted_at: { type: Date, default: null },

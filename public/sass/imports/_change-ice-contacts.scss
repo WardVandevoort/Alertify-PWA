@@ -18,23 +18,20 @@
             padding-top: 23vw;
         }
     }
-    .ice-contact{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        gap: 0px 0px;
-        grid-template-areas:
-          "icedummy deletebtn";
-    }
-    .ice-dummy{
-        padding-left: 12vw;
-        line-height: 0.6;
-        grid-area: icedummy;
-    }
-    .delete-btn{
-        grid-area: deletebtn;
-        text-align: center;
-        padding-top: 20vw;
+    .ice-contacts-container{
+        margin-left: 12vw;
+        margin-right: 12vw;
+        .ice-contact{
+            line-height: 0.6;
+            border-bottom: 3px solid $darkRed;
+            margin-bottom: 4vw;
+            .delete-btn{
+                text-align: center;
+                padding-top: 4vw;
+                font-weight: bold;
+                color: $darkRed;
+            }
+        }
     }
     .bottom-line{
         width: 80%;

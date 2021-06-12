@@ -30,7 +30,7 @@ else if(window.location.href.indexOf("/profile") > -1){
      `);
 
 }
-else if(window.location.href.indexOf("settings") > -1){
+else if(window.location.href.indexOf("Settings") > -1){
      console.log("settings");
      document.write(`
      <nav class="topnav-info">

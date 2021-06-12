@@ -1,3 +1,23 @@
+.animation-wrapper{
+     position: absolute;
+     overflow: hidden;
+     top: 10vw;
+     left: 0;
+     right: 0;
+     width: 80vw;
+     height: 140vw;
+     margin-left: auto;
+     margin-right: auto;
+     #animation{
+          width: 230vw;
+          position: absolute;
+          top: -9999px;
+          bottom: -9999px;
+          left: -9999px;
+          right: -9999px;
+          margin: auto;
+     }
+}
 .video-container{
      height: 100vh;
      width: 100vw;
@@ -29,26 +49,6 @@
           height: 100%;
           width: 100%;
           object-fit: cover;
-     }
-     .animation-wrapper{
-          position: absolute;
-          overflow: hidden;
-          top: 10vw;
-          left: 0;
-          right: 0;
-          width: 80vw;
-          height: 140vw;
-          margin-left: auto;
-          margin-right: auto;
-          #animation{
-               width: 230vw;
-               position: absolute;
-               top: -9999px;
-               bottom: -9999px;
-               left: -9999px;
-               right: -9999px;
-               margin: auto;
-          }
      }
      .footer{
           position: absolute;

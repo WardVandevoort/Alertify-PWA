@@ -1,0 +1,23 @@
+.course-h1{
+     margin-top: 15vw;
+}
+.course-animation-wrapper{
+     position: absolute;
+     overflow: hidden;
+     top: 32vw;
+     left: 0;
+     right: 0;
+     width: 60vw;
+     height: 140vw;
+     margin-left: auto;
+     margin-right: auto;
+     #animation{
+          width: 180vw;
+          position: absolute;
+          top: -9999px;
+          bottom: -9999px;
+          left: -9999px;
+          right: -9999px;
+          margin: auto;
+     }
+}

@@ -1357,6 +1357,77 @@ nav {
     right: -9999px;
     margin: auto; }
 
+.user-login-body {
+  background-image: url(../../media/img/login-heartbeat-icon.svg), url(../../media/img/login-circle-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain, 500%;
+  background-position: 0 0, 30% -25%;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  padding-top: 24vw; }
+  .user-login-body .login-form {
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 4vw;
+    padding-bottom: 4vw; }
+    .user-login-body .login-form h1 {
+      font-size: 10vw;
+      font-weight: 100;
+      margin-top: 0; }
+      .user-login-body .login-form h1 span {
+        color: #E20B17;
+        font-size: 16vw; }
+    .user-login-body .login-form h2 {
+      font-weight: 100;
+      margin-bottom: 3vw; }
+    .user-login-body .login-form .login-input {
+      font-size: 4.5vw;
+      padding-top: 1vw;
+      padding-bottom: 1vw;
+      padding-left: 8vw;
+      padding-right: 1vw;
+      border: 2px solid gray;
+      border-radius: 10px; }
+    .user-login-body .login-form #email {
+      background-image: url(../../media/img/login-user-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 3% 50%; }
+    .user-login-body .login-form #password {
+      background-image: url(../../media/img/login-lock-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 4% 50%;
+      margin-top: 5vw;
+      margin-bottom: 3vw; }
+    .user-login-body .login-form ::placeholder {
+      color: #000000;
+      opacity: 1; }
+    .user-login-body .login-form #forgot-password {
+      text-decoration: none;
+      color: #E20B17;
+      font-size: 4.5vw; }
+    .user-login-body .login-form #submit {
+      display: block;
+      text-decoration: none;
+      color: #FFFFFF;
+      font-size: 5.5vw;
+      background-color: #E20B17;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 7vw;
+      margin-bottom: 7vw;
+      border-radius: 20px;
+      padding-left: 18vw;
+      padding-right: 18vw;
+      padding-top: 1vw;
+      padding-bottom: 1vw; }
+    .user-login-body .login-form #new-user {
+      font-size: 4.5vw; }
+      .user-login-body .login-form #new-user a {
+        text-decoration: none;
+        color: #E20B17; }
+
 body {
   font-family: 'Nunito', sans-serif;
   margin: 0; }

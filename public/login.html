@@ -19,24 +19,25 @@
      <meta name="apple-mobile-web-app-status-bar" content="#ffffff" />
      <meta name="theme-color" content="#ffffff" />
 </head>
-<body>
+<body class="user-login-body">
      <section class="login-form">
-          <h2>Login</h2>
+          <h1>Welcome to <br><span>Alertify</span></h1>
+
+          <h2>Login to continue</h2>
 
           <div class="email">
-               <label for="email">Email address</label>
-               <input type="text" name="email" id="email">
+               <input type="text" name="email" id="email" class="login-input" placeholder="Email address">
                <span class="error-message" id="email_error"></span>
           </div>
 
           <div class="password">
-               <label for="password">Password</label>
-               <input type="password" name="password" id="password">
+               <input type="password" name="password" id="password" class="login-input" placeholder="Password">
                <span class="error-message" id="password_error"></span>
           </div>
 
-          <a id="submit" href="#">Login</a>
-          <a href="register.html">Don't have an account yet?</a>
+          <a href="#" id="forgot-password">Forgot password?</a>
+          <a id="submit" href="#">LOGIN</a>
+          <p id="new-user">New user? <a href="register.html">Sign up</a></p>
      </section>
 
      <script src="js/login.js"></script>

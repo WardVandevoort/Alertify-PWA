@@ -1,0 +1,88 @@
+.dispatcher-login-body{
+     background-image: url(../../media/img/dispatcher-login-bg.png);
+     background-repeat: no-repeat;
+     background-size: fill;
+     background-position: 60% 38%;
+     .dispatcher-overlay{
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: rgba($red, 0.5);
+          height: 100%;
+          width: 100%;
+     }
+     .dispatcher-login-form{
+          position: absolute;
+          top: 7vw;
+          left: 18vw;
+          background-color: $white;
+          border-radius: 30px;
+          text-align: center;
+          padding-top: 2vw;
+          padding-bottom: 2vw;
+          width: fit-content;
+          padding-left: 2vw;
+          padding-right: 2vw;
+          h1{
+               font-size: 2vw;
+               font-weight: 100;
+               margin-top: 0;
+               span{
+                    color: $topnavRed;
+                    font-size: 3.5vw;
+               }
+          }
+          h2{
+               font-weight: 100;
+               margin-bottom: 1.2vw;
+               margin-top: 3vw;
+          }
+          .dispatcher-login-input{
+               font-size: 1.2vw;
+               padding-top: 0.5vw;
+               padding-bottom: 0.5vw;
+               padding-left: 2.2vw;
+               padding-right: 1vw;
+               border: 2px solid gray;
+               border-radius: 10px;
+          }
+          #email{
+               background-image: url(../../media/img/login-email-icon.svg);
+               background-repeat: no-repeat;
+               background-position: 3% 50%;
+          }
+          #password{
+               background-image: url(../../media/img/login-lock-icon.svg);
+               background-repeat: no-repeat;
+               background-position: 4% 50%;
+               margin-top: 1.5vw;
+               margin-bottom: 1.5vw;
+          }
+          ::placeholder { 
+               color: #000000;
+               opacity: 1; 
+          }
+          #forgot-password{
+               text-decoration: none;
+               color: $topnavRed;
+               font-size: 1.2vw;
+          }
+          #submit{
+               display: block;
+               text-decoration: none;
+               color: $white;
+               font-size: 1.2vw;
+               background-color: $topnavRed;
+               width: fit-content;
+               margin-left: auto;
+               margin-right: auto;
+               margin-top: 2vw;
+               margin-bottom: 0.5vw;
+               border-radius: 30px;
+               padding-left: 4vw;
+               padding-right: 4vw;
+               padding-top: 0.5vw;
+               padding-bottom: 0.5vw;
+          }
+     }
+}

@@ -316,6 +316,84 @@ nav {
 .error-message {
   color: #910B0B; }
 
+.user-register-body {
+  background-image: url(../../media/img/login-heartbeat-icon.svg), url(../../media/img/login-circle-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain, 500%;
+  background-position: 0 0, 30% -25%;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  padding-top: 24vw; }
+  .user-register-body .register-form {
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 4vw;
+    padding-bottom: 4vw; }
+    .user-register-body .register-form h1 {
+      font-size: 7vw;
+      font-weight: 100;
+      margin-top: 0; }
+      .user-register-body .register-form h1 span {
+        color: #E20B17;
+        font-size: 16vw; }
+    .user-register-body .register-form .register-input {
+      font-size: 4.5vw;
+      padding-top: 1vw;
+      padding-bottom: 1vw;
+      padding-left: 8vw;
+      padding-right: 1vw;
+      border: 2px solid gray;
+      border-radius: 10px; }
+    .user-register-body .register-form #first_name {
+      background-image: url(../../media/img/login-user-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 3% 50%;
+      margin-bottom: 5vw; }
+    .user-register-body .register-form #last_name {
+      background-image: url(../../media/img/login-user-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 3% 50%;
+      margin-bottom: 5vw; }
+    .user-register-body .register-form #email {
+      background-image: url(../../media/img/login-email-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 3% 50%;
+      margin-bottom: 5vw; }
+    .user-register-body .register-form #password {
+      background-image: url(../../media/img/login-lock-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 4% 50%;
+      margin-bottom: 5vw; }
+    .user-register-body .register-form #confirm_password {
+      background-image: url(../../media/img/login-lock-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 4% 50%; }
+    .user-register-body .register-form ::placeholder {
+      color: #000000;
+      opacity: 1; }
+    .user-register-body .register-form #submit {
+      display: block;
+      text-decoration: none;
+      color: #FFFFFF;
+      font-size: 5.5vw;
+      background-color: #E20B17;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 7vw;
+      margin-bottom: 7vw;
+      border-radius: 20px;
+      padding-left: 18vw;
+      padding-right: 18vw;
+      padding-top: 1vw;
+      padding-bottom: 1vw; }
+    .user-register-body .register-form #already-user {
+      font-size: 4.5vw; }
+      .user-register-body .register-form #already-user a {
+        text-decoration: none;
+        color: #E20B17; }
+
 .index-banner {
   display: flex;
   justify-content: space-between;
@@ -1390,7 +1468,7 @@ nav {
       border: 2px solid gray;
       border-radius: 10px; }
     .user-login-body .login-form #email {
-      background-image: url(../../media/img/login-user-icon.svg);
+      background-image: url(../../media/img/login-email-icon.svg);
       background-repeat: no-repeat;
       background-position: 3% 50%; }
     .user-login-body .login-form #password {
@@ -1427,6 +1505,83 @@ nav {
       .user-login-body .login-form #new-user a {
         text-decoration: none;
         color: #E20B17; }
+
+.dispatcher-login-body {
+  background-image: url(../../media/img/dispatcher-login-bg.png);
+  background-repeat: no-repeat;
+  background-size: fill;
+  background-position: 60% 38%; }
+  .dispatcher-login-body .dispatcher-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(145, 11, 11, 0.5);
+    height: 100%;
+    width: 100%; }
+  .dispatcher-login-body .dispatcher-login-form {
+    position: absolute;
+    top: 7vw;
+    left: 18vw;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    width: fit-content;
+    padding-left: 2vw;
+    padding-right: 2vw; }
+    .dispatcher-login-body .dispatcher-login-form h1 {
+      font-size: 2vw;
+      font-weight: 100;
+      margin-top: 0; }
+      .dispatcher-login-body .dispatcher-login-form h1 span {
+        color: #E20B17;
+        font-size: 3.5vw; }
+    .dispatcher-login-body .dispatcher-login-form h2 {
+      font-weight: 100;
+      margin-bottom: 1.2vw;
+      margin-top: 3vw; }
+    .dispatcher-login-body .dispatcher-login-form .dispatcher-login-input {
+      font-size: 1.2vw;
+      padding-top: 0.5vw;
+      padding-bottom: 0.5vw;
+      padding-left: 2.2vw;
+      padding-right: 1vw;
+      border: 2px solid gray;
+      border-radius: 10px; }
+    .dispatcher-login-body .dispatcher-login-form #email {
+      background-image: url(../../media/img/login-email-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 3% 50%; }
+    .dispatcher-login-body .dispatcher-login-form #password {
+      background-image: url(../../media/img/login-lock-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 4% 50%;
+      margin-top: 1.5vw;
+      margin-bottom: 1.5vw; }
+    .dispatcher-login-body .dispatcher-login-form ::placeholder {
+      color: #000000;
+      opacity: 1; }
+    .dispatcher-login-body .dispatcher-login-form #forgot-password {
+      text-decoration: none;
+      color: #E20B17;
+      font-size: 1.2vw; }
+    .dispatcher-login-body .dispatcher-login-form #submit {
+      display: block;
+      text-decoration: none;
+      color: #FFFFFF;
+      font-size: 1.2vw;
+      background-color: #E20B17;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2vw;
+      margin-bottom: 0.5vw;
+      border-radius: 30px;
+      padding-left: 4vw;
+      padding-right: 4vw;
+      padding-top: 0.5vw;
+      padding-bottom: 0.5vw; }
 
 body {
   font-family: 'Nunito', sans-serif;

@@ -4,3 +4,95 @@
 .error-message{
      color: $red;
 }
+
+.user-register-body{
+     background-image: url(../../media/img/login-heartbeat-icon.svg), url(../../media/img/login-circle-icon.svg);
+     background-repeat: no-repeat;
+     background-size: contain, 500%;
+     background-position: 0 0, 30% -25%;
+     padding-left: 8vw;
+     padding-right: 8vw;
+     padding-top: 24vw;
+     .register-form{
+          background-color: $white;
+          border-radius: 30px;
+          text-align: center;
+          padding-top: 4vw;
+          padding-bottom: 4vw;
+          h1{
+               font-size: 7vw;
+               font-weight: 100;
+               margin-top: 0;
+               span{
+                    color: $topnavRed;
+                    font-size: 16vw;
+               }
+          }
+          .register-input{
+               font-size: 4.5vw;
+               padding-top: 1vw;
+               padding-bottom: 1vw;
+               padding-left: 8vw;
+               padding-right: 1vw;
+               border: 2px solid gray;
+               border-radius: 10px;
+          }
+          #first_name{
+               background-image: url(../../media/img/login-user-icon.svg);
+               background-repeat: no-repeat;
+               background-position: 3% 50%;
+               margin-bottom: 5vw;
+          }
+          #last_name{
+               background-image: url(../../media/img/login-user-icon.svg);
+               background-repeat: no-repeat;
+               background-position: 3% 50%;
+               margin-bottom: 5vw;
+          }
+          #email{
+               background-image: url(../../media/img/login-email-icon.svg);
+               background-repeat: no-repeat;
+               background-position: 3% 50%;
+               margin-bottom: 5vw;
+          }
+          #password{
+               background-image: url(../../media/img/login-lock-icon.svg);
+               background-repeat: no-repeat;
+               background-position: 4% 50%;
+               margin-bottom: 5vw;
+          }
+          #confirm_password{
+               background-image: url(../../media/img/login-lock-icon.svg);
+               background-repeat: no-repeat;
+               background-position: 4% 50%;
+          }
+          ::placeholder { 
+               color: #000000;
+               opacity: 1; 
+          }
+          #submit{
+               display: block;
+               text-decoration: none;
+               color: $white;
+               font-size: 5.5vw;
+               background-color: $topnavRed;
+               width: fit-content;
+               margin-left: auto;
+               margin-right: auto;
+               margin-top: 7vw;
+               margin-bottom: 7vw;
+               border-radius: 20px;
+               padding-left: 18vw;
+               padding-right: 18vw;
+               padding-top: 1vw;
+               padding-bottom: 1vw;
+          }
+          #already-user{
+               font-size: 4.5vw;
+               a{
+                    text-decoration: none;
+                    color: $topnavRed;
+               }
+          }
+     }
+}

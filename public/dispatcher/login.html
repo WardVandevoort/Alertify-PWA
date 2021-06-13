@@ -7,25 +7,28 @@
      <title>Alertify | Admin login</title>
      <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-     <section class="login-form">
-          <h2>Dispatcher login</h2>
+<body class="dispatcher-login-body">
+     <section class="dispatcher-overlay">
+          <section class="dispatcher-login-form">
+               <h1>Powered by<br><span>Alertify</span></h1>
 
-          <div class="email">
-               <label for="email">Email address</label>
-               <input type="text" name="email" id="email">
-               <span class="error-message" id="email_error"></span>
-          </div>
+               <h2>Employees only</h2>
 
-          <div class="password">
-               <label for="password">Password</label>
-               <input type="password" name="password" id="password">
-               <span class="error-message" id="password_error"></span>
-          </div>
+               <div class="email">
+                    <input type="text" name="email" id="email" class="dispatcher-login-input" placeholder="Email address">
+                    <span class="error-message" id="email_error"></span>
+               </div>
 
-          <a id="submit" href="#">Login</a>
+               <div class="password">
+                    <input type="password" name="password" id="password" class="dispatcher-login-input" placeholder="Password">
+                    <span class="error-message" id="password_error"></span>
+               </div>
+
+               <a href="#" id="forgot-password">Forgot password?</a>
+               <a id="submit" href="#">LOGIN</a>
+          </section>
      </section>
-
+     
      <script src="../js/dispatcher-login.js"></script>
 </body>
 </html>

@@ -28,6 +28,7 @@ var sendBtn = document.querySelector(".dispatcher-send-btn");
 var chatInput = document.querySelector(".dispatcher-message-input");
 var endCallBtn = document.querySelector(".end-call");
 var newMessage = document.querySelector(".new-message");
+var userLeft = document.querySelector(".user-left-chat");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -401,5 +402,18 @@ primus.on("data", (json) => {
 });
 
 endCallBtn.addEventListener("click", function(){
+     primus.write({
+          "action": "Dispatcher left chat",
+          "room": sessionStorage.getItem("room"),
+     });
+
      sessionStorage.setItem("chat", false);
+});
+
+primus.on("data", (json) => {
+     if(json.action === "User left chat"){
+          if(json.room == sessionStorage.getItem("room")){
+               userLeft.classList.remove("hidden");
+          }   
+     }
 });

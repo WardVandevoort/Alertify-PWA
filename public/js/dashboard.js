@@ -23,6 +23,8 @@ var animationName = document.querySelector(".animation-name");
 var animationStopped = document.querySelector(".animation-stopped");
 var animationEnded = document.querySelector(".animation-ended");
 var userInfo = document.querySelector(".user-info");
+var userLeft = document.querySelector(".user-left-call");
+var endCall = document.querySelector(".end-call");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -281,4 +283,19 @@ primus.on("data", (json) => {
                }, 3000) 
           }   
      }
+});
+
+primus.on("data", (json) => {
+     if(json.action === "User left call"){
+          if(json.room == sessionStorage.getItem("room")){
+               userLeft.classList.remove("hidden");
+          }   
+     }
+});
+
+endCall.addEventListener("click", function(){
+     primus.write({
+          "action": "Dispatcher left call",
+          "room": sessionStorage.getItem("room"),
+     });
 });

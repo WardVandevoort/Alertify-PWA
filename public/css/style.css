@@ -241,6 +241,9 @@ nav {
       grid-area: img;
       margin-left: -4vw; }
 
+.call-body {
+  background-color: #000000; }
+
 .animation-wrapper {
   position: absolute;
   overflow: hidden;
@@ -267,12 +270,14 @@ nav {
     position: absolute;
     z-index: 10;
     top: 0;
+    left: 0;
+    right: 0;
     background-color: #FFFFFF;
     width: 84vw;
     padding-left: 2vw;
     padding-right: 2vw;
-    margin-left: 6vw;
-    margin-right: 6vw;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 3vh;
     border-radius: 20px;
     text-align: center; }
@@ -283,6 +288,9 @@ nav {
     background-color: #910B0B; }
   .video-container .second-notification {
     background-color: #329862; }
+  .video-container .dispatcher-left-call {
+    background-color: #910B0B;
+    width: 60vw; }
   .video-container .user-video {
     height: 100%;
     width: 100%;
@@ -452,6 +460,24 @@ nav {
         color: #FFFFFF;
         margin: auto; }
 
+.no-calls-notification {
+  position: absolute;
+  top: 16vw;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  font-size: 1.2vw;
+  color: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  z-index: 2;
+  background-color: #910B0B;
+  border-radius: 50px; }
+
 .user-joined-notification {
   position: absolute;
   top: 0.5vw;
@@ -473,7 +499,7 @@ nav {
     font-size: 1.2vw; }
 
 .overlay {
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   left: 0;
   top: 0;
@@ -662,6 +688,21 @@ nav {
     background-color: #329862;
     border-radius: 50px; }
     .dashboard-body .animation-ended p {
+      color: #FFFFFF; }
+  .dashboard-body .user-left-call {
+    position: absolute;
+    top: 0.5vw;
+    left: 0;
+    right: 0;
+    width: 7vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.2vw;
+    padding-right: 1vw;
+    z-index: 6;
+    background-color: #910B0B;
+    border-radius: 50px; }
+    .dashboard-body .user-left-call p {
       color: #FFFFFF; }
   .dashboard-body .dashboard-footer {
     position: absolute;
@@ -1226,6 +1267,9 @@ nav {
       color: white;
       margin-bottom: 5vw; }
 
+.chat-body {
+  background-color: #000000; }
+
 .video-container .user-video {
   position: fixed;
   z-index: 0; }
@@ -1261,12 +1305,14 @@ nav {
   position: absolute;
   z-index: 2;
   top: 16vw;
+  left: 0;
+  right: 0;
   background-color: #FFFFFF;
   width: 84vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  margin-left: 6vw;
-  margin-right: 6vw;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 3vh;
   border-radius: 20px;
   text-align: center; }
@@ -1277,6 +1323,9 @@ nav {
   background-color: #910B0B; }
 .video-container .second-chat-notification {
   background-color: #329862; }
+.video-container .dispatcher-left-chat {
+  background-color: #910B0B;
+  width: 60vw; }
 .video-container #animation {
   z-index: 3; }
 .video-container .chat-nav {
@@ -1365,6 +1414,21 @@ nav {
     padding-right: 1vw;
     border: 2px solid #707070;
     border-radius: 50px; }
+.chat-dashboard-body .user-left-chat {
+  position: absolute;
+  top: 0.5vw;
+  left: 0;
+  right: 0;
+  width: 7.5vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.2vw;
+  padding-right: 1vw;
+  z-index: 6;
+  background-color: #910B0B;
+  border-radius: 50px; }
+  .chat-dashboard-body .user-left-chat p {
+    color: #FFFFFF; }
 .chat-dashboard-body .dashboard-chat-container {
   overflow-x: hidden;
   overflow-y: auto;

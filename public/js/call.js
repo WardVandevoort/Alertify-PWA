@@ -3,6 +3,8 @@ var switchCamera = document.querySelector(".switch-camera");
 var firstNotification = document.querySelector(".first-notification");
 var secondNotification = document.querySelector(".second-notification");
 var animation = document.querySelector("#animation");
+var dispatcherLeft = document.querySelector(".dispatcher-left-call");
+var localVideo = document.querySelector("#localVideo");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -26,7 +28,12 @@ endCall.addEventListener("click", function(){
                'Content-Type': 'application/json'
           },
           body: JSON.stringify(data)
-     })
+     });
+
+     primus.write({
+          "action": "User left call",
+          "room": sessionStorage.getItem("room"),
+     });
 
      primus.write({
           "action": "Update calls",
@@ -50,7 +57,7 @@ primus.on("data", (json) => {
                secondNotification.classList.remove("hidden");
                setTimeout(function(){
                     secondNotification.classList.add("hidden");
-               }, 5000)
+               }, 15000)
           }
      }
 });
@@ -87,6 +94,15 @@ primus.on("data", (json) => {
           if(targetRoom == room){
                animation.classList.add("hidden");
                animation.src = "";  
+          }    
+     }
+});
+
+primus.on("data", (json) => {
+     if(json.action === "Dispatcher left call"){
+          if(json.room == sessionStorage.getItem("room")){
+               dispatcherLeft.classList.remove("hidden");
+               localVideo.classList.add("hidden");
           }    
      }
 });

@@ -1,7 +1,6 @@
 .index-banner{
      display: flex;
      justify-content: space-between;
-     //background-color: $darkRed;
      background-color: $white;
      border-bottom: 4px solid $red;
      padding-left: 2vw;
@@ -64,6 +63,24 @@
           }
      }
 }
+.no-calls-notification{
+     position: absolute;
+     top: 16vw;
+     left: 0; 
+     right: 0; 
+     width: fit-content;
+     font-size: 1.2vw;
+     color: $white;
+     margin-left: auto; 
+     margin-right: auto;
+     padding-left: 1.5vw;
+     padding-right: 1.5vw;
+     padding-top: 0.5vw;
+     padding-bottom: 0.5vw;
+     z-index: 2;
+     background-color: $red;
+     border-radius: 50px;
+}
 .user-joined-notification{
      position: absolute;
      top: 0.5vw;
@@ -86,7 +103,7 @@
      }
 }
 .overlay{
-     z-index: 2;
+     z-index: 3;
      position: absolute;
      left: 0;
      top: 0;

@@ -159,6 +159,23 @@
                color: $white;
           }
      }
+     .user-left-call{
+          position: absolute;
+          top: 0.5vw;
+          left: 0; 
+          right: 0; 
+          width: 7vw;
+          margin-left: auto; 
+          margin-right: auto;
+          padding-left: 1.2vw;
+          padding-right: 1vw;
+          z-index: 6;
+          background-color: $red;
+          border-radius: 50px;
+          p{
+               color: $white;
+          }
+     }
      .dashboard-footer{
           position: absolute;
           bottom: 0;

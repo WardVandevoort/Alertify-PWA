@@ -7,6 +7,7 @@ var joinBtn = document.querySelector(".join-call-btn");
 var waitingMessage = document.querySelector(".waiting-message");
 var userJoinedNotification = document.querySelector(".user-joined-notification");
 var userJoinedLink = document.querySelector(".user-joined-link");
+var noCalls = document.querySelector(".no-calls-notification");
 
 var primus = Primus.connect("/", { 
      reconnect: {
@@ -311,4 +312,11 @@ async function LiveUpdate() {
           
           container.insertAdjacentHTML("afterbegin", listItem);
      });
+     
+     if(calls.length == 0 && chats.length == 0){
+          noCalls.classList.remove("hidden");
+     }
+     else{
+          noCalls.classList.add("hidden");
+     }
 }

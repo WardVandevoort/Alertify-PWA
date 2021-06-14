@@ -5,6 +5,8 @@ var endChat = document.querySelector(".end-call");
 var firstNotification = document.querySelector(".first-chat-notification");
 var secondNotification = document.querySelector(".second-chat-notification");
 var animation = document.querySelector("#animation");
+var dispatcherLeft = document.querySelector(".dispatcher-left-chat");
+var localVideo = document.querySelector("#localVideo");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -23,7 +25,7 @@ primus.on("data", (json) => {
                secondNotification.classList.remove("hidden");
                setTimeout(function(){
                     secondNotification.classList.add("hidden");
-               }, 5000)
+               }, 15000)
           }
      }
 });
@@ -164,10 +166,24 @@ endChat.addEventListener("click", function(){
      })
 
      primus.write({
+          "action": "User left chat",
+          "room": sessionStorage.getItem("room"),
+     });
+
+     primus.write({
           "action": "Update chats",
      });
      
      sessionStorage.setItem("chat", false);
 
      window.location.href = "/";
+});
+
+primus.on("data", (json) => {
+     if(json.action === "Dispatcher left chat"){
+          if(json.room == sessionStorage.getItem("room")){
+               dispatcherLeft.classList.remove("hidden");
+               localVideo.classList.add("hidden");
+          }   
+     }
 });

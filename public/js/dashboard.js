@@ -15,6 +15,7 @@ var contactInfo = document.querySelector(".contact-information");
 var residence = document.querySelector(".residence");
 var animationsContainer = document.querySelector(".animations");
 var toggleVideo = document.querySelector(".toggle-video");
+var video = document.querySelector("#remoteVideo");
 var eyeIcon = document.querySelector(".eye-icon");
 var videoContainer = document.querySelector(".video-container");
 var stopBtn = document.querySelector(".stop-btn");
@@ -252,10 +253,29 @@ contactBtn.addEventListener("click", function(){
 toggleVideo.addEventListener("click", function(){
      if(videoContainer.classList.contains("hidden")){
           videoContainer.classList.remove("hidden");
+          video.classList.remove("small-video");
+          video.classList.add("user-video");
           eyeIcon.src = "../media/img/eye-open-icon.svg";
      }
      else{
           videoContainer.classList.add("hidden");
+          video.classList.remove("user-video");
+          video.classList.add("small-video");
+          eyeIcon.src = "../media/img/eye-closed-icon.svg";
+     }
+});
+
+video.addEventListener("click", function(){
+     if(videoContainer.classList.contains("hidden")){
+          videoContainer.classList.remove("hidden");
+          video.classList.remove("small-video");
+          video.classList.add("user-video");
+          eyeIcon.src = "../media/img/eye-open-icon.svg";
+     }
+     else{
+          videoContainer.classList.add("hidden");
+          video.classList.remove("user-video");
+          video.classList.add("small-video");
           eyeIcon.src = "../media/img/eye-closed-icon.svg";
      }
 });

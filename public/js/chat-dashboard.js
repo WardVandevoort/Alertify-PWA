@@ -15,6 +15,7 @@ var contactInfo = document.querySelector(".contact-information");
 var residence = document.querySelector(".residence");
 var animationsContainer = document.querySelector(".animations");
 var toggleVideo = document.querySelector(".toggle-video");
+var video = document.querySelector("#remoteVideo");
 var chatIcon = document.querySelector(".chat-icon");
 var videoContainer = document.querySelector(".video-container");
 var stopBtn = document.querySelector(".stop-btn");
@@ -269,11 +270,33 @@ toggleVideo.addEventListener("click", function(){
           videoContainer.classList.remove("hidden");
           chatContainer.classList.remove("hidden");
           newMessage.classList.add("hidden");
+          video.classList.remove("small-video");
+          video.classList.add("user-video");
           chatIcon.src = "../media/img/chat-icon.svg";
      }
      else{
           videoContainer.classList.add("hidden");
           chatContainer.classList.add("hidden");
+          video.classList.remove("user-video");
+          video.classList.add("small-video");
+          chatIcon.src = "../media/img/chat-closed-icon.svg";
+     }
+});
+
+video.addEventListener("click", function(){
+     if(videoContainer.classList.contains("hidden")){
+          videoContainer.classList.remove("hidden");
+          chatContainer.classList.remove("hidden");
+          newMessage.classList.add("hidden");
+          video.classList.remove("small-video");
+          video.classList.add("user-video");
+          chatIcon.src = "../media/img/chat-icon.svg";
+     }
+     else{
+          videoContainer.classList.add("hidden");
+          chatContainer.classList.add("hidden");
+          video.classList.remove("user-video");
+          video.classList.add("small-video");
           chatIcon.src = "../media/img/chat-closed-icon.svg";
      }
 });

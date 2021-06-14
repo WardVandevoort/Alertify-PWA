@@ -761,22 +761,21 @@ nav {
     top: 0;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.7); }
-    .dashboard-body .video-container .user-video {
-      position: absolute;
-      z-index: 2;
-      top: 0;
-      left: 0;
-      right: 0;
-      margin-left: auto;
-      margin-right: auto;
-      width: 38vw; }
-
-.small-video {
-  position: absolute;
-  z-index: 2;
-  top: 16.75vw;
-  right: 0;
-  width: 16.75vw; }
+  .dashboard-body .user-video {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 38vw; }
+  .dashboard-body .small-video {
+    position: absolute;
+    z-index: 2;
+    top: 18.75vw;
+    right: 0;
+    width: 16.75vw; }
 
 #medical-info-body {
   background-color: #ECECEC; }
@@ -1659,6 +1658,6 @@ body {
   margin: 0; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 /*# sourceMappingURL=style.css.map */

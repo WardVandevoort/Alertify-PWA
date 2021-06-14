@@ -17,6 +17,17 @@ app.use(express.static('public'))
 //Allow express to use json
 app.use(express.json());
 
+app.enable('trust proxy');
+
+app.use(function(request, response, next) {
+
+	if(process.env.NODE_ENV != 'development' && !request.secure) {
+		return response.redirect("https://alertify-pwa.herokuapp.com/");
+	}
+ 
+	next();
+});
+
 // Connect to db
 const mongoose = require('mongoose');
 mongoose.connect(process.env.dbconnection || config.get("Database.connection"), {
@@ -26,10 +37,6 @@ mongoose.connect(process.env.dbconnection || config.get("Database.connection"), 
 mongoose.set('useFindAndModify', false);
 
 //Define routes 
-http.get('*', function(req, res) {  
-	res.redirect('https://alertify-pwa.herokuapp.com/');
-});
-
 app.get("/call", function(req, res){
 	res.render("call.ejs");
 });

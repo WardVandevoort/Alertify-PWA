@@ -84,6 +84,12 @@ function ValidLogin(data){
           sessionStorage.setItem("id", unpackedData._id);
           sessionStorage.setItem("dispatcher", 0);
 
+          // Create cookie
+          var today = new Date();
+          today.setTime(today.getTime() + (30*24*60*60*1000));
+          var expires = "expires=" + today.toUTCString();
+          document.cookie =  "id=" + unpackedData._id + ";" + expires + ";path=http://localhost:8000/";
+
           // Redirect user to homepage
           window.location.href = "/";
      }

@@ -55,7 +55,12 @@ app.get("/dispatcher/login.html", function(req, res){
 });
 
 app.get("/", function(req, res){
-	res.render("index.html");
+	if (req.protocol == 'http') {
+		res.redirect('https://alertify-pwa.herokuapp.com/');
+	}
+	else{
+		res.render("index.html");
+	}
 });
 
 app.get("/dispatcher/index.html", function(req, res){

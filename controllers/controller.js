@@ -38,7 +38,7 @@ const register = async function(req, res){
 }
 
 const login = async function(req, res){
-	User.findOne({"email": req.body.email}, async (err, docs) => {
+	User.findOne({"email": new RegExp(`^${req.body.email}$`, 'i')}, async (err, docs) => {
 		if(err){
 			res.json({
 				status: "Error",
@@ -66,7 +66,7 @@ const login = async function(req, res){
 }
 
 const dispatcherLogin = async function(req, res){
-	Dispatcher.findOne({"email": req.body.email}, async (err, docs) => {
+	Dispatcher.findOne({"email": new RegExp(`^${req.body.email}$`, 'i')}, async (err, docs) => {
 		if(err){
 			res.json({
 				status: "Error",

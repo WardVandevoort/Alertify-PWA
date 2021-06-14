@@ -35,7 +35,12 @@ app.get("/chat", function(req, res){
 });
 
 app.get("/login.html", function(req, res){
-	res.render("login.html");
+	if (req.protocol == 'http') {
+		res.redirect('https://alertify-pwa.herokuapp.com/');
+	}
+	else{
+		res.render("login.html");
+	}
 });
 
 app.get("/profile.html", function(req, res){
@@ -55,12 +60,7 @@ app.get("/dispatcher/login.html", function(req, res){
 });
 
 app.get("/", function(req, res){
-	if (req.protocol == 'http') {
-		res.redirect('https://alertify-pwa.herokuapp.com/');
-	}
-	else{
-		res.render("index.html");
-	}
+	res.render("index.html");
 });
 
 app.get("/dispatcher/index.html", function(req, res){

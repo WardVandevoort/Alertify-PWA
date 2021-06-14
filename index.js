@@ -11,22 +11,25 @@ const config = require('config');
 //For signalling in WebRTC
 var socketIO = require('socket.io');
 
+app.use((req, res, next) => {
+	if(process.env.NODE_ENV === 'production') {
+		if(req.headers['x-forwarded-proto'] !== 'https'){
+			return res.redirect('https://' + req.headers.host + req.url);
+		}
+		else{
+			return next();
+		}
+	} 
+	else{
+		return next();
+	}
+});
+
 //Define the folder which contains the CSS and JS for the fontend
 app.use(express.static('public'))
 
 //Allow express to use json
 app.use(express.json());
-
-app.enable('trust proxy');
-
-app.use(function(request, response, next) {
-
-	if(process.env.NODE_ENV != 'development' && !request.secure) {
-		return response.redirect("https://alertify-pwa.herokuapp.com/");
-	}
- 
-	next();
-});
 
 // Connect to db
 const mongoose = require('mongoose');

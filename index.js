@@ -26,6 +26,10 @@ mongoose.connect(process.env.dbconnection || config.get("Database.connection"), 
 mongoose.set('useFindAndModify', false);
 
 //Define routes 
+http.get('*', function(req, res) {  
+	res.redirect('https://alertify-pwa.herokuapp.com/');
+});
+
 app.get("/call", function(req, res){
 	res.render("call.ejs");
 });
@@ -35,12 +39,7 @@ app.get("/chat", function(req, res){
 });
 
 app.get("/login.html", function(req, res){
-	if (req.protocol == 'http') {
-		res.redirect('https://alertify-pwa.herokuapp.com/');
-	}
-	else{
-		res.render("login.html");
-	}
+	res.render("login.html");
 });
 
 app.get("/profile.html", function(req, res){

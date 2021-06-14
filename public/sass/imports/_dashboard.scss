@@ -239,7 +239,7 @@
           top: 0;
           z-index: 1;
           background-color: rgba($color: #000000, $alpha: 0.7);
-          #remoteVideo{
+          .user-video{
                position: absolute;
                z-index: 2;
                top: 0;
@@ -250,4 +250,11 @@
                width: 38vw;
           }
      }
+}
+.small-video{
+     position: absolute;
+     z-index: 2;
+     top: 16.75vw;
+     right: 0; 
+     width: 16.75vw;
 }

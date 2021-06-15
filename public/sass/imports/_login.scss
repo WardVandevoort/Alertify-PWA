@@ -6,6 +6,50 @@
      padding-left: 8vw;
      padding-right: 8vw;
      padding-top: 24vw;
+     .install-overlay{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(#000000, 0.5);
+          z-index: 1;
+          .install-notification{
+               position: absolute;
+               top: 35%;
+               left: 0;
+               right: 0;
+               width: fit-content;
+               margin-left: auto;
+               margin-right: auto;
+               z-index: 2;
+               background-color: $white;
+               border-radius: 20px;
+               font-size: 5vw;
+               padding-left: 7vw;
+               padding-right: 7vw;
+               padding-bottom: 7vw;
+               padding-top: 3vw;
+               p{
+                    margin-bottom: 10vw;
+               }
+               .install-btn{
+                    text-decoration: none;
+                    color: $white;
+                    background-color: $green;
+                    padding-left: 3vw;
+                    padding-right: 3vw;
+                    padding-top: 1.5vw;
+                    padding-bottom: 1.5vw;
+                    border-radius: 10px;
+                    margin-right: 3vw;
+               }
+               .end-btn{
+                    text-decoration: none;
+                    color: $grey;
+               }
+          }
+     }
      .login-form{
           background-color: $white;
           border-radius: 30px;

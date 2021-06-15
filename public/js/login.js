@@ -1,6 +1,9 @@
 var submit = document.querySelector("#submit");
 var email = document.querySelector("#email");
 var password = document.querySelector("#password");
+var overlay = document.querySelector(".install-overlay");
+var installBtn = document.querySelector(".install-btn");
+var endBtn = document.querySelector(".end-btn");
 
 var emailError = document.querySelector("#email_error");
 var passwordError = document.querySelector("#password_error");
@@ -108,3 +111,39 @@ if ("serviceWorker" in navigator) {
 		.catch(err => console.log("service worker not registered", err))
 	})
 }
+
+var deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+     e.preventDefault();
+
+     deferredPrompt = e;
+
+     overlay.classList.remove("hidden");
+     
+     showInstallPromotion();
+});
+
+installBtn.addEventListener('click', async () => {
+     
+     hideInstallPromotion();
+     
+     deferredPrompt.prompt();
+     
+     const { outcome } = await deferredPrompt.userChoice;
+     
+     deferredPrompt = null;
+});
+
+window.addEventListener('appinstalled', () => {
+     
+     hideInstallPromotion();
+     
+     deferredPrompt = null;
+
+     overlay.classList.add("hidden");
+});
+
+endBtn.addEventListener("click", function(){
+     overlay.classList.add("hidden");
+});

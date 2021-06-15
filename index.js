@@ -68,6 +68,22 @@ app.get("/dispatcher/login.html", function(req, res){
 	res.render("/dispatcher/login.html");
 });
 
+app.get("/dispatcher/past-calls.html", function(req, res){
+	res.render("/dispatcher/past-calls.html");
+});
+
+app.get("/dispatcher/past-chats.html", function(req, res){
+	res.render("/dispatcher/past-chats.html");
+});
+
+app.get("/dispatcher/user.html", function(req, res){
+	res.render("/dispatcher/user.html");
+});
+
+app.get("/dispatcher/dispatcher.html", function(req, res){
+	res.render("/dispatcher/dispatcher.html");
+});
+
 app.get("/", function(req, res){
 	res.render("index.html");
 });
@@ -224,3 +240,13 @@ app.put("/update_user_data", controller.updateUserData);
 app.put("/update_medical_data", controller.updateMedicalData);
 
 app.put("/add_ice_contact", controller.addIceContact);
+
+app.put("/update_call_notes", controller.updateCallNotes);
+
+app.put("/update_chat_notes", controller.updateChatNotes);
+
+app.post("/get_past_calls", controller.getPastCalls);
+
+app.post("/get_dispatcher_data", controller.getDispatcherData);
+
+app.post("/get_past_chats", controller.getPastChats);

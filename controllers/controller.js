@@ -634,6 +634,118 @@ const addIceContact = function(req, res){
 	});
 }
 
+const updateCallNotes = function(req, res){
+
+	var notes = req.body.notes;
+	var room = req.body.room;
+
+	Call.findOneAndUpdate({ room: room }, { notes: notes }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Call to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
+const updateChatNotes = function(req, res){
+
+	var notes = req.body.notes;
+	var room = req.body.room;
+
+	Chat.findOneAndUpdate({ room: room }, { notes: notes }, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Chat to update could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
+const getPastCalls = function(req, res){
+
+	var page = req.body.page;
+	var skip = 0;
+
+	if(page > 1){
+		page--;
+		skip = 20;
+	}
+
+	Call.find({}, null, { sort: { _id: -1 }, skip: skip * page, limit: 20 }, (err, docs) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Calls could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: docs,
+			});
+		}
+	});
+}
+
+const getDispatcherData = function(req, res){
+	var dispatcher_id = req.body.dispatcher_id;
+	Dispatcher.find({"_id": dispatcher_id}, (err, doc) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Dispatcher data could not be found."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: doc,
+			});
+		}
+	});
+}
+
+const getPastChats = function(req, res){
+
+	var page = req.body.page;
+	var skip = 0;
+
+	if(page > 1){
+		page--;
+		skip = 20;
+	}
+
+	Chat.find({}, null, { sort: { _id: -1 }, skip: skip * page, limit: 20 }, (err, docs) => {
+		if(err){
+			res.json({
+				status: "Error",
+				message: "Chats could not be retrieved."
+			});
+		}
+
+		if(!err){
+			res.json({
+				message: docs,
+			});
+		}
+	});
+}
+
 module.exports.register = register;
 module.exports.login = login;
 module.exports.dispatcherLogin = dispatcherLogin;
@@ -656,3 +768,8 @@ module.exports.getCurrentChat = getCurrentChat;
 module.exports.updateUserData = updateUserData;
 module.exports.updateMedicalData = updateMedicalData;
 module.exports.addIceContact = addIceContact;
+module.exports.updateCallNotes = updateCallNotes;
+module.exports.updateChatNotes = updateChatNotes;
+module.exports.getPastCalls = getPastCalls;
+module.exports.getDispatcherData = getDispatcherData;
+module.exports.getPastChats = getPastChats;

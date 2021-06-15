@@ -30,6 +30,9 @@ var chatInput = document.querySelector(".dispatcher-message-input");
 var endCallBtn = document.querySelector(".end-call");
 var newMessage = document.querySelector(".new-message");
 var userLeft = document.querySelector(".user-left-chat");
+var notesBtn = document.querySelector(".notes-btn");
+var notesContainer = document.querySelector(".notes-container");
+var notes = document.querySelector(".notes");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -301,6 +304,15 @@ video.addEventListener("click", function(){
      }
 });
 
+notesBtn.addEventListener("click", function(){
+     if(notesContainer.classList.contains("hidden")){
+          notesContainer.classList.remove("hidden");
+     }
+     else{
+          notesContainer.classList.add("hidden");
+     }
+});
+
 stopBtn.addEventListener("click", function(){
      animationNotification.classList.add("hidden");
      animationStopped.classList.remove("hidden");
@@ -425,6 +437,19 @@ primus.on("data", (json) => {
 });
 
 endCallBtn.addEventListener("click", function(){
+     var data = {
+          notes: notes.value,
+          room: sessionStorage.getItem("room"),
+     };
+
+     fetch("/update_chat_notes", {
+          method: "PUT", 
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+     })
+
      primus.write({
           "action": "Dispatcher left chat",
           "room": sessionStorage.getItem("room"),

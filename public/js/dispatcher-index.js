@@ -8,6 +8,7 @@ var waitingMessage = document.querySelector(".waiting-message");
 var userJoinedNotification = document.querySelector(".user-joined-notification");
 var userJoinedLink = document.querySelector(".user-joined-link");
 var noCalls = document.querySelector(".no-calls-notification");
+var pastCalls = document.querySelector(".past-calls");
 
 var primus = Primus.connect("/", { 
      reconnect: {

@@ -1,0 +1,33 @@
+.past-calls-table, th, td {
+     border: 2px solid black;
+     border-collapse: collapse;
+     font-size: 1.2vw;
+}
+.past-calls-table{
+     width: fit-content;
+     margin-left: auto;
+     margin-right: auto;
+}
+td{
+     padding-left: 0.5vw;
+     padding-right: 0.5vw;
+     padding-top: 0.5vw;
+     padding-bottom: 0.5vw;
+}
+.pagination-links{
+     width: fit-content;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 2vw;
+     margin-bottom: 2vw;
+     .page-links{
+          font-size: 1.2vw;
+          font-weight: 800;
+     }
+     .previous-page{
+          margin-right: 1vw;
+     }
+     .next-page{
+          margin-left: 1vw;
+     }
+}

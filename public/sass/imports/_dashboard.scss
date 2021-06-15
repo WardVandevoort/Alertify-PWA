@@ -234,6 +234,55 @@
      .toggle-video:hover{
           cursor: pointer;
      }
+     .notes-btn{
+          position: absolute;
+          top: 0;
+          left: 23%; 
+          z-index: 9;
+          background-color: $white;
+          padding-top: 1vw;
+          padding-bottom: 1vw;
+          padding-left: 1vw;
+          padding-right: 1vw;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+          border-right: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-left: 4px solid rgba($color: #000000, $alpha: 0.2);
+          border-bottom: 4px solid rgba($color: #000000, $alpha: 0.2);
+          p{
+               font-size: 1.2vw;
+               margin: 0;
+          }
+     }
+     .notes-btn:hover{
+          cursor: pointer;
+     }
+     .notes-container{
+          position: absolute;
+          top: 25%;
+          left: 0;
+          right: 0;
+          margin-left: auto;
+          margin-right: auto;
+          z-index: 9;
+          background-color: $white;
+          width: 30vw;
+          height: 15vw;
+          padding-top: 1vw;
+          padding-bottom: 2vw;
+          padding-left: 1vw;
+          padding-right: 2vw;
+          border-radius: 20px;
+          border: 4px solid rgba($color: #000000, $alpha: 0.2);
+          .notes{
+               width: 100%;
+               height: 100%;
+               padding-left: 0.4vw;
+               padding-right: 0.4vw;
+               padding-top: 0.4vw;
+               padding-bottom: 0.4vw;
+          }
+     }
      .video-container{
           position: absolute;
           top: 0;

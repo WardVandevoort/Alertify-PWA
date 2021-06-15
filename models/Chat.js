@@ -5,6 +5,7 @@ const chatSchema = new Schema({
 	user_id: { type: String, default: null },
 	dispatcher_id: { type: String, default: null },
 	room: String,
+	notes: { type: String, default: null },
 	active: { type: Boolean, default: 1 },
 	lat: String,
 	long: String,

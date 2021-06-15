@@ -26,6 +26,9 @@ var animationEnded = document.querySelector(".animation-ended");
 var userInfo = document.querySelector(".user-info");
 var userLeft = document.querySelector(".user-left-call");
 var endCall = document.querySelector(".end-call");
+var notesBtn = document.querySelector(".notes-btn");
+var notesContainer = document.querySelector(".notes-container");
+var notes = document.querySelector(".notes");
 
 var primus = Primus.connect("/", {
      reconnect: {
@@ -280,6 +283,15 @@ video.addEventListener("click", function(){
      }
 });
 
+notesBtn.addEventListener("click", function(){
+     if(notesContainer.classList.contains("hidden")){
+          notesContainer.classList.remove("hidden");
+     }
+     else{
+          notesContainer.classList.add("hidden");
+     }
+});
+
 stopBtn.addEventListener("click", function(){
      animationNotification.classList.add("hidden");
      animationStopped.classList.remove("hidden");
@@ -314,6 +326,19 @@ primus.on("data", (json) => {
 });
 
 endCall.addEventListener("click", function(){
+     var data = {
+          notes: notes.value,
+          room: sessionStorage.getItem("room"),
+     };
+
+     fetch("/update_call_notes", {
+          method: "PUT", 
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+     })
+
      primus.write({
           "action": "Dispatcher left call",
           "room": sessionStorage.getItem("room"),

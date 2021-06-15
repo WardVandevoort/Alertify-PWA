@@ -120,14 +120,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
      deferredPrompt = e;
 
      overlay.classList.remove("hidden");
-     
-     showInstallPromotion();
 });
 
 installBtn.addEventListener('click', async () => {
-     
-     hideInstallPromotion();
-     
      deferredPrompt.prompt();
      
      const { outcome } = await deferredPrompt.userChoice;
@@ -136,9 +131,6 @@ installBtn.addEventListener('click', async () => {
 });
 
 window.addEventListener('appinstalled', () => {
-     
-     hideInstallPromotion();
-     
      deferredPrompt = null;
 
      overlay.classList.add("hidden");

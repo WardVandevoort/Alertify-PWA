@@ -124,6 +124,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 installBtn.addEventListener('click', async () => {
      deferredPrompt.prompt();
+
+     overlay.classList.add("hidden");
      
      const { outcome } = await deferredPrompt.userChoice;
      
